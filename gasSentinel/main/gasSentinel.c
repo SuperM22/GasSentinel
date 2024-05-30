@@ -2,6 +2,7 @@
 #include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/timers.h"  // Include the FreeRTOS timer header
 #include "driver/ledc.h"
 #include "driver/gpio.h"
 #include "driver/adc.h"
@@ -11,8 +12,7 @@
 #include "esp_wifi.h"
 #include "nvs_flash.h"
 
-
-//Just to print mac addressed
+// Just to print MAC addresses
 #define MAC2STR(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
 #define MACSTR "%02x:%02x:%02x:%02x:%02x:%02x"
 
@@ -21,6 +21,8 @@
 #define BUZZER_CHANNEL LEDC_CHANNEL_0
 #define BUZZER_TIMER LEDC_TIMER_0
 #define LED_GPIO_PIN 20
+#define YELLOW_LED_GPIO_PIN 21
+#define GREEN_LED_GPIO_PIN 26
 
 // ADC1 channel for the MQ-2 sensor (GPIO 36 is ADC1 channel 0)
 #define MQ2_ADC_CHANNEL ADC1_CHANNEL_0
@@ -30,6 +32,9 @@
 
 const char *message = "Threshold exceeded";
 
+// Timer handle
+TimerHandle_t yellow_led_timer;
+
 void configure_led(void)
 {
     gpio_reset_pin(LED_GPIO_PIN);
@@ -37,10 +42,48 @@ void configure_led(void)
     gpio_set_level(LED_GPIO_PIN, 0); // Ensure LED is off initially
 }
 
+void configure_led_yellow(void)
+{
+    gpio_reset_pin(YELLOW_LED_GPIO_PIN);
+    gpio_set_direction(YELLOW_LED_GPIO_PIN, GPIO_MODE_OUTPUT);
+    gpio_set_level(YELLOW_LED_GPIO_PIN, 0); // Ensure LED is off initially
+}
+
+void configure_led_green(void)
+{
+    gpio_reset_pin(GREEN_LED_GPIO_PIN);
+    gpio_set_direction(GREEN_LED_GPIO_PIN, GPIO_MODE_OUTPUT);
+    gpio_set_level(GREEN_LED_GPIO_PIN, 0); // Ensure LED is off initially
+}
+
 void turn_on_led(void)
 {
     gpio_set_level(LED_GPIO_PIN, 1);
     printf("LED ON\n");
+}
+
+void turn_on_led_yellow(void)
+{
+    gpio_set_level(YELLOW_LED_GPIO_PIN, 1);
+    printf("LED YELLOW ON\n");
+}
+
+void turn_on_led_green(void)
+{
+    gpio_set_level(GREEN_LED_GPIO_PIN, 1);
+    printf("LED GREEN ON\n");
+}
+
+void turn_off_led_yellow(void)
+{
+    gpio_set_level(YELLOW_LED_GPIO_PIN, 0);
+    printf("LED YELLOW OFF\n");
+}
+
+void turn_off_led_green(void)
+{
+    gpio_set_level(GREEN_LED_GPIO_PIN, 0);
+    printf("LED GREEN OFF\n");
 }
 
 void turn_off_led(void)
@@ -88,19 +131,28 @@ void turn_off_buzzer(void)
     printf("Buzzer OFF\n");
 }
 
-//Callback function when message is received
+// Timer callback function to turn off the yellow LED
+void yellow_led_timer_callback(TimerHandle_t xTimer)
+{
+    turn_off_led_yellow();
+}
+
+// Callback function when message is received
 void espnow_recv_cb(const uint8_t *mac_addr, const uint8_t *data, int data_len)
 {
     printf("Received ESP-NOW data from: " MACSTR " \n", MAC2STR(mac_addr));
     printf("Data: %.*s\n", data_len, data);
 
     // Process the received data
-    //if the data is "Threshold exceeded", do some stuff
+    // If the data is "Threshold exceeded", do some stuff
     if (strncmp((const char *)data, "Threshold exceeded", data_len) == 0) {
-        turn_on_led();
+        turn_on_led_yellow();
+        turn_on_buzzer();
+
+        // Start the timer to turn off the yellow LED after 5 seconds
+        xTimerStart(yellow_led_timer, 0);
     }
 }
-
 
 void espnow_init(void)
 {
@@ -114,7 +166,7 @@ void espnow_init(void)
     // Initialize ESP-NOW
     esp_now_init();
 
-    //callback function upon receival
+    // Callback function upon reception
     esp_now_register_recv_cb(espnow_recv_cb);
 }
 
@@ -135,18 +187,26 @@ void espnow_send_broadcast_data(const char *data)
     esp_now_send(broadcast_addr, (uint8_t *)data, strlen(data));
 }
 
+float adc;
+
 void app_main(void)
 {
     // Configure the LED
     configure_led();
+    configure_led_yellow();
+    configure_led_green();
+
+    turn_on_led_green();
 
     // Configure the buzzer
     configure_buzzer();
 
-
     // Initialize ESP-NOW
     espnow_init();
     espnow_add_broadcast_peer();
+
+    // Create the timer to turn off the yellow LED
+    yellow_led_timer = xTimerCreate("YellowLEDTimer", pdMS_TO_TICKS(5000), pdFALSE, (void *)0, yellow_led_timer_callback);
 
     // Configure ADC width and attenuation
     adc1_config_width(ADC_WIDTH_BIT_12);
@@ -164,7 +224,6 @@ void app_main(void)
         int adc_reading = adc1_get_raw(MQ2_ADC_CHANNEL);
         // Convert ADC value to voltage in mV
         uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
-
         printf("ADC Raw: %d\tVoltage: %ldmV\n", adc_reading, voltage);
 
         // Check if the reading exceeds the threshold
@@ -174,9 +233,9 @@ void app_main(void)
             if (counter >= required_count) {
                 turn_on_buzzer();
                 printf("Threshold exceeded for %d seconds! LED and Buzzer on\n", DURATION_THRESHOLD);
-                
                 espnow_send_broadcast_data(message);
                 printf("ESP-NOW broadcast message sent: %s\n", message);
+                adc = adc_reading;
             }
         } else {
             counter = 0; // Reset the counter if the reading falls below the threshold
