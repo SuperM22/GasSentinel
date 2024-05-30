@@ -1,0 +1,3917 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x178c
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcbc
+load:0x403cc700,len:0x2d98
+entry 0x403c9914
+[0;32mI (27) boot: ESP-IDF v5.2 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time May 28 2024 17:39:27[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (38) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (72) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (79) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (87) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=3c020020 size=0e50ch ( 58636) map[0m
+[0;32mI (110) esp_image: segment 1: paddr=0001e534 vaddr=3fc92000 size=01ae4h (  6884) load[0m
+[0;32mI (111) esp_image: segment 2: paddr=00020020 vaddr=42000020 size=1c3c0h (115648) map[0m
+[0;32mI (137) esp_image: segment 3: paddr=0003c3e8 vaddr=3fc93ae4 size=00ed4h (  3796) load[0m
+[0;32mI (138) esp_image: segment 4: paddr=0003d2c4 vaddr=40374000 size=0df14h ( 57108) load[0m
+[0;32mI (161) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (161) boot: Disabling RNG early entropy source...[0m
+[0;32mI (172) cpu_start: Multicore app[0m
+[0;32mI (182) cpu_start: Pro cpu start user code[0m
+[0;32mI (182) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (182) cpu_start: Application information:[0m
+[0;32mI (185) cpu_start: Project name:     gasSentinel[0m
+[0;32mI (191) cpu_start: App version:      991f118-dirty[0m
+[0;32mI (196) cpu_start: Compile time:     May 28 2024 17:38:58[0m
+[0;32mI (202) cpu_start: ELF file SHA256:  4e72504cc...[0m
+[0;32mI (207) cpu_start: ESP-IDF:          v5.2[0m
+[0;32mI (212) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (217) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (222) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (226) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (234) heap_init: At 3FC952E0 len 00054430 (337 KiB): RAM[0m
+[0;32mI (240) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (246) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (252) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (259) spi_flash: detected chip: gd[0m
+[0;32mI (262) spi_flash: flash io: dio[0m
+[0;33mW (266) spi_flash: Detected size(8192k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (280) ADC: legacy driver is deprecated, please migrate to `esp_adc/adc_oneshot.h`[0m
+[0;32mI (288) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (295) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (302) main_task: Started on CPU0[0m
+[0;32mI (312) main_task: Calling app_main()[0m
+[0;32mI (312) gpio: GPIO[20]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+ADC Raw: 1615	Voltage: 1365mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1674	Voltage: 1413mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1673	Voltage: 1413mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1677	Voltage: 1416mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1671	Voltage: 1411mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1663	Voltage: 1403mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1662	Voltage: 1404mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1659	Voltage: 1401mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1657	Voltage: 1399mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1655	Voltage: 1398mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1658	Voltage: 1400mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1659	Voltage: 1401mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1659	Voltage: 1401mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1658	Voltage: 1400mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1656	Voltage: 1398mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1629	Voltage: 1377mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1650	Voltage: 1393mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1647	Voltage: 1392mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1645	Voltage: 1390mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1647	Voltage: 1392mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1651	Voltage: 1395mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1647	Voltage: 1392mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1647	Voltage: 1392mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1643	Voltage: 1387mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1644	Voltage: 1388mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1641	Voltage: 1385mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1639	Voltage: 1386mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1624	Voltage: 1371mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1631	Voltage: 1379mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1629	Voltage: 1377mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1629	Voltage: 1377mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1627	Voltage: 1374mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1625	Voltage: 1373mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1624	Voltage: 1371mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1621	Voltage: 1369mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1621	Voltage: 1369mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1619	Voltage: 1369mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1620	Voltage: 1369mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1622	Voltage: 1370mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1615	Voltage: 1365mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3667	Voltage: 2944mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3365	Voltage: 2757mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3899	Voltage: 3066mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3997	Voltage: 3111mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3591	Voltage: 2901mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3245	Voltage: 2674mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2996	Voltage: 2492mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2822	Voltage: 2357mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2671	Voltage: 2238mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2740	Voltage: 2293mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2846	Voltage: 2376mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2837	Voltage: 2368mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2707	Voltage: 2267mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2588	Voltage: 2172mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2511	Voltage: 2108mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2449	Voltage: 2058mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2375	Voltage: 1997mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2323	Voltage: 1954mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2259	Voltage: 1900mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2214	Voltage: 1863mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2169	Voltage: 1826mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2139	Voltage: 1801mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2117	Voltage: 1783mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2099	Voltage: 1769mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2080	Voltage: 1752mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2060	Voltage: 1735mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2041	Voltage: 1719mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2024	Voltage: 1704mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2010	Voltage: 1694mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1997	Voltage: 1683mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1989	Voltage: 1676mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1975	Voltage: 1665mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1981	Voltage: 1669mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1958	Voltage: 1652mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1949	Voltage: 1643mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1944	Voltage: 1640mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1939	Voltage: 1635mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1931	Voltage: 1627mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1927	Voltage: 1624mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1917	Voltage: 1616mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1911	Voltage: 1611mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1898	Voltage: 1599mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1893	Voltage: 1596mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1883	Voltage: 1588mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1880	Voltage: 1585mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1873	Voltage: 1580mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1867	Voltage: 1573mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1862	Voltage: 1569mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1854	Voltage: 1564mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1849	Voltage: 1560mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1851	Voltage: 1561mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1842	Voltage: 1553mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1838	Voltage: 1551mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1833	Voltage: 1546mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1830	Voltage: 1544mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1817	Voltage: 1533mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1819	Voltage: 1534mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1817	Voltage: 1533mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1811	Voltage: 1528mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1805	Voltage: 1523mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1802	Voltage: 1521mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1791	Voltage: 1511mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1789	Voltage: 1509mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1785	Voltage: 1506mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1783	Voltage: 1504mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1778	Voltage: 1500mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1775	Voltage: 1498mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1771	Voltage: 1494mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1769	Voltage: 1492mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1767	Voltage: 1492mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1767	Voltage: 1492mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1762	Voltage: 1487mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1762	Voltage: 1487mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1754	Voltage: 1480mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1753	Voltage: 1480mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1748	Voltage: 1474mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1747	Voltage: 1474mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1725	Voltage: 1456mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1737	Voltage: 1467mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1749	Voltage: 1476mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1727	Voltage: 1457mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1721	Voltage: 1453mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1718	Voltage: 1452mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1717	Voltage: 1450mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1661	Voltage: 1404mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1709	Voltage: 1443mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1687	Voltage: 1424mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1703	Voltage: 1439mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1700	Voltage: 1435mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1700	Voltage: 1435mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1696	Voltage: 1432mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1692	Voltage: 1428mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1688	Voltage: 1426mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1685	Voltage: 1422mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1685	Voltage: 1422mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1687	Voltage: 1424mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1684	Voltage: 1422mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1683	Voltage: 1422mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1683	Voltage: 1422mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1682	Voltage: 1422mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1683	Voltage: 1422mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1676	Voltage: 1415mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1676	Voltage: 1415mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1673	Voltage: 1413mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1672	Voltage: 1412mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1671	Voltage: 1411mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1663	Voltage: 1403mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1661	Voltage: 1404mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1659	Voltage: 1401mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1659	Voltage: 1401mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1656	Voltage: 1398mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1656	Voltage: 1398mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1655	Voltage: 1398mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1651	Voltage: 1395mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1645	Voltage: 1390mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1645	Voltage: 1390mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1644	Voltage: 1388mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1643	Voltage: 1387mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1640	Voltage: 1385mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1639	Voltage: 1386mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1637	Voltage: 1383mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1635	Voltage: 1381mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1635	Voltage: 1381mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1631	Voltage: 1379mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1634	Voltage: 1380mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1631	Voltage: 1379mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1635	Voltage: 1381mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1637	Voltage: 1383mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1636	Voltage: 1382mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1635	Voltage: 1381mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1630	Voltage: 1377mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1629	Voltage: 1377mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1629	Voltage: 1377mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1628	Voltage: 1375mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1627	Voltage: 1374mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1627	Voltage: 1374mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1626	Voltage: 1374mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1626	Voltage: 1374mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1624	Voltage: 1371mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1621	Voltage: 1369mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1621	Voltage: 1369mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1619	Voltage: 1369mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1619	Voltage: 1369mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1621	Voltage: 1369mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1619	Voltage: 1369mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1618	Voltage: 1367mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1617	Voltage: 1366mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1613	Voltage: 1363mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1611	Voltage: 1362mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1609	Voltage: 1359mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1607	Voltage: 1358mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1607	Voltage: 1358mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1605	Voltage: 1357mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1599	Voltage: 1351mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1605	Voltage: 1357mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1599	Voltage: 1351mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1596	Voltage: 1349mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1596	Voltage: 1349mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1595	Voltage: 1348mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1593	Voltage: 1346mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1591	Voltage: 1345mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1591	Voltage: 1345mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1591	Voltage: 1345mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1593	Voltage: 1346mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1593	Voltage: 1346mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1592	Voltage: 1345mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1591	Voltage: 1345mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1589	Voltage: 1343mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1587	Voltage: 1341mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1589	Voltage: 1343mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1591	Voltage: 1345mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1590	Voltage: 1344mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1589	Voltage: 1343mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1589	Voltage: 1343mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1583	Voltage: 1338mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1589	Voltage: 1343mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1581	Voltage: 1336mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1578	Voltage: 1334mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1577	Voltage: 1333mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1549	Voltage: 1309mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1574	Voltage: 1331mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1573	Voltage: 1330mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1579	Voltage: 1335mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1584	Voltage: 1338mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1583	Voltage: 1338mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1581	Voltage: 1336mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1579	Voltage: 1335mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1575	Voltage: 1331mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1573	Voltage: 1330mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1572	Voltage: 1328mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1565	Voltage: 1323mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1563	Voltage: 1321mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1561	Voltage: 1320mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1560	Voltage: 1319mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1559	Voltage: 1318mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1557	Voltage: 1316mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1549	Voltage: 1309mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1555	Voltage: 1316mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1553	Voltage: 1313mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1553	Voltage: 1313mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1548	Voltage: 1309mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1549	Voltage: 1309mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1547	Voltage: 1308mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1547	Voltage: 1308mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1546	Voltage: 1308mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1545	Voltage: 1306mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1533	Voltage: 1297mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1555	Voltage: 1316mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1555	Voltage: 1316mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1555	Voltage: 1316mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1554	Voltage: 1315mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1553	Voltage: 1313mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1549	Voltage: 1309mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1555	Voltage: 1316mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1551	Voltage: 1311mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1532	Voltage: 1295mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1545	Voltage: 1306mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1529	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1545	Voltage: 1306mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1543	Voltage: 1305mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1533	Voltage: 1297mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1531	Voltage: 1294mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1529	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1529	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1524	Voltage: 1289mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1526	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1526	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1525	Voltage: 1290mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1525	Voltage: 1290mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1524	Voltage: 1289mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1525	Voltage: 1290mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1523	Voltage: 1289mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1523	Voltage: 1289mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1520	Voltage: 1286mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1519	Voltage: 1285mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1519	Voltage: 1285mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1528	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1517	Voltage: 1283mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1517	Voltage: 1283mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1517	Voltage: 1283mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1519	Voltage: 1285mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1519	Voltage: 1285mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1519	Voltage: 1285mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1518	Voltage: 1284mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1517	Voltage: 1283mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1515	Voltage: 1281mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1516	Voltage: 1282mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1518	Voltage: 1284mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1516	Voltage: 1282mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1516	Voltage: 1282mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1515	Voltage: 1281mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1515	Voltage: 1281mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1515	Voltage: 1281mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1515	Voltage: 1281mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1513	Voltage: 1280mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1513	Voltage: 1280mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1513	Voltage: 1280mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1511	Voltage: 1278mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1512	Voltage: 1279mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1510	Voltage: 1278mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1509	Voltage: 1276mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1508	Voltage: 1276mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1502	Voltage: 1271mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1508	Voltage: 1276mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1507	Voltage: 1275mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1505	Voltage: 1274mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1507	Voltage: 1275mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1507	Voltage: 1275mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1507	Voltage: 1275mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1523	Voltage: 1289mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1529	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1528	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1525	Voltage: 1290mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1519	Voltage: 1285mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1531	Voltage: 1294mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1551	Voltage: 1311mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1551	Voltage: 1311mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1547	Voltage: 1308mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1543	Voltage: 1305mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1531	Voltage: 1294mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1549	Voltage: 1309mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1524	Voltage: 1289mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1519	Voltage: 1285mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1515	Voltage: 1281mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1513	Voltage: 1280mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1493	Voltage: 1263mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1509	Voltage: 1276mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1511	Voltage: 1278mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1517	Voltage: 1283mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1523	Voltage: 1289mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1557	Voltage: 1316mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1528	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1529	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1528	Voltage: 1292mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1524	Voltage: 1289mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1523	Voltage: 1289mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1515	Voltage: 1281mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1511	Voltage: 1278mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1513	Voltage: 1280mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1510	Voltage: 1278mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1509	Voltage: 1276mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1507	Voltage: 1275mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1503	Voltage: 1272mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1501	Voltage: 1269mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1499	Voltage: 1268mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1497	Voltage: 1267mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1493	Voltage: 1263mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1509	Voltage: 1276mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1491	Voltage: 1262mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1493	Voltage: 1263mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1487	Voltage: 1259mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1485	Voltage: 1257mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1483	Voltage: 1255mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1483	Voltage: 1255mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1482	Voltage: 1254mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1481	Voltage: 1253mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1481	Voltage: 1253mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1480	Voltage: 1251mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1479	Voltage: 1250mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1479	Voltage: 1250mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1479	Voltage: 1250mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1471	Voltage: 1245mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1471	Voltage: 1245mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1470	Voltage: 1245mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1447	Voltage: 1225mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1467	Voltage: 1243mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1445	Voltage: 1223mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1468	Voltage: 1242mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1466	Voltage: 1241mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1467	Voltage: 1243mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1466	Voltage: 1241mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1467	Voltage: 1243mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1467	Voltage: 1243mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1465	Voltage: 1239mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1466	Voltage: 1241mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1464	Voltage: 1239mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1463	Voltage: 1239mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1461	Voltage: 1236mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1456	Voltage: 1234mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1453	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1459	Voltage: 1234mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1491	Voltage: 1262mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1461	Voltage: 1236mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1459	Voltage: 1234mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1453	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1460	Voltage: 1236mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1450	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1454	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1455	Voltage: 1232mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1453	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1453	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1454	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1471	Voltage: 1245mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1453	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1453	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1432	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1453	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1454	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1453	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1453	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1454	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1453	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1449	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1449	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1449	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1447	Voltage: 1225mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1447	Voltage: 1225mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1445	Voltage: 1223mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1446	Voltage: 1224mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1444	Voltage: 1222mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1440	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1440	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1443	Voltage: 1222mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1445	Voltage: 1223mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1443	Voltage: 1222mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1445	Voltage: 1223mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1443	Voltage: 1222mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1437	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1437	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1438	Voltage: 1217mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1437	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1437	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1437	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1437	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1435	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1437	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1435	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1438	Voltage: 1217mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1437	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1434	Voltage: 1215mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1438	Voltage: 1217mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1433	Voltage: 1214mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1433	Voltage: 1214mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1433	Voltage: 1214mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1432	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1433	Voltage: 1214mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1432	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1425	Voltage: 1206mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1433	Voltage: 1214mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1429	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1430	Voltage: 1211mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1429	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1429	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1399	Voltage: 1185mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1426	Voltage: 1207mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1425	Voltage: 1206mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1423	Voltage: 1204mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1420	Voltage: 1204mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1421	Voltage: 1204mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1421	Voltage: 1204mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1418	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1419	Voltage: 1202mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1408	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1418	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1418	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1419	Voltage: 1202mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1419	Voltage: 1202mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1415	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1415	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1415	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1408	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1406	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1406	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1400	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1404	Voltage: 1189mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1402	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1404	Voltage: 1189mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1406	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1447	Voltage: 1225mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1406	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1413	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1413	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1415	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1419	Voltage: 1202mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1419	Voltage: 1202mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1415	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1416	Voltage: 1199mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1408	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1415	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1427	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1422	Voltage: 1204mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1415	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1413	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1413	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1402	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1400	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1400	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1398	Voltage: 1185mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1398	Voltage: 1185mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1397	Voltage: 1184mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1416	Voltage: 1199mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1396	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1390	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1397	Voltage: 1184mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1390	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1388	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1392	Voltage: 1179mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1394	Voltage: 1182mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1445	Voltage: 1223mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1390	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1396	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1396	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1388	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1388	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1385	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1384	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1374	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1385	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1382	Voltage: 1172mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1380	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1374	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1370	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1370	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1368	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1390	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1399	Voltage: 1185mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1397	Voltage: 1184mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1392	Voltage: 1179mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1385	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1384	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1382	Voltage: 1172mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1374	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1397	Voltage: 1184mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1380	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1384	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1399	Voltage: 1185mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1406	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1450	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1467	Voltage: 1243mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1479	Voltage: 1250mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1479	Voltage: 1250mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1478	Voltage: 1251mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1476	Voltage: 1249mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1468	Voltage: 1242mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1461	Voltage: 1236mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1454	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1445	Voltage: 1223mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1435	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1435	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1434	Voltage: 1215mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1433	Voltage: 1214mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1429	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1429	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1429	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1428	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1429	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1429	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1445	Voltage: 1223mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1444	Voltage: 1222mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1445	Voltage: 1223mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1456	Voltage: 1234mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1454	Voltage: 1231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1455	Voltage: 1232mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1460	Voltage: 1236mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1452	Voltage: 1229mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1446	Voltage: 1224mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1438	Voltage: 1217mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1436	Voltage: 1216mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1431	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1432	Voltage: 1213mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1451	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1448	Voltage: 1226mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1448	Voltage: 1226mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1449	Voltage: 1228mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1443	Voltage: 1222mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1433	Voltage: 1214mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1429	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1423	Voltage: 1204mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1418	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1416	Voltage: 1199mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1414	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1404	Voltage: 1189mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1415	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1415	Voltage: 1198mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1402	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1400	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1374	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1397	Voltage: 1184mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1396	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1399	Voltage: 1185mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1397	Voltage: 1184mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1396	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1388	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1390	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1380	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1372	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1372	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1370	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1370	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1385	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1394	Voltage: 1182mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1421	Voltage: 1204mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1382	Voltage: 1172mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1380	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1382	Voltage: 1172mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1380	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1368	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1362	Voltage: 1155mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1399	Voltage: 1185mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1356	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1356	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1356	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1364	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1300	Voltage: 1104mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1386	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1385	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1397	Voltage: 1184mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1382	Voltage: 1172mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1380	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1362	Voltage: 1155mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1368	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1358	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1358	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1358	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1368	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1385	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1358	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1354	Voltage: 1148mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1342	Voltage: 1139mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1338	Voltage: 1134mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1350	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1344	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1342	Voltage: 1139mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1350	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1350	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1350	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1338	Voltage: 1134mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1338	Voltage: 1134mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1356	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1385	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1383	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1385	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1382	Voltage: 1172mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1372	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1368	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1354	Voltage: 1148mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1354	Voltage: 1148mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1354	Voltage: 1148mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1354	Voltage: 1148mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1364	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1362	Voltage: 1155mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1386	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1364	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1368	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1316	Voltage: 1116mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1417	Voltage: 1201mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1400	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1396	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1387	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1377	Voltage: 1167mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1368	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1364	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1356	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1354	Voltage: 1148mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1364	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1354	Voltage: 1148mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1336	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1378	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1390	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1386	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1374	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1350	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1338	Voltage: 1134mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1327	Voltage: 1126mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1325	Voltage: 1125mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1325	Voltage: 1125mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1325	Voltage: 1125mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1321	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1319	Voltage: 1118mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1319	Voltage: 1118mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1321	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1321	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1399	Voltage: 1185mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1403	Voltage: 1188mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1401	Voltage: 1186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1398	Voltage: 1185mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1385	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1381	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1368	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1362	Voltage: 1155mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1342	Voltage: 1139mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1350	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1317	Voltage: 1117mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1332	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1325	Voltage: 1125mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1324	Voltage: 1123mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1327	Voltage: 1126mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1328	Voltage: 1127mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1325	Voltage: 1125mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1324	Voltage: 1123mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1320	Voltage: 1120mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1321	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1321	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1319	Voltage: 1118mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1319	Voltage: 1118mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1319	Voltage: 1118mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1317	Voltage: 1117mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1315	Voltage: 1116mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1311	Voltage: 1112mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1313	Voltage: 1115mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1325	Voltage: 1125mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1310	Voltage: 1112mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1299	Voltage: 1103mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1315	Voltage: 1116mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1309	Voltage: 1111mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1311	Voltage: 1112mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1307	Voltage: 1109mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1307	Voltage: 1109mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1305	Voltage: 1108mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1303	Voltage: 1105mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1302	Voltage: 1104mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1303	Voltage: 1105mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1302	Voltage: 1104mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1301	Voltage: 1104mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1301	Voltage: 1104mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1299	Voltage: 1103mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1302	Voltage: 1104mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1301	Voltage: 1104mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1316	Voltage: 1116mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1325	Voltage: 1125mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1327	Voltage: 1126mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1325	Voltage: 1125mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1320	Voltage: 1120mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1327	Voltage: 1126mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1334	Voltage: 1131mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1327	Voltage: 1126mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1327	Voltage: 1126mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1361	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1356	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1344	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1378	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1380	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1380	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1366	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1342	Voltage: 1139mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1332	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1325	Voltage: 1125mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1322	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1356	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1350	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1349	Voltage: 1143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1372	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1390	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1368	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1364	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1327	Voltage: 1126mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1326	Voltage: 1125mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1321	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1317	Voltage: 1117mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1309	Voltage: 1111mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1319	Voltage: 1118mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1319	Voltage: 1118mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1317	Voltage: 1117mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1317	Voltage: 1117mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1319	Voltage: 1118mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1312	Voltage: 1114mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1317	Voltage: 1117mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1317	Voltage: 1117mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1312	Voltage: 1114mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1315	Voltage: 1116mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1315	Voltage: 1116mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1315	Voltage: 1116mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1312	Voltage: 1114mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1315	Voltage: 1116mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1309	Voltage: 1111mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1315	Voltage: 1116mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1311	Voltage: 1112mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1311	Voltage: 1112mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1309	Voltage: 1111mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1308	Voltage: 1111mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1311	Voltage: 1112mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1307	Voltage: 1109mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1308	Voltage: 1111mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1310	Voltage: 1112mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1311	Voltage: 1112mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1321	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1316	Voltage: 1116mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1317	Voltage: 1117mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1336	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1319	Voltage: 1118mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1339	Voltage: 1136mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1358	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1351	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1342	Voltage: 1139mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1342	Voltage: 1139mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1327	Voltage: 1126mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1332	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1334	Voltage: 1131mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1350	Voltage: 1145mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1384	Voltage: 1173mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1373	Voltage: 1162mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1375	Voltage: 1166mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1343	Voltage: 1140mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1328	Voltage: 1127mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1322	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1324	Voltage: 1123mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1319	Voltage: 1118mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1321	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1324	Voltage: 1123mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1323	Voltage: 1122mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1332	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1342	Voltage: 1139mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1356	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1357	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1367	Voltage: 1159mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1358	Voltage: 1151mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1382	Voltage: 1172mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1405	Voltage: 1191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1397	Voltage: 1184mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1388	Voltage: 1175mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1389	Voltage: 1176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1407	Voltage: 1192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1419	Voltage: 1202mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1427	Voltage: 1209mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1439	Voltage: 1219mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1416	Voltage: 1199mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1391	Voltage: 1178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1372	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1380	Voltage: 1170mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1382	Voltage: 1172mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1379	Voltage: 1169mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1363	Voltage: 1156mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1355	Voltage: 1149mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1352	Voltage: 1146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1337	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1334	Voltage: 1131mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1336	Voltage: 1133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1340	Voltage: 1137mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1359	Voltage: 1153mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1369	Voltage: 1160mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1362	Voltage: 1155mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1353	Voltage: 1147mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1341	Voltage: 1138mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1335	Voltage: 1132mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1331	Voltage: 1129mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1333	Voltage: 1130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 1327	Voltage: 1126mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2189	Voltage: 1843mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3991	Voltage: 3107mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3771	Voltage: 3003mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3671	Voltage: 2948mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3593	Voltage: 2901mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3549	Voltage: 2877mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3468	Voltage: 2824mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3375	Voltage: 2763mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3303	Voltage: 2713mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3226	Voltage: 2660mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3171	Voltage: 2622mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3125	Voltage: 2587mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3087	Voltage: 2559mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3059	Voltage: 2539mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3031	Voltage: 2518mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3023	Voltage: 2512mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3014	Voltage: 2505mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2991	Voltage: 2489mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2983	Voltage: 2482mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2964	Voltage: 2467mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2943	Voltage: 2450mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2933	Voltage: 2444mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2917	Voltage: 2432mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2902	Voltage: 2419mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2892	Voltage: 2412mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2877	Voltage: 2401mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2863	Voltage: 2389mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2855	Voltage: 2384mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2845	Voltage: 2376mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2837	Voltage: 2368mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2827	Voltage: 2362mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2813	Voltage: 2351mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2805	Voltage: 2345mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2799	Voltage: 2339mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2791	Voltage: 2333mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2787	Voltage: 2330mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2779	Voltage: 2324mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2771	Voltage: 2318mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2760	Voltage: 2308mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2759	Voltage: 2308mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2747	Voltage: 2298mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2743	Voltage: 2296mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2735	Voltage: 2290mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2729	Voltage: 2284mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2720	Voltage: 2277mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2717	Voltage: 2275mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2709	Voltage: 2268mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2701	Voltage: 2263mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2696	Voltage: 2258mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2694	Voltage: 2257mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2707	Voltage: 2267mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2681	Voltage: 2246mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2675	Voltage: 2240mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2671	Voltage: 2238mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2665	Voltage: 2233mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2711	Voltage: 2269mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2735	Voltage: 2290mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2726	Voltage: 2281mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2747	Voltage: 2298mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2745	Voltage: 2296mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2731	Voltage: 2286mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2715	Voltage: 2273mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2707	Voltage: 2267mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2695	Voltage: 2257mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2683	Voltage: 2247mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3517	Voltage: 2856mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3959	Voltage: 3095mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3731	Voltage: 2981mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3580	Voltage: 2894mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3427	Voltage: 2798mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3307	Voltage: 2717mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3308	Voltage: 2718mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4054	Voltage: 3133mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3805	Voltage: 3020mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3591	Voltage: 2901mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3432	Voltage: 2801mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3305	Voltage: 2715mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3208	Voltage: 2648mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3125	Voltage: 2587mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3048	Voltage: 2530mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2996	Voltage: 2492mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2951	Voltage: 2458mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3730	Voltage: 2981mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3432	Voltage: 2801mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3272	Voltage: 2692mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3127	Voltage: 2589mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3065	Voltage: 2543mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3005	Voltage: 2500mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2927	Voltage: 2440mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2853	Voltage: 2381mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2795	Voltage: 2337mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2747	Voltage: 2298mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2700	Voltage: 2261mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2661	Voltage: 2230mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2631	Voltage: 2205mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2603	Voltage: 2183mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2583	Voltage: 2167mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2569	Voltage: 2155mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2549	Voltage: 2139mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2535	Voltage: 2128mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2525	Voltage: 2119mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2623	Voltage: 2200mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3900	Voltage: 3066mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3645	Voltage: 2933mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3400	Voltage: 2781mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3219	Voltage: 2656mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3093	Voltage: 2565mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2981	Voltage: 2480mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3833	Voltage: 3034mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3861	Voltage: 3047mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3621	Voltage: 2918mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3390	Voltage: 2772mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3192	Voltage: 2636mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3047	Voltage: 2530mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2934	Voltage: 2445mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2837	Voltage: 2368mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2845	Voltage: 2376mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2707	Voltage: 2267mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2685	Voltage: 2249mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2595	Voltage: 2176mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2554	Voltage: 2143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2521	Voltage: 2117mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2495	Voltage: 2096mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2483	Voltage: 2085mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2456	Voltage: 2063mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2437	Voltage: 2047mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2429	Voltage: 2041mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2419	Voltage: 2032mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2405	Voltage: 2021mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2392	Voltage: 2010mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2387	Voltage: 2007mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2376	Voltage: 1997mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2359	Voltage: 1983mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2351	Voltage: 1977mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2347	Voltage: 1974mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2339	Voltage: 1967mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2329	Voltage: 1959mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2321	Voltage: 1952mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2322	Voltage: 1953mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2301	Voltage: 1936mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2295	Voltage: 1931mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2287	Voltage: 1924mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2283	Voltage: 1921mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2275	Voltage: 1914mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2268	Voltage: 1908mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2262	Voltage: 1904mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2254	Voltage: 1897mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2261	Voltage: 1904mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2237	Voltage: 1882mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2233	Voltage: 1880mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2231	Voltage: 1878mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2227	Voltage: 1875mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2201	Voltage: 1852mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2215	Voltage: 1864mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2213	Voltage: 1863mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2207	Voltage: 1858mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2203	Voltage: 1854mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2195	Voltage: 1848mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2189	Voltage: 1843mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2184	Voltage: 1838mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2183	Voltage: 1838mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2171	Voltage: 1828mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2168	Voltage: 1825mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2165	Voltage: 1821mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2163	Voltage: 1822mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2157	Voltage: 1816mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2157	Voltage: 1816mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2157	Voltage: 1816mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2153	Voltage: 1813mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2150	Voltage: 1810mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2148	Voltage: 1808mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2147	Voltage: 1809mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2141	Voltage: 1803mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2141	Voltage: 1803mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2139	Voltage: 1801mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2146	Voltage: 1807mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2125	Voltage: 1790mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2125	Voltage: 1790mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2121	Voltage: 1787mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2123	Voltage: 1789mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2056	Voltage: 1732mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2121	Voltage: 1787mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3979	Voltage: 3102mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3643	Voltage: 2930mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3385	Voltage: 2770mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3251	Voltage: 2677mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3115	Voltage: 2581mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2990	Voltage: 2488mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2904	Voltage: 2421mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2825	Voltage: 2360mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2761	Voltage: 2309mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2727	Voltage: 2282mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2648	Voltage: 2220mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2605	Voltage: 2186mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2551	Voltage: 2142mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3767	Voltage: 3000mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3493	Voltage: 2840mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3297	Voltage: 2711mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3157	Voltage: 2611mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3027	Voltage: 2514mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2839	Voltage: 2372mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2823	Voltage: 2359mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2727	Voltage: 2282mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2702	Voltage: 2263mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2653	Voltage: 2223mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2614	Voltage: 2192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2577	Voltage: 2161mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2537	Voltage: 2130mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2488	Voltage: 2089mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2459	Voltage: 2066mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2415	Voltage: 2030mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2395	Voltage: 2014mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2375	Voltage: 1997mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2351	Voltage: 1977mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2335	Voltage: 1964mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2323	Voltage: 1954mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2324	Voltage: 1954mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2295	Voltage: 1931mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2287	Voltage: 1924mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2284	Voltage: 1922mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2279	Voltage: 1918mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2269	Voltage: 1910mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2261	Voltage: 1904mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2251	Voltage: 1894mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2235	Voltage: 1881mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2227	Voltage: 1875mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2222	Voltage: 1870mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2214	Voltage: 1863mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2206	Voltage: 1858mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2203	Voltage: 1854mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2211	Voltage: 1861mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2199	Voltage: 1852mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2197	Voltage: 1850mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2191	Voltage: 1844mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2187	Voltage: 1840mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2189	Voltage: 1843mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2183	Voltage: 1838mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2175	Voltage: 1831mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2173	Voltage: 1830mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2174	Voltage: 1831mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2173	Voltage: 1830mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2165	Voltage: 1821mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2163	Voltage: 1822mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2156	Voltage: 1816mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2149	Voltage: 1810mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2142	Voltage: 1805mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2135	Voltage: 1798mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2140	Voltage: 1803mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2147	Voltage: 1809mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2119	Voltage: 1785mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2119	Voltage: 1785mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3939	Voltage: 3084mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3654	Voltage: 2938mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3413	Voltage: 2788mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3219	Voltage: 2656mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3079	Voltage: 2554mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2955	Voltage: 2461mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2861	Voltage: 2389mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2789	Voltage: 2333mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2715	Voltage: 2273mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2649	Voltage: 2220mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2587	Voltage: 2171mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2533	Voltage: 2127mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2493	Voltage: 2093mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2463	Voltage: 2069mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2422	Voltage: 2035mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2403	Voltage: 2020mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2379	Voltage: 2000mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2359	Voltage: 1983mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2341	Voltage: 1968mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2324	Voltage: 1954mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2323	Voltage: 1954mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2303	Voltage: 1937mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2295	Voltage: 1931mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2286	Voltage: 1923mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2280	Voltage: 1918mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2275	Voltage: 1914mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2265	Voltage: 1905mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2251	Voltage: 1894mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2247	Voltage: 1891mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2231	Voltage: 1878mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2227	Voltage: 1875mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2219	Voltage: 1868mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2213	Voltage: 1863mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2201	Voltage: 1852mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2195	Voltage: 1848mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2188	Voltage: 1842mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2186	Voltage: 1840mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2183	Voltage: 1838mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2174	Voltage: 1831mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2173	Voltage: 1830mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2175	Voltage: 1831mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2167	Voltage: 1824mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2159	Voltage: 1818mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2175	Voltage: 1831mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2201	Voltage: 1852mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2201	Voltage: 1852mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2203	Voltage: 1854mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2185	Voltage: 1840mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2163	Voltage: 1822mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2147	Voltage: 1809mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2141	Voltage: 1803mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2135	Voltage: 1798mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3700	Voltage: 2963mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3359	Voltage: 2752mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3277	Voltage: 2696mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3151	Voltage: 2607mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3089	Voltage: 2561mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3019	Voltage: 2510mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2965	Voltage: 2468mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2924	Voltage: 2437mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2895	Voltage: 2414mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2863	Voltage: 2389mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2839	Voltage: 2372mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2829	Voltage: 2362mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2807	Voltage: 2347mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2788	Voltage: 2330mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2766	Voltage: 2312mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2747	Voltage: 2298mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2733	Voltage: 2287mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2725	Voltage: 2280mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2711	Voltage: 2269mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2700	Voltage: 2261mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2683	Voltage: 2247mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2670	Voltage: 2238mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2663	Voltage: 2231mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2661	Voltage: 2230mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2653	Voltage: 2223mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2671	Voltage: 2238mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2633	Voltage: 2207mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2601	Voltage: 2180mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2613	Voltage: 2191mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2599	Voltage: 2179mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2601	Voltage: 2180mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2598	Voltage: 2178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2591	Voltage: 2174mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2584	Voltage: 2167mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2557	Voltage: 2146mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2565	Voltage: 2152mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2551	Voltage: 2142mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2543	Voltage: 2135mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2535	Voltage: 2128mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2535	Voltage: 2128mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2535	Voltage: 2128mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2541	Voltage: 2133mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2531	Voltage: 2126mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3079	Voltage: 2554mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3507	Voltage: 2850mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3208	Voltage: 2648mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3036	Voltage: 2521mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2920	Voltage: 2435mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2851	Voltage: 2379mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2765	Voltage: 2312mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2714	Voltage: 2273mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2671	Voltage: 2238mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2645	Voltage: 2217mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2617	Voltage: 2194mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3967	Voltage: 3098mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3709	Voltage: 2969mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3487	Voltage: 2836mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3325	Voltage: 2729mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3207	Voltage: 2647mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3067	Voltage: 2545mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3463	Voltage: 2821mV
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4095	Voltage: 3148mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 4023	Voltage: 3121mV
+Threshold exceeded! LED and Buzzer on
+ADC Raw: 3742	Voltage: 2986mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3627	Voltage: 2922mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3357	Voltage: 2751mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3212	Voltage: 2651mV
+Below threshold. LED and Buzzer off
+ADC Raw: 3096	Voltage: 2567mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2990	Voltage: 2488mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2915	Voltage: 2430mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2851	Voltage: 2379mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2793	Voltage: 2335mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2745	Voltage: 2296mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2709	Voltage: 2268mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2670	Voltage: 2238mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2628	Voltage: 2203mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2614	Voltage: 2192mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2597	Voltage: 2178mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2577	Voltage: 2161mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2554	Voltage: 2143mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2535	Voltage: 2128mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2519	Voltage: 2115mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2490	Voltage: 2091mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2489	Voltage: 2091mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2473	Voltage: 2078mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2463	Voltage: 2069mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2453	Voltage: 2062mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2442	Voltage: 2052mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2437	Voltage: 2047mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2441	Voltage: 2050mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2419	Voltage: 2032mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2406	Voltage: 2023mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2399	Voltage: 2016mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2395	Voltage: 2014mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2385	Voltage: 2005mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2379	Voltage: 2000mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2367	Voltage: 1990mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2361	Voltage: 1985mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2345	Voltage: 1973mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2347	Voltage: 1974mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2342	Voltage: 1969mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2339	Voltage: 1967mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2339	Voltage: 1967mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2331	Voltage: 1961mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2327	Voltage: 1957mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2323	Voltage: 1954mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2316	Voltage: 1949mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2351	Voltage: 1977mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2309	Voltage: 1943mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2301	Voltage: 1936mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2300	Voltage: 1935mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2287	Voltage: 1924mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2286	Voltage: 1923mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2285	Voltage: 1922mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2275	Voltage: 1914mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2269	Voltage: 1910mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2265	Voltage: 1905mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2259	Voltage: 1900mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2253	Voltage: 1895mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2223	Voltage: 1870mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2248	Voltage: 1892mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2245	Voltage: 1890mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2237	Voltage: 1882mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2233	Voltage: 1880mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2229	Voltage: 1877mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2227	Voltage: 1875mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2221	Voltage: 1869mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2221	Voltage: 1869mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2221	Voltage: 1869mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2215	Voltage: 1864mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2213	Voltage: 1863mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2213	Voltage: 1863mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2212	Voltage: 1862mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2207	Voltage: 1858mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2206	Voltage: 1858mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2202	Voltage: 1853mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2203	Voltage: 1854mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2199	Voltage: 1852mV
+Below threshold. LED and Buzzer off
+ADC Raw: 2195	Voltage: 1848mV
+Below threshold. LED and Buzzer off
