@@ -30,6 +30,12 @@
 #define DURATION_THRESHOLD 10 // Duration in seconds
 #define SAMPLE_PERIOD_MS 1000 // Sample period in milliseconds
 
+
+#define VCC 5.0
+#define RL 5
+#define R0 10 //to be calculated
+#define THRESHOLD_PPM 2000
+
 const char *message = "Threshold exceeded";
 
 // Timer handle
@@ -187,6 +193,23 @@ void espnow_send_broadcast_data(const char *data)
     esp_now_send(broadcast_addr, (uint8_t *)data, strlen(data));
 }
 
+//SENSOR CALIBRATION
+
+float calculateResistance(int analogValue) {
+    float Vout = analogValue * (VCC / 4095.0); // Convert ADC reading to voltage
+    float Rs = ((VCC - Vout) * RL) / Vout;     // Calculate sensor resistance
+    return Rs;
+}
+
+// Function to convert Rs to ppm using sensor characteristics
+float getPPM(float Rs) {
+    float ratio = Rs / R0;
+    float logRatio = log10(ratio);
+    float ppm = pow(10, (-1.465 * logRatio + 2.675)); 
+    return ppm;
+}
+
+
 float adc;
 
 void app_main(void)
@@ -226,8 +249,11 @@ void app_main(void)
         uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
         printf("ADC Raw: %d\tVoltage: %ldmV\n", adc_reading, voltage);
 
+        float Rs = calculateResistance(adc_reading);
+        float ppm = getPPM(Rs);
+
         // Check if the reading exceeds the threshold
-        if (adc_reading > THRESHOLD) {
+        if (ppm > THRESHOLD_PPM) {
             counter++;
             turn_on_led();
             if (counter >= required_count) {
