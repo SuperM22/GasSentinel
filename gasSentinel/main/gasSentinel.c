@@ -33,7 +33,7 @@
 
 #define VCC 5.0
 #define RL 5
-#define R0 10 //to be calculated
+#define R0 10.75 
 #define THRESHOLD_PPM 2000
 
 const char *message = "Threshold exceeded";
