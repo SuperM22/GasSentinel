@@ -37,12 +37,12 @@
 
 #define WIFI_SSID "TIM-42988688"
 #define WIFI_PASS "ycrcxyEEyktfnsYaTntpayKr"
-#define MQTT_BROKER_URI "mqtt://mqtt.eclipseprojects.io"
+#define MQTT_BROKER_URI "mqtt://mqtt.eclipseprojects.io:1883"
 
 
 #define VCC 5.0
 #define RL 5
-#define R0 10.75 
+#define R0 9.83 
 #define THRESHOLD_PPM 2000
 
 const char *message = "Threshold exceeded";
@@ -308,9 +308,10 @@ float calculateResistance(int analogValue) {
 float getPPM(float Rs) {
     float ratio = Rs / R0;
     float logRatio = log10(ratio);
-    float ppm = pow(10, (-1.465 * logRatio + 2.675)); 
+    float ppm = pow(10, (-1.465 * logRatio + 2.675));
     return ppm;
 }
+
 
 
 float adc;
