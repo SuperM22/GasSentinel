@@ -4,7 +4,7 @@ import json
 
 # MQTT settings
 MQTT_BROKER = "mqtt.eclipseprojects.io"
-MQTT_PORT = 8883
+MQTT_PORT = 1883
 MQTT_TOPIC = "/topic/qos0"
 
 # SQLite database settings
