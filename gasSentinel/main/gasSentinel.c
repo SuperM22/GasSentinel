@@ -382,7 +382,7 @@ void app_main(void)
 
                 // Send MQTT message
                 char mqtt_message[256];
-                snprintf(mqtt_message, sizeof(mqtt_message), "Threshold exceeded: %f PPM", ppm);
+                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '12:234d:343:dv',\n    'gas_level_agg': '%f',\n    'alarm_time' : '30sec'\n}", ppm);
                 esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
                 printf("MQTT message sent: %s\n", mqtt_message);
 

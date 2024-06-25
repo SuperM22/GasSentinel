@@ -2,6 +2,7 @@ import sqlite3
 import paho.mqtt.client as mqtt
 import json
 import smtplib
+import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -18,8 +19,12 @@ TABLE_NAME = "gas_data"
 SMTP_USERNAME = "gassentinel@gmail.com"  # Update with your email address
 SMTP_PASSWORD = "xlpm speg pgfu lkwo"  # Update with your email password
 SENDER = "gassentinel@gmail.com"  # Update with your email address
-RECIPIENT = "valiqureshi2000@gmail.com"  # Update with recipient email address
+RECIPIENT = "lattari.1836766@studenti.uniroma1.it"  # Update with recipient email address
 EMAIL_SUBJECT = "Gas Leak Alert"
+
+# Global variable to track the last email sent time
+last_email_time = 0
+EMAIL_INTERVAL = 900  # 15 minutes in seconds
 
 # Function to initialize the SQLite database
 def init_db():
@@ -57,16 +62,26 @@ def store_in_db(device_id, gas_level_agg, alarm_time):
 
 # Function to send an email alert
 def send_email_alert(device_id, gas_level_agg, alarm_time):
-        body = f"Gas leak detected!\n\nDevice ID: {device_id}\nGas Level: {gas_level_agg}\nAlarm Time: {alarm_time}"
-        msg = MIMEText(body)
-        msg['From'] = SENDER
-        msg['To'] = RECIPIENT
-        msg['Subject'] = EMAIL_SUBJECT
+    global last_email_time
+    current_time = time.time()
+    if current_time - last_email_time < EMAIL_INTERVAL:
+        print("Not allowing multiple alerts within 15 minutes.")
+        return
 
+    body = f"Gas leak detected!\n\nDevice ID: {device_id}\nGas Level: {gas_level_agg}\nAlarm Time: {alarm_time}"
+    msg = MIMEText(body)
+    msg['From'] = SENDER
+    msg['To'] = RECIPIENT
+    msg['Subject'] = EMAIL_SUBJECT
+
+    try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp_server:
             smtp_server.login(SMTP_USERNAME, SMTP_PASSWORD)
             smtp_server.sendmail(SENDER, RECIPIENT, msg.as_string())
             print("Email alert sent.")
+            last_email_time = current_time
+    except Exception as e:
+        print(f"Failed to send email: {e}")
 
 # Function to parse MQTT message and store data in the database
 def process_mqtt_message(client, userdata, msg):
@@ -74,6 +89,9 @@ def process_mqtt_message(client, userdata, msg):
         payload = msg.payload.decode()
         print(f"Received message on topic {msg.topic}")
         print(f"Message payload: {payload}")
+        correction = '"'
+        payload = payload.replace("'", correction)
+        print(f"corrected payload: {payload}")
 
         # Parse the JSON string into a Python dictionary
         data = json.loads(payload)

@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "gasSentinel",
-    "project_version":    "1874925-dirty",
+    "project_version":    "a257f46-dirty",
     "project_path":       "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel",
     "idf_path":           "D:/ESP/v5.2.1/esp-idf",
     "build_dir":          "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build",

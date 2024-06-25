@@ -1,0 +1,72 @@
+[1/5] cmd.exe /C "cd /D D:\ESP\v5.2.1\esp-idf\projects\esp-filter\GasSentinel\gasSentinel\build\esp-idf\esptool_py && d:\ESP-toolchain\python_env\idf5.2_py3.11_env\Scripts\python.exe D:/ESP/v5.2.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/partition_table/partition-table.bin D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/gasSentinel.bin"
+gasSentinel.bin binary size 0xe1ef0 bytes. Smallest app partition is 0x100000 bytes. 0x1e110 bytes (12%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cmd.exe /C "cd /D D:\ESP\v5.2.1\esp-idf\projects\esp-filter\GasSentinel\gasSentinel\build\bootloader\esp-idf\esptool_py && d:\ESP-toolchain\python_env\idf5.2_py3.11_env\Scripts\python.exe D:/ESP/v5.2.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/bootloader/bootloader.bin"
+Bootloader binary size 0x5250 bytes. 0x2db0 bytes (36%) free.
+[2/3] cmd.exe /C "cd /D D:\ESP\v5.2.1\esp-idf\components\esptool_py && D:\ESP-toolchain\tools\cmake\3.24.0\bin\cmake.exe -D IDF_PATH=D:/ESP/v5.2.1/esp-idf -D SERIAL_TOOL=d:/ESP-toolchain/python_env/idf5.2_py3.11_env/Scripts/python.exe;;D:/ESP/v5.2.1/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32s3 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=D:/ESP/v5.2.1/esp-idf/presptool.py --chip esp32s3 -p COM3 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 2MB 0x0 bootloader/bootloader.bin 0x10000 gasSentinel.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.7.0
+Serial port COM3
+Connecting....
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded Flash 8MB (GD)
+Crystal is 40MHz
+MAC: 48:27:e2:e1:d7:ac
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x000f1fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 21072 bytes to 13074...
+Writing at 0x00000000... (100 %)
+Wrote 21072 bytes (13074 compressed) at 0x00000000 in 0.6 seconds (effective 287.6 kbit/s)...
+Hash of data verified.
+Compressed 925424 bytes to 568992...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001e00a... (5 %)
+Writing at 0x00027ebc... (8 %)
+Writing at 0x0002cd0a... (11 %)
+Writing at 0x00034c3b... (14 %)
+Writing at 0x00040b2c... (17 %)
+Writing at 0x0004709b... (20 %)
+Writing at 0x0004d007... (22 %)
+Writing at 0x00053b2c... (25 %)
+Writing at 0x00059af1... (28 %)
+Writing at 0x0005f984... (31 %)
+Writing at 0x000656b3... (34 %)
+Writing at 0x0006bf32... (37 %)
+Writing at 0x00071ae5... (40 %)
+Writing at 0x000777f4... (42 %)
+Writing at 0x0007c801... (45 %)
+Writing at 0x0008189f... (48 %)
+Writing at 0x00086973... (51 %)
+Writing at 0x0008b9d9... (54 %)
+Writing at 0x00090de8... (57 %)
+Writing at 0x0009605c... (60 %)
+Writing at 0x0009c110... (62 %)
+Writing at 0x000a1b31... (65 %)
+Writing at 0x000a77e5... (68 %)
+Writing at 0x000ad321... (71 %)
+Writing at 0x000b2e05... (74 %)
+Writing at 0x000b87e6... (77 %)
+Writing at 0x000be529... (80 %)
+Writing at 0x000c3d5f... (82 %)
+Writing at 0x000c994b... (85 %)
+Writing at 0x000d3b26... (88 %)
+Writing at 0x000db484... (91 %)
+Writing at 0x000e15f0... (94 %)
+Writing at 0x000e7614... (97 %)
+Writing at 0x000edaec... (100 %)
+Wrote 925424 bytes (568992 compressed) at 0x00010000 in 13.2 seconds (effective 559.8 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.0 seconds (effective 509.3 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+ojects/esp-filter/GasSentinel/gasSentinel/build -P D:/ESP/v5.2.1/esp-idf/components/esptool_py/run_serial_tool.cmake"
