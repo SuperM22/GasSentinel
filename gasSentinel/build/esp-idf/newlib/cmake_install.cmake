@@ -1,8 +1,8 @@
-# Install script for directory: D:/ESP/v5.2.1/esp-idf/components/newlib
+# Install script for directory: /Users/mimmo/esp/esp-idf/components/newlib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/gasSentinel")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,11 +34,11 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "D:/ESP-toolchain/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32s3-elf-objdump.exe")
+  set(CMAKE_OBJDUMP "/Users/mimmo/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32s3-elf-objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/newlib/port/cmake_install.cmake")
+  include("/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/newlib/port/cmake_install.cmake")
 endif()
 

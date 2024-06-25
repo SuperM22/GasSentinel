@@ -1,6 +1,6 @@
 /* Automatically generated file; DO NOT EDIT */
 /* Espressif IoT Development Framework Linker Script */
-/* Generated from: D:\ESP\v5.2.1\esp-idf\components\esp_system\ld\esp32s3\sections.ld.in */
+/* Generated from: /Users/mimmo/esp/esp-idf/components/esp_system/ld/esp32s3/sections.ld.in */
 
 /*
  * SPDX-FileCopyrightText: 2021 Espressif Systems (Shanghai) CO LTD
@@ -484,9 +484,9 @@ SECTIONS
     *libfreertos.a:app_startup.*(.literal .literal.* .text .text.*)
     *libfreertos.a:freertos_compatibility.*(.literal .literal.* .text .text.*)
     *libfreertos.a:idf_additions.*(.literal .literal.* .text .text.*)
-    *libfreertos.a:tasks.*(.literal.pxGetTaskListByIndex .text.pxGetTaskListByIndex)
+    *libfreertos.a:tasks.*(.literal.pxGetNextTaskList .text.pxGetNextTaskList)
+    *libfreertos.a:tasks.*(.literal.pxTaskGetNext .text.pxTaskGetNext)
     *libfreertos.a:tasks.*(.literal.uxTaskGetSnapshotAll .text.uxTaskGetSnapshotAll)
-    *libfreertos.a:tasks.*(.literal.xTaskGetNext .text.xTaskGetNext)
     *libhal.a:gdma_hal_ahb_v1.*(.literal.gdma_ahb_hal_append .literal.gdma_ahb_hal_init .literal.gdma_ahb_hal_set_ext_mem_align .literal.gdma_ahb_hal_set_strategy .literal.gdma_ahb_hal_start_with_desc .literal.gdma_ahb_hal_stop .literal.gdma_ll_rx_set_ext_mem_block_size .literal.gdma_ll_tx_set_ext_mem_block_size .text .text.gdma_ahb_hal_append .text.gdma_ahb_hal_connect_peri .text.gdma_ahb_hal_disconnect_peri .text.gdma_ahb_hal_enable_burst .text.gdma_ahb_hal_enable_intr .text.gdma_ahb_hal_get_intr_status_reg .text.gdma_ahb_hal_init .text.gdma_ahb_hal_reset .text.gdma_ahb_hal_set_ext_mem_align .text.gdma_ahb_hal_set_priority .text.gdma_ahb_hal_set_strategy .text.gdma_ahb_hal_start_with_desc .text.gdma_ahb_hal_stop .text.gdma_ll_rx_set_ext_mem_block_size .text.gdma_ll_tx_set_ext_mem_block_size)
     *libhal.a:gdma_hal_top.*(.text .text.gdma_hal_append .text.gdma_hal_connect_peri .text.gdma_hal_deinit .text.gdma_hal_disconnect_peri .text.gdma_hal_enable_burst .text.gdma_hal_enable_intr .text.gdma_hal_get_intr_status_reg .text.gdma_hal_reset .text.gdma_hal_set_ext_mem_align .text.gdma_hal_set_priority .text.gdma_hal_set_strategy .text.gdma_hal_start_with_desc .text.gdma_hal_stop)
     *libhal.a:timer_hal.*(.literal.timer_hal_deinit .literal.timer_hal_init .text .text.timer_hal_deinit .text.timer_hal_init .text.timer_hal_set_counter_value)

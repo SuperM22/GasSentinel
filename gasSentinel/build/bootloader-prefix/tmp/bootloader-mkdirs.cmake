@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "D:/ESP/v5.2.1/esp-idf/components/bootloader/subproject"
-  "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/bootloader"
-  "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/bootloader-prefix"
-  "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/bootloader-prefix/tmp"
-  "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/bootloader-prefix/src/bootloader-stamp"
-  "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/bootloader-prefix/src"
-  "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/bootloader-prefix/src/bootloader-stamp"
+  "/Users/mimmo/esp/esp-idf/components/bootloader/subproject"
+  "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader"
+  "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader-prefix"
+  "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader-prefix/tmp"
+  "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader-prefix/src/bootloader-stamp"
+  "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader-prefix/src"
+  "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

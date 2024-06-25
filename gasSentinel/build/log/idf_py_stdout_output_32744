@@ -1,0 +1,508 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x178c
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcbc
+load:0x403cc700,len:0x2d98
+entry 0x403c9914
+[0;32mI (27) boot: ESP-IDF v5.2 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jun 25 2024 17:18:17[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (38) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (72) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (79) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (87) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=29b1ch (170780) map[0m
+[0;32mI (130) esp_image: segment 1: paddr=00039b44 vaddr=3fc98600 size=046f4h ( 18164) load[0m
+[0;32mI (134) esp_image: segment 2: paddr=0003e240 vaddr=40374000 size=01dd8h (  7640) load[0m
+[0;32mI (137) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=9f11ch (651548) map[0m
+[0;32mI (261) esp_image: segment 4: paddr=000df144 vaddr=40375dd8 size=12758h ( 75608) load[0m
+[0;32mI (286) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (286) boot: Disabling RNG early entropy source...[0m
+[0;32mI (298) cpu_start: Multicore app[0m
+[0;32mI (308) cpu_start: Pro cpu start user code[0m
+[0;32mI (308) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (308) cpu_start: Application information:[0m
+[0;32mI (311) cpu_start: Project name:     gasSentinel[0m
+[0;32mI (316) cpu_start: App version:      4ba2c7d-dirty[0m
+[0;32mI (322) cpu_start: Compile time:     Jun 25 2024 17:17:45[0m
+[0;32mI (328) cpu_start: ELF file SHA256:  57f5b6e92...[0m
+[0;32mI (333) cpu_start: ESP-IDF:          v5.2[0m
+[0;32mI (338) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (342) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (347) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (352) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (359) heap_init: At 3FCA0F48 len 000487C8 (289 KiB): RAM[0m
+[0;32mI (365) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (371) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (378) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (385) spi_flash: detected chip: gd[0m
+[0;32mI (388) spi_flash: flash io: dio[0m
+[0;33mW (392) spi_flash: Detected size(8192k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (406) ADC: legacy driver is deprecated, please migrate to `esp_adc/adc_oneshot.h`[0m
+[0;32mI (414) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (420) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (428) main_task: Started on CPU0[0m
+[0;32mI (438) main_task: Calling app_main()[0m
+[0;32mI (468) pp: pp rom version: e7ae62f[0m
+[0;32mI (468) net80211: net80211 rom version: e7ae62f[0m
+I (478) wifi:wifi driver task: 3fcabb4c, prio:23, stack:6656, core=0
+I (488) wifi:wifi firmware version: cc1dd81
+I (488) wifi:wifi certification version: v7.0
+I (488) wifi:config NVS flash: enabled
+I (488) wifi:config nano formating: disabled
+I (488) wifi:Init data frame dynamic rx buffer num: 32
+I (498) wifi:Init static rx mgmt buffer num: 5
+I (498) wifi:Init management short buffer num: 32
+I (508) wifi:Init dynamic tx buffer num: 32
+I (508) wifi:Init static tx FG buffer num: 2
+I (518) wifi:Init static rx buffer size: 1600
+I (518) wifi:Init static rx buffer num: 10
+I (518) wifi:Init dynamic rx buffer num: 32
+[0;32mI (528) wifi_init: rx ba win: 6[0m
+[0;32mI (528) wifi_init: tcpip mbox: 32[0m
+[0;32mI (528) wifi_init: udp mbox: 6[0m
+[0;32mI (538) wifi_init: tcp mbox: 6[0m
+[0;32mI (538) wifi_init: tcp tx win: 5760[0m
+[0;32mI (548) wifi_init: tcp rx win: 5760[0m
+[0;32mI (548) wifi_init: tcp mss: 1440[0m
+[0;32mI (548) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (558) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (568) phy_init: phy_version 620,ec7ec30,Sep  5 2023,13:49:13[0m
+I (608) wifi:mode : sta (48:27:e2:e2:ee:98)
+I (608) wifi:enable tsf
+[0;32mI (608) WiFi_MQTT: wifi_init_sta finished.[0m
+[0;32mI (608) WiFi_MQTT: connect to ap SSID:TIM-42988688 password:ycrcxyEEyktfnsYaTntpayKr[0m
+[0;32mI (618) gpio: GPIO[20]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (618) gpio: GPIO[21]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (628) gpio: GPIO[26]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+LED GREEN ON
+I (648) ESPNOW: espnow [version: 1.0] init
+Other event id:7
+[0;31mE (648) esp-tls: couldn't get hostname for :mqtt.eclipseprojects.io: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (658) transport_base: Failed to open a new connection: 32769[0m
+[0;31mE (668) mqtt_client: Error transport connect[0m
+MQTT_EVENT_ERROR
+MQTT_EVENT_DISCONNECTED
+Starting calibration ...[0;32mI (3018) WiFi_MQTT: Retry to connect to the AP[0m
+[0;32mI (5428) WiFi_MQTT: Retry to connect to the AP[0m
+[0;32mI (7838) WiFi_MQTT: Retry to connect to the AP[0m
+[0;32mI (10238) WiFi_MQTT: Retry to connect to the AP[0m
+Other event id:7
+[0;31mE (10678) esp-tls: couldn't get hostname for :mqtt.eclipseprojects.io: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (10678) transport_base: Failed to open a new connection: 32769[0m
+[0;31mE (10678) mqtt_client: Error transport connect[0m
+MQTT_EVENT_ERROR
+MQTT_EVENT_DISCONNECTED
+[0;32mI (12648) WiFi_MQTT: Retry to connect to the AP[0m
+[0;32mI (15058) WiFi_MQTT: Retry to connect to the AP[0m
+[0;32mI (17468) WiFi_MQTT: Retry to connect to the AP[0m
+[0;32mI (19878) WiFi_MQTT: Retry to connect to the AP[0m
+[0;32mI (22288) WiFi_MQTT: Retry to connect to the AP[0m
+[0;32mI (24688) WiFi_MQTT: Retry to connect to the AP[0m
+Other event id:7
+[0;31mE (25688) esp-tls: couldn't get hostname for :mqtt.eclipseprojects.io: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (25688) transport_base: Failed to open a new connection: 32769[0m
+[0;31mE (25688) mqtt_client: Error transport connect[0m
+MQTT_EVENT_ERROR
+MQTT_EVENT_DISCONNECTED
+[0;32mI (27098) WiFi_MQTT: Retry to connect to the AP[0m
+[0;32mI (29508) WiFi_MQTT: Retry to connect to the AP[0m
+Sensor calibrated r0: 0.258577ADC Raw: 653	Voltage: 567mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 664	Voltage: 576mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (31918) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 659	Voltage: 571mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 662	Voltage: 574mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (34328) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 666	Voltage: 577mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 662	Voltage: 574mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 663	Voltage: 575mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (36738) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 663	Voltage: 575mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 661	Voltage: 573mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (39148) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 664	Voltage: 576mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+Other event id:7
+[0;31mE (40698) esp-tls: couldn't get hostname for :mqtt.eclipseprojects.io: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (40698) transport_base: Failed to open a new connection: 32769[0m
+[0;31mE (40698) mqtt_client: Error transport connect[0m
+MQTT_EVENT_ERROR
+MQTT_EVENT_DISCONNECTED
+ADC Raw: 661	Voltage: 573mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (41558) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 660	Voltage: 572mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 666	Voltage: 577mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 661	Voltage: 573mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (43958) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 662	Voltage: 574mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 662	Voltage: 574mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (46368) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 660	Voltage: 572mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 666	Voltage: 577mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 658	Voltage: 570mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (48778) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 663	Voltage: 575mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 662	Voltage: 574mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (51188) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 654	Voltage: 568mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 662	Voltage: 574mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (53598) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 662	Voltage: 574mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 656	Voltage: 569mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+Other event id:7
+[0;31mE (55708) esp-tls: couldn't get hostname for :mqtt.eclipseprojects.io: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (55708) transport_base: Failed to open a new connection: 32769[0m
+[0;31mE (55708) mqtt_client: Error transport connect[0m
+MQTT_EVENT_ERROR
+MQTT_EVENT_DISCONNECTED
+ADC Raw: 659	Voltage: 571mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (56008) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 2953	Voltage: 2458mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2404	Voltage: 2021mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (58418) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1885	Voltage: 1590mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1564	Voltage: 1323mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2917	Voltage: 2432mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (60828) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 2521	Voltage: 2117mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1959	Voltage: 1652mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (63238) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1615	Voltage: 1365mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1398	Voltage: 1185mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (65638) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 2701	Voltage: 2263mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 3989	Voltage: 3106mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (68048) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (70458) WiFi_MQTT: Retry to connect to the AP[0m
+Other event id:7
+[0;31mE (70718) esp-tls: couldn't get hostname for :mqtt.eclipseprojects.io: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (70718) transport_base: Failed to open a new connection: 32769[0m
+[0;31mE (70718) mqtt_client: Error transport connect[0m
+MQTT_EVENT_ERROR
+MQTT_EVENT_DISCONNECTED
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (72868) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 3691	Voltage: 2959mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (75278) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 2856	Voltage: 2384mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2351	Voltage: 1977mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (77688) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 2030	Voltage: 1711mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1811	Voltage: 1528mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1656	Voltage: 1398mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (80098) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1549	Voltage: 1309mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1476	Voltage: 1249mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (82508) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1419	Voltage: 1202mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1365	Voltage: 1157mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1325	Voltage: 1125mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (84918) WiFi_MQTT: Retry to connect to the AP[0m
+Other event id:7
+[0;31mE (85728) esp-tls: couldn't get hostname for :mqtt.eclipseprojects.io: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (85728) transport_base: Failed to open a new connection: 32769[0m
+[0;31mE (85728) mqtt_client: Error transport connect[0m
+MQTT_EVENT_ERROR
+MQTT_EVENT_DISCONNECTED
+ADC Raw: 1299	Voltage: 1103mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1273	Voltage: 1081mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (87318) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1261	Voltage: 1071mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1240	Voltage: 1054mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (89728) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1241	Voltage: 1054mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1246	Voltage: 1058mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1223	Voltage: 1039mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (92138) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1129	Voltage: 963mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1180	Voltage: 1004mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (94548) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1194	Voltage: 1017mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1192	Voltage: 1014mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1188	Voltage: 1010mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (96958) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1184	Voltage: 1008mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1179	Voltage: 1004mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (99368) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1175	Voltage: 1000mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+Other event id:7
+[0;31mE (100738) esp-tls: couldn't get hostname for :mqtt.eclipseprojects.io: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (100738) transport_base: Failed to open a new connection: 32769[0m
+[0;31mE (100738) mqtt_client: Error transport connect[0m
+MQTT_EVENT_ERROR
+MQTT_EVENT_DISCONNECTED
+ADC Raw: 1173	Voltage: 999mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1172	Voltage: 998mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (101778) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1163	Voltage: 990mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1175	Voltage: 1000mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (104188) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1166	Voltage: 992mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1159	Voltage: 987mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (106598) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1146	Voltage: 976mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1133	Voltage: 964mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1129	Voltage: 963mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (108998) WiFi_MQTT: Retry to connect to the AP[0m
+ADC Raw: 1123	Voltage: 958mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1117	Voltage: 952mV
+PPM calculated : 0.000000LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+[0;32mI (111408) WiFi_MQTT: Retry to connect to the AP[0m

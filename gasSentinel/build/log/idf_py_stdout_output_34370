@@ -1,0 +1,2455 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x178c
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcbc
+load:0x403cc700,len:0x2d98
+entry 0x403c9914
+[0;32mI (27) boot: ESP-IDF v5.2 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jun 25 2024 17:18:17[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (38) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (72) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (79) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (87) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=3c070020 size=1f97ch (129404) map[0m
+[0;32mI (122) esp_image: segment 1: paddr=0002f9a4 vaddr=3fc98400 size=00674h (  1652) load[0m
+[0;32mI (123) esp_image: segment 2: paddr=00030020 vaddr=42000020 size=6f03ch (454716) map[0m
+[0;32mI (210) esp_image: segment 3: paddr=0009f064 vaddr=3fc98a74 size=04020h ( 16416) load[0m
+[0;32mI (213) esp_image: segment 4: paddr=000a308c vaddr=40374000 size=14338h ( 82744) load[0m
+[0;32mI (242) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (242) boot: Disabling RNG early entropy source...[0m
+[0;32mI (253) cpu_start: Multicore app[0m
+[0;32mI (263) cpu_start: Pro cpu start user code[0m
+[0;32mI (263) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (264) cpu_start: Application information:[0m
+[0;32mI (266) cpu_start: Project name:     gasSentinel[0m
+[0;32mI (272) cpu_start: App version:      4ba2c7d-dirty[0m
+[0;32mI (277) cpu_start: Compile time:     Jun 25 2024 17:17:45[0m
+[0;32mI (283) cpu_start: ELF file SHA256:  def532587...[0m
+[0;32mI (289) cpu_start: ESP-IDF:          v5.2[0m
+[0;32mI (293) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (298) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (303) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (308) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (315) heap_init: At 3FC9FD08 len 00049A08 (294 KiB): RAM[0m
+[0;32mI (321) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (327) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (333) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (341) spi_flash: detected chip: gd[0m
+[0;32mI (344) spi_flash: flash io: dio[0m
+[0;33mW (348) spi_flash: Detected size(8192k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (361) ADC: legacy driver is deprecated, please migrate to `esp_adc/adc_oneshot.h`[0m
+[0;32mI (369) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (376) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (383) main_task: Started on CPU0[0m
+[0;32mI (393) main_task: Calling app_main()[0m
+[0;32mI (413) gpio: GPIO[20]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (423) gpio: GPIO[21]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (423) gpio: GPIO[26]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+LED GREEN ON
+[0;32mI (433) pp: pp rom version: e7ae62f[0m
+[0;32mI (443) net80211: net80211 rom version: e7ae62f[0m
+I (453) wifi:wifi driver task: 3fca8450, prio:23, stack:6656, core=0
+I (463) wifi:wifi firmware version: cc1dd81
+I (463) wifi:wifi certification version: v7.0
+I (463) wifi:config NVS flash: enabled
+I (463) wifi:config nano formating: disabled
+I (473) wifi:Init data frame dynamic rx buffer num: 32
+I (473) wifi:Init static rx mgmt buffer num: 5
+I (483) wifi:Init management short buffer num: 32
+I (483) wifi:Init dynamic tx buffer num: 32
+I (483) wifi:Init static tx FG buffer num: 2
+I (493) wifi:Init static rx buffer size: 1600
+I (493) wifi:Init static rx buffer num: 10
+I (503) wifi:Init dynamic rx buffer num: 32
+[0;32mI (503) wifi_init: rx ba win: 6[0m
+[0;32mI (503) wifi_init: tcpip mbox: 32[0m
+[0;32mI (513) wifi_init: udp mbox: 6[0m
+[0;32mI (513) wifi_init: tcp mbox: 6[0m
+[0;32mI (523) wifi_init: tcp tx win: 5760[0m
+[0;32mI (523) wifi_init: tcp rx win: 5760[0m
+[0;32mI (523) wifi_init: tcp mss: 1440[0m
+[0;32mI (533) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (533) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (543) phy_init: phy_version 620,ec7ec30,Sep  5 2023,13:49:13[0m
+E (583) wifi:failed to post WiFi event=40 ret=259
+I (583) wifi:mode : sta (48:27:e2:e2:ee:98)
+I (583) wifi:enable tsf
+E (583) wifi:failed to post WiFi event=2 ret=259
+I (583) ESPNOW: espnow [version: 1.0] init
+Starting calibration ...
+Sensor calibrated r0: 1.872243
+ADC Raw: 827	Voltage: 712mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 822	Voltage: 707mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 838	Voltage: 721mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 819	Voltage: 705mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 831	Voltage: 715mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 824	Voltage: 710mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 832	Voltage: 716mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2553	Voltage: 2142mV
+PPM calculated : 72
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2299	Voltage: 1934mV
+PPM calculated : 20
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1960	Voltage: 1651mV
+PPM calculated : 4
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1720	Voltage: 1452mV
+PPM calculated : 1
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1501	Voltage: 1269mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1358	Voltage: 1151mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1236	Voltage: 1050mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1150	Voltage: 980mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1081	Voltage: 922mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1053	Voltage: 899mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1011	Voltage: 865mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 990	Voltage: 846mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1583	Voltage: 1338mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1867	Voltage: 1573mV
+PPM calculated : 2
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2910	Voltage: 2426mV
+PPM calculated : 501
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 3048	Voltage: 2530mV
+PPM calculated : 1153
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2389	Voltage: 2009mV
+PPM calculated : 31
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1867	Voltage: 1573mV
+PPM calculated : 2
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1591	Voltage: 1345mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1416	Voltage: 1199mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1287	Voltage: 1092mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1203	Voltage: 1022mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1171	Voltage: 996mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1141	Voltage: 972mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1071	Voltage: 914mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1048	Voltage: 895mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1018	Voltage: 871mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1005	Voltage: 859mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 995	Voltage: 852mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 980	Voltage: 840mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 972	Voltage: 832mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 951	Voltage: 815mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 952	Voltage: 815mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2351	Voltage: 1977mV
+PPM calculated : 26
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2491	Voltage: 2091mV
+PPM calculated : 53
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2030	Voltage: 1711mV
+PPM calculated : 5
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1741	Voltage: 1469mV
+PPM calculated : 1
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2414	Voltage: 2028mV
+PPM calculated : 36
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 3251	Voltage: 2677mV
+PPM calculated : 4547
+LED ON
+ADC Raw: 2915	Voltage: 2430mV
+PPM calculated : 515
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2039	Voltage: 1718mV
+PPM calculated : 5
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2580	Voltage: 2165mV
+PPM calculated : 83
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1883	Voltage: 1588mV
+PPM calculated : 2
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1577	Voltage: 1333mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1396	Voltage: 1183mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1273	Voltage: 1081mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1183	Voltage: 1007mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1195	Voltage: 1018mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2601	Voltage: 2180mV
+PPM calculated : 92
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2348	Voltage: 1974mV
+PPM calculated : 26
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 3271	Voltage: 2691mV
+PPM calculated : 5270
+LED ON
+ADC Raw: 2005	Voltage: 1689mV
+PPM calculated : 5
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1588	Voltage: 1342mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1414	Voltage: 1198mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1274	Voltage: 1081mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1306	Voltage: 1108mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1948	Voltage: 1642mV
+PPM calculated : 3
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2299	Voltage: 1934mV
+PPM calculated : 20
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1801	Voltage: 1519mV
+PPM calculated : 1
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1544	Voltage: 1306mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1371	Voltage: 1163mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1268	Voltage: 1078mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1507	Voltage: 1275mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1321	Voltage: 1122mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1193	Voltage: 1014mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1127	Voltage: 960mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1084	Voltage: 923mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1052	Voltage: 900mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1035	Voltage: 884mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1307	Voltage: 1109mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1663	Voltage: 1403mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1891	Voltage: 1595mV
+PPM calculated : 2
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1915	Voltage: 1615mV
+PPM calculated : 3
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1628	Voltage: 1375mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1617	Voltage: 1366mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2581	Voltage: 2166mV
+PPM calculated : 83
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 3341	Voltage: 2740mV
+PPM calculated : 9031
+LED ON
+ADC Raw: 3081	Voltage: 2555mV
+PPM calculated : 1422
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 3060	Voltage: 2541mV
+PPM calculated : 1244
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 2963	Voltage: 2465mV
+PPM calculated : 685
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2329	Voltage: 1959mV
+PPM calculated : 23
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1919	Voltage: 1618mV
+PPM calculated : 3
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1679	Voltage: 1417mV
+PPM calculated : 1
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1509	Voltage: 1276mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1395	Voltage: 1183mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1312	Voltage: 1114mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1243	Voltage: 1056mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1182	Voltage: 1005mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1134	Voltage: 966mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1106	Voltage: 944mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1096	Voltage: 935mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1075	Voltage: 917mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1065	Voltage: 909mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1051	Voltage: 898mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1043	Voltage: 891mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1035	Voltage: 884mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1021	Voltage: 873mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1007	Voltage: 861mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1005	Voltage: 859mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 999	Voltage: 854mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1004	Voltage: 859mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 995	Voltage: 852mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 997	Voltage: 853mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 986	Voltage: 844mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 984	Voltage: 842mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 988	Voltage: 846mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 985	Voltage: 843mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 979	Voltage: 838mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 983	Voltage: 841mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 979	Voltage: 838mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 981	Voltage: 840mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 969	Voltage: 829mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 974	Voltage: 834mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 979	Voltage: 838mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 968	Voltage: 829mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 971	Voltage: 830mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 959	Voltage: 822mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 968	Voltage: 829mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 970	Voltage: 830mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 955	Voltage: 816mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 965	Voltage: 827mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 965	Voltage: 827mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 965	Voltage: 827mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 965	Voltage: 827mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 967	Voltage: 828mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 957	Voltage: 819mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 959	Voltage: 822mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 957	Voltage: 819mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 954	Voltage: 816mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 955	Voltage: 816mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 950	Voltage: 814mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 943	Voltage: 809mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 953	Voltage: 816mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 941	Voltage: 806mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 939	Voltage: 805mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 943	Voltage: 809mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 948	Voltage: 813mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 947	Voltage: 813mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 947	Voltage: 813mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 937	Voltage: 803mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 938	Voltage: 803mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 937	Voltage: 803mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 937	Voltage: 803mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 947	Voltage: 813mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 939	Voltage: 805mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 937	Voltage: 803mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 939	Voltage: 805mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 939	Voltage: 805mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 939	Voltage: 805mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 932	Voltage: 799mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 925	Voltage: 794mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 937	Voltage: 803mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 931	Voltage: 799mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 941	Voltage: 806mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 936	Voltage: 802mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 925	Voltage: 794mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 925	Voltage: 794mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 937	Voltage: 803mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 935	Voltage: 801mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 928	Voltage: 795mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 933	Voltage: 800mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 933	Voltage: 800mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 933	Voltage: 800mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 924	Voltage: 793mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 933	Voltage: 800mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 925	Voltage: 794mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 923	Voltage: 792mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 923	Voltage: 792mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 922	Voltage: 790mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 927	Voltage: 794mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 927	Voltage: 794mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 919	Voltage: 788mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 932	Voltage: 799mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 921	Voltage: 788mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 923	Voltage: 792mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 925	Voltage: 794mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 923	Voltage: 792mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 924	Voltage: 793mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 921	Voltage: 788mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 926	Voltage: 794mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 921	Voltage: 788mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 921	Voltage: 788mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 921	Voltage: 788mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 917	Voltage: 786mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 920	Voltage: 788mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 925	Voltage: 794mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 915	Voltage: 785mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 915	Voltage: 785mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 923	Voltage: 792mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 911	Voltage: 781mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 916	Voltage: 785mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 914	Voltage: 784mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 915	Voltage: 785mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 922	Voltage: 790mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 919	Voltage: 788mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 909	Voltage: 780mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 907	Voltage: 779mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 913	Voltage: 782mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 918	Voltage: 787mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 910	Voltage: 780mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 910	Voltage: 780mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 906	Voltage: 778mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 916	Voltage: 785mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 914	Voltage: 784mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 907	Voltage: 779mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 907	Voltage: 779mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 909	Voltage: 780mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 915	Voltage: 785mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 911	Voltage: 781mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 905	Voltage: 778mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 902	Voltage: 774mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 905	Voltage: 778mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 909	Voltage: 780mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 904	Voltage: 777mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 911	Voltage: 781mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 911	Voltage: 781mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 909	Voltage: 780mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 911	Voltage: 781mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 896	Voltage: 770mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 896	Voltage: 770mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 909	Voltage: 780mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 907	Voltage: 779mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 907	Voltage: 779mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 902	Voltage: 774mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 907	Voltage: 779mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 909	Voltage: 780mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 901	Voltage: 773mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 908	Voltage: 780mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 908	Voltage: 780mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 906	Voltage: 778mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 894	Voltage: 767mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 904	Voltage: 777mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 896	Voltage: 770mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 902	Voltage: 774mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 894	Voltage: 767mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 901	Voltage: 773mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 901	Voltage: 773mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 904	Voltage: 777mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 902	Voltage: 774mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 901	Voltage: 773mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 896	Voltage: 770mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 886	Voltage: 761mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 886	Voltage: 761mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 894	Voltage: 767mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 890	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 890	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 894	Voltage: 767mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 901	Voltage: 773mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 894	Voltage: 767mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 901	Voltage: 773mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 890	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 886	Voltage: 761mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 890	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 879	Voltage: 755mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 892	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 879	Voltage: 755mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 887	Voltage: 762mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 886	Voltage: 761mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 879	Voltage: 755mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 893	Voltage: 766mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 888	Voltage: 763mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 889	Voltage: 764mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 880	Voltage: 756mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 877	Voltage: 753mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 883	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 876	Voltage: 753mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 879	Voltage: 755mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 877	Voltage: 753mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 879	Voltage: 755mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 877	Voltage: 753mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 877	Voltage: 753mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 879	Voltage: 755mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 877	Voltage: 753mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 877	Voltage: 753mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 879	Voltage: 755mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 875	Voltage: 751mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 878	Voltage: 754mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 875	Voltage: 751mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 884	Voltage: 758mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 885	Voltage: 759mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 879	Voltage: 755mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 878	Voltage: 754mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 880	Voltage: 756mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 875	Voltage: 751mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 875	Voltage: 751mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 875	Voltage: 751mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 873	Voltage: 750mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 874	Voltage: 750mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 871	Voltage: 748mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 875	Voltage: 751mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 879	Voltage: 755mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 873	Voltage: 750mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 882	Voltage: 757mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 879	Voltage: 755mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 877	Voltage: 753mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 873	Voltage: 750mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 877	Voltage: 753mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off

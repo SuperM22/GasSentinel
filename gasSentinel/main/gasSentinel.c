@@ -39,9 +39,13 @@
 #define MQTT_BROKER_URI "mqtt://mqtt.eclipseprojects.io:1883"
 
 #define VCC 5.0
-#define RL 5
-#define R0 9.83 
+#define RL 4.7
+#define RO_CLEAN_AIR_FACTOR 9.83
 #define THRESHOLD_PPM 2000
+#define CALIBARAION_SAMPLE_TIMES 30
+
+float R0 = RO_CLEAN_AIR_FACTOR; 
+float LPGCurve[3]  =  {2.3,0.21,-0.47};
 
 const char *message = "Threshold exceeded";
 
@@ -298,19 +302,34 @@ void espnow_send_broadcast_data(const char *data)
 
 // SENSOR CALIBRATION
 
-float calculateResistance(int analogValue) {
-    float Vout = analogValue * (VCC / 4095.0); // Convert ADC reading to voltage
-    float Rs = ((VCC - Vout) * RL) / Vout;     // Calculate sensor resistance
-    return Rs;
+float MQResistanceCalculation(int raw_adc)
+{
+  return ( ((float)RL*(4095-raw_adc)/raw_adc)); //4095 is the max value that adc reading yelds with bit width 12
 }
 
-// Function to convert Rs to ppm using sensor characteristics
-float getPPM(float Rs) {
-    float ratio = Rs / R0;
-    float logRatio = log10(ratio);
-    float ppm = pow(10, (-1.465 * logRatio + 2.675));
-    return ppm;
+
+int  MQGetPercentage(float rs_ro_ratio, float *pcurve)
+{
+  return (pow(10,( ((log(rs_ro_ratio)-pcurve[1])/pcurve[2]) + pcurve[0])));
 }
+
+float MQCalibration()
+{
+  int i;
+  float val=0;
+
+  for (i=0;i<CALIBARAION_SAMPLE_TIMES;i++) {            //take multiple samples
+    val += MQResistanceCalculation(adc1_get_raw(MQ2_ADC_CHANNEL));
+    vTaskDelay(pdMS_TO_TICKS(SAMPLE_PERIOD_MS));
+  }
+  val = val/CALIBARAION_SAMPLE_TIMES;                   //calculate the average value
+
+  val = val/RO_CLEAN_AIR_FACTOR;                        //divided by RO_CLEAN_AIR_FACTOR yields the Ro 
+                                                        //according to the chart in the datasheet 
+
+  return val; 
+}
+
 
 float adc;
 
@@ -353,13 +372,19 @@ void app_main(void)
 
     // Characterize ADC
     esp_adc_cal_characteristics_t *adc_chars = calloc(1, sizeof(esp_adc_cal_characteristics_t));
-    esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_11, ADC_WIDTH_BIT_12, 1100, adc_chars);
+    esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_12, ADC_WIDTH_BIT_12, 1100, adc_chars);
 
     int counter = 0;
     int required_count = DURATION_THRESHOLD * (1000 / SAMPLE_PERIOD_MS); // Number of iterations for the threshold duration
 
     // Initialize MQTT
     mqtt_app_start();
+
+    printf("Starting calibration ...\n");
+    R0 = MQCalibration();
+    printf("Sensor calibrated r0: %f\n",R0);
+    float Rs;
+    int ppm;
 
     while (1) {
         // Read ADC value
@@ -368,8 +393,10 @@ void app_main(void)
         uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
         printf("ADC Raw: %d\tVoltage: %ldmV\n", adc_reading, voltage);
 
-        float Rs = calculateResistance(adc_reading);
-        float ppm = getPPM(Rs);
+        Rs = MQResistanceCalculation(adc_reading);
+        ppm = MQGetPercentage(Rs/R0,LPGCurve);
+        printf("PPM calculated : %i\n",ppm);
+        //float ppm=0;
 
         // Check if the reading exceeds the threshold
         if (ppm > THRESHOLD_PPM) {
@@ -383,7 +410,7 @@ void app_main(void)
 
                 // Send MQTT message
                 char mqtt_message[256];
-                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%f',\n    'alarm_time' : '30sec'\n}", MAC2STR(mac_addr), ppm);
+                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '30sec'\n}", MAC2STR(mac_addr), ppm);
                 esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
                 printf("MQTT message sent: %s\n", mqtt_message);
 
