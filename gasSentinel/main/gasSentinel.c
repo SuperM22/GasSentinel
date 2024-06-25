@@ -16,7 +16,6 @@
 #include "esp_event.h"
 #include "esp_log.h"
 
-
 // Just to print MAC addresses
 #define MAC2STR(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
 #define MACSTR "%02x:%02x:%02x:%02x:%02x:%02x"
@@ -39,7 +38,6 @@
 #define WIFI_PASS "ycrcxyEEyktfnsYaTntpayKr"
 #define MQTT_BROKER_URI "mqtt://mqtt.eclipseprojects.io:1883"
 
-
 #define VCC 5.0
 #define RL 5
 #define R0 9.83 
@@ -47,8 +45,10 @@
 
 const char *message = "Threshold exceeded";
 
-//Implement Wi-Fi initialization and event handling
+// Implement Wi-Fi initialization and event handling
 static const char *TAG = "WiFi_MQTT";
+
+uint8_t mac_addr[6];  // To store the MAC address
 
 void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)
 {
@@ -93,7 +93,6 @@ void wifi_init_sta(void)
     ESP_LOGI(TAG, "wifi_init_sta finished.");
     ESP_LOGI(TAG, "connect to ap SSID:%s password:%s", WIFI_SSID, WIFI_PASS);
 }
-
 
 // Timer handle
 TimerHandle_t yellow_led_timer;
@@ -200,7 +199,7 @@ void yellow_led_timer_callback(TimerHandle_t xTimer)
     turn_off_led_yellow();
 }
 
-//Initialise and configure mqtt
+// Initialize and configure MQTT
 void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
     esp_mqtt_event_handle_t event = event_data;
@@ -243,6 +242,7 @@ void mqtt_app_start(void)
     };
 
     mqtt_client = esp_mqtt_client_init(&mqtt_cfg);
+    esp_mqtt_client_register_event(mqtt_client, ESP_EVENT_ANY_ID, mqtt_event_handler, NULL);
     esp_mqtt_client_start(mqtt_client);
 }
 
@@ -296,7 +296,7 @@ void espnow_send_broadcast_data(const char *data)
     esp_now_send(broadcast_addr, (uint8_t *)data, strlen(data));
 }
 
-//SENSOR CALIBRATION
+// SENSOR CALIBRATION
 
 float calculateResistance(int analogValue) {
     float Vout = analogValue * (VCC / 4095.0); // Convert ADC reading to voltage
@@ -312,8 +312,6 @@ float getPPM(float Rs) {
     return ppm;
 }
 
-
-
 float adc;
 
 void app_main(void)
@@ -328,6 +326,9 @@ void app_main(void)
 
     // Initialize Wi-Fi
     wifi_init_sta();
+
+    // Retrieve MAC address
+    ESP_ERROR_CHECK(esp_wifi_get_mac(ESP_IF_WIFI_STA, mac_addr));
 
     // Configure the LED
     configure_led();
@@ -382,7 +383,7 @@ void app_main(void)
 
                 // Send MQTT message
                 char mqtt_message[256];
-                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '12:234d:343:dv',\n    'gas_level_agg': '%f',\n    'alarm_time' : '30sec'\n}", ppm);
+                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%f',\n    'alarm_time' : '30sec'\n}", MAC2STR(mac_addr), ppm);
                 esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
                 printf("MQTT message sent: %s\n", mqtt_message);
 
