@@ -385,7 +385,7 @@ void app_main(void)
     printf("Sensor calibrated r0: %f\n",R0);
     float Rs;
     int ppm;
-
+    bool triggered = false;
     while (1) {
         // Read ADC value
         int adc_reading = adc1_get_raw(MQ2_ADC_CHANNEL);
@@ -403,20 +403,25 @@ void app_main(void)
             counter++;
             turn_on_led();
             if (counter >= required_count) {
+                triggered = true;
                 turn_on_buzzer();
                 printf("Threshold exceeded for %d seconds! LED and Buzzer on\n", DURATION_THRESHOLD);
                 espnow_send_broadcast_data(message);
                 printf("ESP-NOW broadcast message sent: %s\n", message);
 
-                // Send MQTT message
-                char mqtt_message[256];
-                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '30sec'\n}", MAC2STR(mac_addr), ppm);
-                esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
-                printf("MQTT message sent: %s\n", mqtt_message);
+                // Take max ppm , avg ppm and counter
+                
 
                 adc = adc_reading;
             }
         } else {
+            if(triggered){
+                triggered = false;
+                char mqtt_message[256];
+                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '30sec'\n}", MAC2STR(mac_addr), ppm);
+                esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
+                printf("MQTT message sent: %s\n", mqtt_message);
+            }
             counter = 0; // Reset the counter if the reading falls below the threshold
             turn_off_led();
             turn_off_buzzer();
