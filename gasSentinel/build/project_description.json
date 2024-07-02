@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "gasSentinel",
-    "project_version":    "922fc5b-dirty",
+    "project_version":    "f190999-dirty",
     "project_path":       "/Users/mimmo/UniProjects/GasSentinel/gasSentinel",
     "idf_path":           "/Users/mimmo/esp/esp-idf",
     "build_dir":          "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build",
