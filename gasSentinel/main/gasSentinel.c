@@ -16,7 +16,7 @@
 #include "esp_event.h"
 #include "esp_log.h"
 #include "ra01s.h"
-#include "aux.h"
+#include "helper.h"
 #include "esp_log.h"
 
 #include "ra01s.h"
@@ -67,6 +67,8 @@ uint8_t mac_addr[6];  // To store the MAC address
 TimerHandle_t yellow_led_timer;
 
 esp_mqtt_client_handle_t mqtt_client;
+
+TaskHandle_t myTaskHandle = NULL;
 
 void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
@@ -247,7 +249,7 @@ void app_main(void)
     bool loraSent = false;
   
 
-    xTaskCreatePinnedToCore(&listening_task, "LISTENING", 4096, NULL, 5, NULL,0);
+    xTaskCreatePinnedToCore(&listening_task, "LISTENING", 4096, NULL, 5, &myTaskHandle,0);
     while (1) {
         // Read ADC value
         int adc_reading = adc1_get_raw(MQ2_ADC_CHANNEL);
@@ -269,6 +271,7 @@ void app_main(void)
                 turn_on_buzzer();
                 printf("Threshold exceeded for %d seconds! LED and Buzzer on\n", DURATION_THRESHOLD);
                 if(!loraSent){
+                  vTaskSuspend(myTaskHandle);
                   txLen = sprintf((char *)txData, "A");
                   if(LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
                     loraSent=true;
@@ -282,11 +285,13 @@ void app_main(void)
             }
         } else {
             if(loraSent){
+              vTaskSuspend(myTaskHandle);
               txLen = sprintf((char *)txData, "S");
               if(!LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
                 ESP_LOGE(TAG,"Error exiting alert state trhough LoRa");
               }else{
                 loraSent=false;
+                vTaskResume(myTaskHandle);
                 memset(txData,0,8);
                 ESP_LOGI(TAG,"STOPALERT sent trough LoRa");
               }

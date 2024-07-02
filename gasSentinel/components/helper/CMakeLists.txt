@@ -1,4 +1,4 @@
-set(component_srcs "aux.c")
+set(component_srcs "helper.c")
 
 idf_component_register(SRCS "${component_srcs}"
                        PRIV_REQUIRES esp_adc
