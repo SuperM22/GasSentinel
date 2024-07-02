@@ -49,6 +49,10 @@
 #define THRESHOLD_PPM 2000
 #define CALIBARAION_SAMPLE_TIMES 30
 
+// #define ALERT "A"
+// #define STOP_ALERT  "S"
+// #define PACKLEN 1
+
 float R0 = RO_CLEAN_AIR_FACTOR; 
 float LPGCurve[3]  =  {2.3,0.21,-0.47};
 
@@ -142,8 +146,7 @@ float MQCalibration()
 void listening_task(void *pvParameter)
 {
   ESP_LOGI(pcTaskGetName(NULL), "Start listening");
-	uint8_t txData[256]; // Maximum Payload size of SX1261/62/68 is 255
-	uint8_t rxData[256]; // Maximum Payload size of SX1261/62/68 is 255
+	uint8_t rxData[8]; // Maximum Payload size of SX1261/62/68 is 255
 	while(1) {
 		uint8_t rxLen = LoRaReceive(rxData, sizeof(rxData));
 		if ( rxLen > 0 ) { 
@@ -211,7 +214,27 @@ void app_main(void)
 
     int counter = 0;
     int required_count = DURATION_THRESHOLD * (1000 / SAMPLE_PERIOD_MS); // Number of iterations for the threshold duration
-
+    //LoRa setup
+    uint32_t frequencyInHz=915000000;
+    LoRaInit();
+	  int8_t txPowerInDbm = 22;
+    float tcxoVoltage = 3.3; // use TCXO
+	  bool useRegulatorLDO = true; // use DCDC + LDO
+    	if (LoRaBegin(frequencyInHz, txPowerInDbm, tcxoVoltage, useRegulatorLDO) != 0) {
+		ESP_LOGE(TAG, "Does not recognize the module");
+      while(1) {
+        vTaskDelay(1);
+      }
+    }
+    
+    uint8_t spreadingFactor = 7;
+    uint8_t bandwidth = 4;
+    uint8_t codingRate = 1;
+    uint16_t preambleLength = 8;
+    uint8_t payloadLen = 0;
+    bool crcOn = true;
+    bool invertIrq = false;
+    LoRaConfig(spreadingFactor, bandwidth, codingRate, preambleLength, payloadLen, crcOn, invertIrq);
     // Initialize MQTT
     mqtt_app_start();
 
@@ -221,7 +244,10 @@ void app_main(void)
     float Rs;
     int ppm;
     bool triggered = false;
-    xTaskCreate(&listening_task, "LISTENING", 4096, NULL, 5, NULL);
+    bool loraSent = false;
+  
+
+    xTaskCreatePinnedToCore(&listening_task, "LISTENING", 4096, NULL, 5, NULL,0);
     while (1) {
         // Read ADC value
         int adc_reading = adc1_get_raw(MQ2_ADC_CHANNEL);
@@ -242,17 +268,33 @@ void app_main(void)
                 triggered = true;
                 turn_on_buzzer();
                 printf("Threshold exceeded for %d seconds! LED and Buzzer on\n", DURATION_THRESHOLD);
-
-                if()
-                printf("ESP-NOW broadcast message sent: %s\n", message);
-
+                if(!loraSent){
+                  txLen = sprintf((char *)txData, "A");
+                  if(LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
+                    loraSent=true;
+                    ESP_LOGI(TAG,"Alert sent trough LoRa");
+                    memset(txData,0,8);
+                  }
+                }else{
+                  ESP_LOGE(TAG,"Error while sending alert through LoRa");
+                }
                 // Take max ppm , avg ppm and counter
             }
         } else {
+            if(loraSent){
+              txLen = sprintf((char *)txData, "S");
+              if(!LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
+                ESP_LOGE(TAG,"Error exiting alert state trhough LoRa");
+              }else{
+                loraSent=false;
+                memset(txData,0,8);
+                ESP_LOGI(TAG,"STOPALERT sent trough LoRa");
+              }
+            }
             if(triggered){
                 triggered = false;
                 char mqtt_message[256];
-                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '30sec'\n}", MAC2STR(mac_addr), ppm);
+                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i'\n}", MAC2STR(mac_addr), ppm, counter);
                 esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
                 printf("MQTT message sent: %s\n", mqtt_message);
             }
