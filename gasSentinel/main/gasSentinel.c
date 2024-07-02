@@ -17,6 +17,9 @@
 #include "esp_log.h"
 #include "ra01s.h"
 #include "aux.h"
+#include "esp_log.h"
+
+#include "ra01s.h"
 
 // Just to print MAC addresses
 #define MAC2STR(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
@@ -136,11 +139,37 @@ float MQCalibration()
   return val; 
 }
 
-
-float adc;
+void listening_task(void *pvParameter)
+{
+  ESP_LOGI(pcTaskGetName(NULL), "Start listening");
+	uint8_t txData[256]; // Maximum Payload size of SX1261/62/68 is 255
+	uint8_t rxData[256]; // Maximum Payload size of SX1261/62/68 is 255
+	while(1) {
+		uint8_t rxLen = LoRaReceive(rxData, sizeof(rxData));
+		if ( rxLen > 0 ) { 
+			printf("Receive rxLen:%d\n", rxLen);
+			int txLen;
+			const char *rec = (const char *)rxData;
+			if (rec[0] == 'S' ) {
+				turn_off_buzzer();
+        turn_off_led_yellow();
+        ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
+			} else if (rec[0] == 'A' ){
+        turn_on_buzzer();
+        turn_on_led_yellow();
+				ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
+			}else{
+        ESP_LOGI(TAG,"Something else was received on the same band");
+			}
+		}
+		vTaskDelay(1); // Avoid WatchDog alerts
+	} // end while
+}
 
 void app_main(void)
 {
+    uint8_t txData[8];
+    int txLen;
     // Initialize NVS
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
@@ -192,6 +221,7 @@ void app_main(void)
     float Rs;
     int ppm;
     bool triggered = false;
+    xTaskCreate(&listening_task, "LISTENING", 4096, NULL, 5, NULL);
     while (1) {
         // Read ADC value
         int adc_reading = adc1_get_raw(MQ2_ADC_CHANNEL);
@@ -212,13 +242,11 @@ void app_main(void)
                 triggered = true;
                 turn_on_buzzer();
                 printf("Threshold exceeded for %d seconds! LED and Buzzer on\n", DURATION_THRESHOLD);
-                //espnow_send_broadcast_data(message);
+
+                if()
                 printf("ESP-NOW broadcast message sent: %s\n", message);
 
                 // Take max ppm , avg ppm and counter
-                
-
-                adc = adc_reading;
             }
         } else {
             if(triggered){
