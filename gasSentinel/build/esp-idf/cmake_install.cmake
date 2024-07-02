@@ -422,3 +422,13 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/main/cmake_install.cmake")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/aux/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/ra01s/cmake_install.cmake")
+endif()
+

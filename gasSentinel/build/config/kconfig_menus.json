@@ -5961,6 +5961,168 @@
     {
         "children": [
             {
+                "children": [],
+                "depends_on": null,
+                "help": null,
+                "id": "GPIO_RANGE_MAX",
+                "name": "GPIO_RANGE_MAX",
+                "range": null,
+                "title": null,
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Pin Number to be used as the MISO SPI signal.",
+                "id": "MISO_GPIO",
+                "name": "MISO_GPIO",
+                "range": [
+                    0,
+                    48
+                ],
+                "title": "SX126X MISO GPIO",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Pin Number to be used as the SCLK SPI signal.",
+                "id": "SCLK_GPIO",
+                "name": "SCLK_GPIO",
+                "range": [
+                    0,
+                    48
+                ],
+                "title": "SX126X SCLK GPIO",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Pin Number to be used as the MOSI SPI signal.",
+                "id": "MOSI_GPIO",
+                "name": "MOSI_GPIO",
+                "range": [
+                    0,
+                    48
+                ],
+                "title": "SX126X MOSI GPIO",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Pin Number to be used as the NSS SPI signal.",
+                "id": "NSS_GPIO",
+                "name": "NSS_GPIO",
+                "range": [
+                    0,
+                    48
+                ],
+                "title": "SX126X NSS GPIO",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Pin Number to be used as the RST signal.",
+                "id": "RST_GPIO",
+                "name": "RST_GPIO",
+                "range": [
+                    0,
+                    48
+                ],
+                "title": "SX126X RST GPIO",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Pin Number to be used as the BUSY signal.",
+                "id": "BUSY_GPIO",
+                "name": "BUSY_GPIO",
+                "range": [
+                    0,
+                    48
+                ],
+                "title": "SX126X BUSY GPIO",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Pin Number to be used as the TXEN signal.",
+                "id": "TXEN_GPIO",
+                "name": "TXEN_GPIO",
+                "range": [
+                    -1,
+                    48
+                ],
+                "title": "SX126X TXEN GPIO",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Pin Number to be used as the RXEN signal.",
+                "id": "RXEN_GPIO",
+                "name": "RXEN_GPIO",
+                "range": [
+                    -1,
+                    48
+                ],
+                "title": "SX126X RXEN GPIO",
+                "type": "int"
+            },
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "depends_on": "<choice SPI_HOST>",
+                        "help": "Use SPI2_HOST. This is also called HSPI_HOST.",
+                        "id": "SPI2_HOST",
+                        "name": "SPI2_HOST",
+                        "range": null,
+                        "title": "SPI2_HOST",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "(IDF_TARGET_ESP32 || IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3) && <choice SPI_HOST>",
+                        "help": "USE SPI3_HOST. This is also called VSPI_HOST",
+                        "id": "SPI3_HOST",
+                        "name": "SPI3_HOST",
+                        "range": null,
+                        "title": "SPI3_HOST",
+                        "type": "bool"
+                    }
+                ],
+                "depends_on": null,
+                "help": "Select SPI peripheral that controls this bus.",
+                "id": "sx126x-configuration-spi-peripheral-that-controls-this-bus",
+                "name": "SPI_HOST",
+                "title": "SPI peripheral that controls this bus",
+                "type": "choice"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Enable Temperature-Compensated Crystal Oscillator.",
+                "id": "USE_TCXO",
+                "name": "USE_TCXO",
+                "range": null,
+                "title": "Enable TCXO",
+                "type": "bool"
+            }
+        ],
+        "depends_on": null,
+        "id": "sx126x-configuration",
+        "title": "SX126X Configuration",
+        "type": "menu"
+    },
+    {
+        "children": [
+            {
                 "children": [
                     {
                         "children": [],

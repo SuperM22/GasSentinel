@@ -1,0 +1,368 @@
+) gpio: GPIO�InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup:�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x178c
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcbc
+load:0x403cc700,len:0x2d98
+entry 0x403c9914
+[0;32mI (27) boot: ESP-IDF v5.2 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jun 25 2024 17:18:17[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (38) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (72) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (79) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (87) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=293f4h (168948) map[0m
+[0;32mI (129) esp_image: segment 1: paddr=0003941c vaddr=3fc98500 size=046f4h ( 18164) load[0m
+[0;32mI (134) esp_image: segment 2: paddr=0003db18 vaddr=40374000 size=02500h (  9472) load[0m
+[0;32mI (137) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=9dc44h (646212) map[0m
+[0;32mI (260) esp_image: segment 4: paddr=000ddc6c vaddr=40376500 size=11fb8h ( 73656) load[0m
+[0;32mI (284) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (285) boot: Disabling RNG early entropy source...[0m
+[0;32mI (296) cpu_start: Multicore app[0m
+[0;32mI (306) cpu_start: Pro cpu start user code[0m
+[0;32mI (306) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (306) cpu_start: Application information:[0m
+[0;32mI (309) cpu_start: Project name:     gasSentinel[0m
+[0;32mI (314) cpu_start: App version:      922fc5b-dirty[0m
+[0;32mI (320) cpu_start: Compile time:     Jul  2 2024 19:16:10[0m
+[0;32mI (326) cpu_start: ELF file SHA256:  f37f2dde0...[0m
+[0;32mI (331) cpu_start: ESP-IDF:          v5.2[0m
+[0;32mI (336) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (341) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (345) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (350) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (357) heap_init: At 3FCA0DF8 len 00048918 (290 KiB): RAM[0m
+[0;32mI (364) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (370) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (376) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (383) spi_flash: detected chip: gd[0m
+[0;32mI (386) spi_flash: flash io: dio[0m
+[0;33mW (390) spi_flash: Detected size(8192k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (404) ADC: legacy driver is deprecated, please migrate to `esp_adc/adc_oneshot.h`[0m
+[0;32mI (412) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (419) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (426) main_task: Started on CPU0[0m
+[0;32mI (436) main_task: Calling app_main()[0m
+[0;32mI (466) pp: pp rom version: e7ae62f[0m
+[0;32mI (466) net80211: net80211 rom version: e7ae62f[0m
+I (476) wifi:wifi driver task: 3fcab9fc, prio:23, stack:6656, core=0
+I (486) wifi:wifi firmware version: cc1dd81
+I (486) wifi:wifi certification version: v7.0
+I (486) wifi:config NVS flash: enabled
+I (486) wifi:config nano formating: disabled
+I (486) wifi:Init data frame dynamic rx buffer num: 32
+I (496) wifi:Init static rx mgmt buffer num: 5
+I (496) wifi:Init management short buffer num: 32
+I (506) wifi:Init dynamic tx buffer num: 32
+I (506) wifi:Init static tx FG buffer num: 2
+I (516) wifi:Init static rx buffer size: 1600
+I (516) wifi:Init static rx buffer num: 10
+I (516) wifi:Init dynamic rx buffer num: 32
+[0;32mI (526) wifi_init: rx ba win: 6[0m
+[0;32mI (526) wifi_init: tcpip mbox: 32[0m
+[0;32mI (526) wifi_init: udp mbox: 6[0m
+[0;32mI (536) wifi_init: tcp mbox: 6[0m
+[0;32mI (536) wifi_init: tcp tx win: 5760[0m
+[0;32mI (546) wifi_init: tcp rx win: 5760[0m
+[0;32mI (546) wifi_init: tcp mss: 1440[0m
+[0;32mI (546) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (556) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (566) phy_init: phy_version 620,ec7ec30,Sep  5 2023,13:49:13[0m
+I (606) wifi:mode : sta (48:27:e2:e2:ee:98)
+I (606) wifi:enable tsf
+[0;32mI (606) Aux: wifi_init_sta finished.[0m
+[0;32mI (606) Aux: connect to ap SSID:TIM-42988688 password:ycrcxyEEyktfnsYaTntpayKr[0m
+[0;32mI (606) gpio: GPIO[20]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+I (616) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (626) wifi:state: init -> auth (b0)
+[0;32mI (626) gpio: GPIO[21]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+I (626) wifi:state: auth -> assoc (0)
+[0;32mI (646) gpio: GPIO[26]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+LED GREEN ON
+Other event id:7
+I (656) wifi:state: assoc -> run (10)
+[0;31mE (656) esp-tls: couldn't get hostname for :mqtt.eclipseprojects.io: getaddrinfo() returns 202, addrinfo=0x0[0m
+I (666) wifi:[0;31mE (666) transport_base: Failed to open a new connection: 32769[0m
+<ba-add>idx:0 (ifx:0, d6:92:5e:7b:b6:90), tid:0, ssn:0, winSize:64[0;31mE (676) mqtt_client: Error transport connect[0m
+
+MQTT_EVENT_ERROR
+Starting calibration ...
+MQTT_EVENT_DISCONNECTED
+I (696) wifi:connected with TIM-42988688, aid = 20, channel 1, BW20, bssid = d6:92:5e:7b:b6:90
+I (706) wifi:security: WPA2-PSK, phy: bgn, rssi: -81
+I (706) wifi:pm start, type: 1
+
+I (706) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (716) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000
+I (726) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+I (736) wifi:<ba-add>idx:1 (ifx:0, d6:92:5e:7b:b6:90), tid:6, ssn:0, winSize:64
+[0;32mI (1726) esp_netif_handlers: sta ip: 192.168.1.202, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (1726) Aux: Got IP: 192.168.1.202[0m
+Other event id:7
+MQTT_EVENT_CONNECTED
+Sensor calibrated r0: 1.654810
+ADC Raw: 902	Voltage: 774mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 903	Voltage: 775mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 896	Voltage: 770mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 901	Voltage: 773mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 916	Voltage: 785mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 901	Voltage: 773mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 895	Voltage: 769mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 891	Voltage: 765mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 2359	Voltage: 1983mV
+PPM calculated : 15
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 3391	Voltage: 2774mV
+PPM calculated : 7424
+LED ON
+ADC Raw: 2823	Voltage: 2359mV
+PPM calculated : 166
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 3231	Voltage: 2664mV
+PPM calculated : 2148
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+Buzzer ON
+Threshold exceeded for 10 seconds! LED and Buzzer on
+ESP-NOW broadcast message sent: Threshold exceeded
+ADC Raw: 4095	Voltage: 3148mV
+PPM calculated : 2147483647
+LED ON
+Buzzer ON
+Threshold exceeded for 10 seconds! LED and Buzzer on
+ESP-NOW broadcast message sent: Threshold exceeded
+ADC Raw: 3806	Voltage: 3020mV
+PPM calculated : 1024955
+LED ON
+Buzzer ON
+Threshold exceeded for 10 seconds! LED and Buzzer on
+ESP-NOW broadcast message sent: Threshold exceeded
+ADC Raw: 2919	Voltage: 2432mV
+PPM calculated : 288
+MQTT message sent: {
+   'device_id': '48:27:e2:e2:ee:98',
+    'gas_level_agg': '288',
+    'alarm_time' : '30sec'
+}
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+MQTT_EVENT_PUBLISHED, msg_id=1590
+ADC Raw: 2311	Voltage: 1944mV
+PPM calculated : 11
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1962	Voltage: 1653mV
+PPM calculated : 2
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1717	Voltage: 1450mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1557	Voltage: 1316mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1429	Voltage: 1209mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1342	Voltage: 1139mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1289	Voltage: 1094mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1243	Voltage: 1056mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1213	Voltage: 1032mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1191	Voltage: 1013mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1175	Voltage: 1000mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1161	Voltage: 988mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1148	Voltage: 978mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1135	Voltage: 966mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1131	Voltage: 963mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1119	Voltage: 953mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1117	Voltage: 952mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1115	Voltage: 951mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1114	Voltage: 949mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1107	Voltage: 943mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1108	Voltage: 944mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1100	Voltage: 938mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1102	Voltage: 939mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1107	Voltage: 943mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1085	Voltage: 925mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1071	Voltage: 914mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1065	Voltage: 909mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off
+ADC Raw: 1065	Voltage: 909mV
+PPM calculated : 0
+LED OFF
+Buzzer OFF
+Below threshold. LED and Buzzer off

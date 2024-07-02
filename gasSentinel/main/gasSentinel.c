@@ -15,6 +15,8 @@
 #include "mqtt_client.h"
 #include "esp_event.h"
 #include "esp_log.h"
+#include "ra01s.h"
+#include "aux.h"
 
 // Just to print MAC addresses
 #define MAC2STR(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
@@ -54,156 +56,11 @@ static const char *TAG = "WiFi_MQTT";
 
 uint8_t mac_addr[6];  // To store the MAC address
 
-void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)
-{
-    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
-        esp_wifi_connect();
-    } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        esp_wifi_connect();
-        ESP_LOGI(TAG, "Retry to connect to the AP");
-    } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
-        ip_event_got_ip_t *event = (ip_event_got_ip_t *)event_data;
-        char ip_str[16];
-        esp_ip4addr_ntoa(&event->ip_info.ip, ip_str, sizeof(ip_str));
-        ESP_LOGI(TAG, "Got IP: %s", ip_str);
-    }
-}
-
-void wifi_init_sta(void)
-{
-    esp_netif_init();
-    esp_event_loop_create_default();
-    esp_netif_create_default_wifi_sta();
-    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-    esp_wifi_init(&cfg);
-
-    esp_event_handler_instance_t instance_any_id;
-    esp_event_handler_instance_t instance_got_ip;
-    esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL, &instance_any_id);
-    esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &wifi_event_handler, NULL, &instance_got_ip);
-
-    wifi_config_t wifi_config = {
-        .sta = {
-            .ssid = WIFI_SSID,
-            .password = WIFI_PASS,
-            .threshold.authmode = WIFI_AUTH_WPA2_PSK,
-        },
-    };
-
-    esp_wifi_set_mode(WIFI_MODE_STA);
-    esp_wifi_set_config(WIFI_IF_STA, &wifi_config);
-    esp_wifi_start();
-
-    ESP_LOGI(TAG, "wifi_init_sta finished.");
-    ESP_LOGI(TAG, "connect to ap SSID:%s password:%s", WIFI_SSID, WIFI_PASS);
-}
-
 // Timer handle
 TimerHandle_t yellow_led_timer;
 
-void configure_led(void)
-{
-    gpio_reset_pin(LED_GPIO_PIN);
-    gpio_set_direction(LED_GPIO_PIN, GPIO_MODE_OUTPUT);
-    gpio_set_level(LED_GPIO_PIN, 0); // Ensure LED is off initially
-}
+esp_mqtt_client_handle_t mqtt_client;
 
-void configure_led_yellow(void)
-{
-    gpio_reset_pin(YELLOW_LED_GPIO_PIN);
-    gpio_set_direction(YELLOW_LED_GPIO_PIN, GPIO_MODE_OUTPUT);
-    gpio_set_level(YELLOW_LED_GPIO_PIN, 0); // Ensure LED is off initially
-}
-
-void configure_led_green(void)
-{
-    gpio_reset_pin(GREEN_LED_GPIO_PIN);
-    gpio_set_direction(GREEN_LED_GPIO_PIN, GPIO_MODE_OUTPUT);
-    gpio_set_level(GREEN_LED_GPIO_PIN, 0); // Ensure LED is off initially
-}
-
-void turn_on_led(void)
-{
-    gpio_set_level(LED_GPIO_PIN, 1);
-    printf("LED ON\n");
-}
-
-void turn_on_led_yellow(void)
-{
-    gpio_set_level(YELLOW_LED_GPIO_PIN, 1);
-    printf("LED YELLOW ON\n");
-}
-
-void turn_on_led_green(void)
-{
-    gpio_set_level(GREEN_LED_GPIO_PIN, 1);
-    printf("LED GREEN ON\n");
-}
-
-void turn_off_led_yellow(void)
-{
-    gpio_set_level(YELLOW_LED_GPIO_PIN, 0);
-    printf("LED YELLOW OFF\n");
-}
-
-void turn_off_led_green(void)
-{
-    gpio_set_level(GREEN_LED_GPIO_PIN, 0);
-    printf("LED GREEN OFF\n");
-}
-
-void turn_off_led(void)
-{
-    gpio_set_level(LED_GPIO_PIN, 0);
-    printf("LED OFF\n");
-}
-
-void configure_buzzer(void)
-{
-    // Configure the LEDC timer
-    ledc_timer_config_t ledc_timer = {
-        .speed_mode       = LEDC_LOW_SPEED_MODE, // Use LEDC_LOW_SPEED_MODE
-        .timer_num        = BUZZER_TIMER,
-        .duty_resolution  = LEDC_TIMER_13_BIT,
-        .freq_hz          = 2000,  // Set the PWM frequency to 2 kHz
-        .clk_cfg          = LEDC_AUTO_CLK
-    };
-    ledc_timer_config(&ledc_timer);
-
-    // Configure the LEDC channel
-    ledc_channel_config_t ledc_channel = {
-        .speed_mode     = LEDC_LOW_SPEED_MODE, // Use LEDC_LOW_SPEED_MODE
-        .channel        = BUZZER_CHANNEL,
-        .timer_sel      = BUZZER_TIMER,
-        .intr_type      = LEDC_INTR_DISABLE,
-        .gpio_num       = BUZZER_GPIO_PIN,
-        .duty           = 0, // Initially set duty cycle to 0 (off)
-        .hpoint         = 0
-    };
-    ledc_channel_config(&ledc_channel);
-}
-
-void turn_on_buzzer(void)
-{
-    ledc_set_duty(LEDC_LOW_SPEED_MODE, BUZZER_CHANNEL, 4096); // 50% duty cycle
-    ledc_update_duty(LEDC_LOW_SPEED_MODE, BUZZER_CHANNEL);
-    printf("Buzzer ON\n");
-}
-
-void turn_off_buzzer(void)
-{
-    ledc_set_duty(LEDC_LOW_SPEED_MODE, BUZZER_CHANNEL, 0); // 0% duty cycle (off)
-    ledc_update_duty(LEDC_LOW_SPEED_MODE, BUZZER_CHANNEL);
-    printf("Buzzer OFF\n");
-}
-
-// Timer callback function to turn off the yellow LED
-void yellow_led_timer_callback(TimerHandle_t xTimer)
-{
-    turn_off_led_yellow();
-}
-
-// Initialize and configure MQTT
 void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
     esp_mqtt_event_handle_t event = event_data;
@@ -235,8 +92,6 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
     }
 }
 
-esp_mqtt_client_handle_t mqtt_client;
-
 void mqtt_app_start(void)
 {
     const esp_mqtt_client_config_t mqtt_cfg = {
@@ -250,55 +105,6 @@ void mqtt_app_start(void)
     esp_mqtt_client_start(mqtt_client);
 }
 
-// Callback function when message is received
-void espnow_recv_cb(const uint8_t *mac_addr, const uint8_t *data, int data_len)
-{
-    printf("Received ESP-NOW data from: " MACSTR " \n", MAC2STR(mac_addr));
-    printf("Data: %.*s\n", data_len, data);
-
-    // Process the received data
-    // If the data is "Threshold exceeded", do some stuff
-    if (strncmp((const char *)data, "Threshold exceeded", data_len) == 0) {
-        turn_on_led_yellow();
-        turn_on_buzzer();
-
-        // Start the timer to turn off the yellow LED after 5 seconds
-        xTimerStart(yellow_led_timer, 0);
-    }
-}
-
-void espnow_init(void)
-{
-    nvs_flash_init();
-    // Initialize WiFi in station mode
-    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-    esp_wifi_init(&cfg);
-    esp_wifi_set_mode(WIFI_MODE_STA);
-    esp_wifi_start();
-
-    // Initialize ESP-NOW
-    esp_now_init();
-
-    // Callback function upon reception
-    esp_now_register_recv_cb(espnow_recv_cb);
-}
-
-void espnow_add_broadcast_peer(void)
-{
-    esp_now_peer_info_t peer_info = {
-        .ifidx = ESP_IF_WIFI_STA,
-        .channel = 0, // Use current WiFi channel
-        .encrypt = false
-    };
-    memset(peer_info.peer_addr, 0xFF, ESP_NOW_ETH_ALEN); // Set broadcast address
-    esp_now_add_peer(&peer_info);
-}
-
-void espnow_send_broadcast_data(const char *data)
-{
-    uint8_t broadcast_addr[ESP_NOW_ETH_ALEN] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
-    esp_now_send(broadcast_addr, (uint8_t *)data, strlen(data));
-}
 
 // SENSOR CALIBRATION
 
@@ -360,8 +166,8 @@ void app_main(void)
     configure_buzzer();
 
     // Initialize ESP-NOW
-    espnow_init();
-    espnow_add_broadcast_peer();
+    // espnow_init();
+    // espnow_add_broadcast_peer();
 
     // Create the timer to turn off the yellow LED
     yellow_led_timer = xTimerCreate("YellowLEDTimer", pdMS_TO_TICKS(5000), pdFALSE, (void *)0, yellow_led_timer_callback);
@@ -406,7 +212,7 @@ void app_main(void)
                 triggered = true;
                 turn_on_buzzer();
                 printf("Threshold exceeded for %d seconds! LED and Buzzer on\n", DURATION_THRESHOLD);
-                espnow_send_broadcast_data(message);
+                //espnow_send_broadcast_data(message);
                 printf("ESP-NOW broadcast message sent: %s\n", message);
 
                 // Take max ppm , avg ppm and counter

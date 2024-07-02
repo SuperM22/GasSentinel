@@ -64,3 +64,5 @@
 /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/usb/libusb.a
 /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/main/libmain.a
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/aux/libaux.a
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/ra01s/libra01s.a

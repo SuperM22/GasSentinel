@@ -646,3 +646,17 @@
 /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/main/CMakeFiles/install.dir
 /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/main/CMakeFiles/install/local.dir
 /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/main/CMakeFiles/install/strip.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/aux/CMakeFiles/__idf_aux.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/aux/CMakeFiles/edit_cache.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/aux/CMakeFiles/rebuild_cache.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/aux/CMakeFiles/list_install_components.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/aux/CMakeFiles/install.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/aux/CMakeFiles/install/local.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/aux/CMakeFiles/install/strip.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/ra01s/CMakeFiles/__idf_ra01s.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/ra01s/CMakeFiles/edit_cache.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/ra01s/CMakeFiles/rebuild_cache.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/ra01s/CMakeFiles/list_install_components.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/ra01s/CMakeFiles/install.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/ra01s/CMakeFiles/install/local.dir
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/ra01s/CMakeFiles/install/strip.dir
