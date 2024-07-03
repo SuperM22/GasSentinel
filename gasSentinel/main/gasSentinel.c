@@ -216,12 +216,10 @@ void app_main(void)
     
     // Retrieve MAC address
     ESP_ERROR_CHECK(esp_wifi_get_mac(ESP_IF_WIFI_STA, mac_addr));
-<<<<<<< HEAD
 
     // Retrieve BSSID
     uint8_t* bssid = get_bssid();
     
-=======
     // Initialize MQTT
     mqtt_app_start();
     #endif
@@ -232,7 +230,6 @@ void app_main(void)
       ESP_LOGE(TAG,"MAC ADDRESS WAS NOT ACQUIRED");
     }
     #endif
->>>>>>> fb45f22a1c09e39363ccd23b45226963be789948
     // Configure the LED
     configure_led();
     configure_led_yellow();
@@ -316,21 +313,16 @@ void app_main(void)
             }
             if(triggered){
                 triggered = false;
-<<<<<<< HEAD
+                
+                #if CONFIG_WIFI
                 char mqtt_message[256];
                 snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), ppm, counter, MAC2STR(bssid));
                 esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
                 printf("MQTT message sent: %s\n", mqtt_message);
-=======
-                #if CONFIG_WIFI
-                  char mqtt_message[256];
-                  snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i'\n}", MAC2STR(mac_addr), ppm, counter);
-                  esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
-                  printf("MQTT message sent: %s\n", mqtt_message);
                 #endif
                 #if CONFIG_NOWIFI
                   uint8_t mqtt_message[256];
-                  txLen = sprintf((char *)mqtt_message,"{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i'\n}", MAC2STR(mac_addr), ppm, counter);
+                  txLen = sprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), ppm, counter, MAC2STR(bssid));
                   vTaskSuspend(myTaskHandle);
                   if(!LoRaSend(mqtt_message,txLen,SX126x_TXMODE_SYNC)){
                     ESP_LOGE(TAG,"Error sending aggregate data through lora");
@@ -339,7 +331,6 @@ void app_main(void)
                     ESP_LOGI(TAG,"Aggregate data sent through LoRa");
                   }
                 #endif
->>>>>>> fb45f22a1c09e39363ccd23b45226963be789948
             }
             counter = 0; // Reset the counter if the reading falls below the threshold
             turn_off_led();

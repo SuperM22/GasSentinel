@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 source "D:/ESP/v5.2.1/esp-idf/components/bootloader/Kconfig.projbuild"
 source "D:/ESP/v5.2.1/esp-idf/components/esp_app_format/Kconfig.projbuild"
 source "D:/ESP/v5.2.1/esp-idf/components/esp_rom/Kconfig.projbuild"
 source "D:/ESP/v5.2.1/esp-idf/components/esptool_py/Kconfig.projbuild"
 source "D:/ESP/v5.2.1/esp-idf/components/partition_table/Kconfig.projbuild"
+source "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/main/Kconfig.projbuild"
 source "D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/components/ra01s/Kconfig.projbuild"
-=======
-source "/Users/mimmo/esp/esp-idf/components/bootloader/Kconfig.projbuild"
-source "/Users/mimmo/esp/esp-idf/components/esp_app_format/Kconfig.projbuild"
-source "/Users/mimmo/esp/esp-idf/components/esp_rom/Kconfig.projbuild"
-source "/Users/mimmo/esp/esp-idf/components/esptool_py/Kconfig.projbuild"
-source "/Users/mimmo/esp/esp-idf/components/partition_table/Kconfig.projbuild"
-source "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/main/Kconfig.projbuild"
-source "/Users/mimmo/UniProjects/GasSentinel/gasSentinel/components/ra01s/Kconfig.projbuild"
->>>>>>> fb45f22a1c09e39363ccd23b45226963be789948
