@@ -1,0 +1,106 @@
+[1/10] Performing build step for 'bootloader'
+[1/1] cd /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader/esp-idf/esptool_py && /Users/mimmo/.espressif/python_env/idf5.2_py3.12_env/bin/python /Users/mimmo/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader/bootloader.bin
+Bootloader binary size 0x5240 bytes. 0x2dc0 bytes (36%) free.
+[2/10] No install step for 'bootloader'
+[3/10] Completed 'bootloader'
+[4/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/gasSentinel.c.obj
+In file included from /Users/mimmo/UniProjects/GasSentinel/gasSentinel/main/gasSentinel.c:9:
+/Users/mimmo/esp/esp-idf/components/driver/deprecated/driver/adc.h:19:2: warning: #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively" [-Wcpp]
+   19 | #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively"
+      |  ^~~~~~~
+In file included from /Users/mimmo/UniProjects/GasSentinel/gasSentinel/main/gasSentinel.c:10:
+/Users/mimmo/esp/esp-idf/components/esp_adc/deprecated/include/esp_adc_cal.h:17:2: warning: #warning "legacy adc calibration driver is deprecated, please migrate to use esp_adc/adc_cali.h and esp_adc/adc_cali_scheme.h" [-Wcpp]
+   17 | #warning "legacy adc calibration driver is deprecated, please migrate to use esp_adc/adc_cali.h and esp_adc/adc_cali_scheme.h"
+      |  ^~~~~~~
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/main/gasSentinel.c: In function 'listening_task':
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/main/gasSentinel.c:179:29: warning: unused variable 'txLen' [-Wunused-variable]
+  179 |                         int txLen;
+      |                             ^~~~~
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/main/gasSentinel.c: In function 'app_main':
+/Users/mimmo/UniProjects/GasSentinel/gasSentinel/main/gasSentinel.c:230:5: warning: 'ADC_ATTEN_DB_11' is deprecated [-Wdeprecated-declarations]
+  230 |     adc1_config_channel_atten(MQ2_ADC_CHANNEL, ADC_ATTEN_DB_11);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/mimmo/esp/esp-idf/components/driver/deprecated/driver/adc_types_legacy.h:8,
+                 from /Users/mimmo/esp/esp-idf/components/driver/deprecated/driver/adc.h:15:
+/Users/mimmo/esp/esp-idf/components/hal/include/hal/adc_types.h:51:5: note: declared here
+   51 |     ADC_ATTEN_DB_11 __attribute__((deprecated)) = ADC_ATTEN_DB_12,  ///<This is deprecated, it behaves the same as `ADC_ATTEN_DB_12`
+      |     ^~~~~~~~~~~~~~~
+[5/10] Linking C static library esp-idf/main/libmain.a
+[6/10] Generating ld/sections.ld
+[7/10] Linking CXX executable gasSentinel.elf
+[8/10] Generating binary image from built executable
+esptool.py v4.7.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+Generated /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/gasSentinel.bin
+[9/10] cd /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/esptool_py && /Users/mimmo/.espressif/python_env/idf5.2_py3.12_env/bin/python /Users/mimmo/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/partition_table/partition-table.bin /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/gasSentinel.bin
+gasSentinel.bin binary size 0xe7950 bytes. Smallest app partition is 0x100000 bytes. 0x186b0 bytes (10%) free.
+[9/10] cd /Users/mimmo/esp/esp-idf/components/esptool_py && /usr/local/Cellar/cmake/3.28.3/bin/cmake -D IDF_PATH=/Users/mimmo/esp/esp-idf -D "SERIAL_TOOL=/Users/mimmo/.espressif/python_env/idf5.2_py3.12_env/bin/python;;/Users/mimmo/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32s3" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build -P /Users/mimmo/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32s3 -p /dev/cu.usbserial-0001 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 2MB 0x0 bootloader/bootloader.bin 0x10000 gasSentinel.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.7.0
+Serial port /dev/cu.usbserial-0001
+Connecting....
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded Flash 8MB (GD)
+Crystal is 40MHz
+MAC: 48:27:e2:e2:ee:98
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x000f7fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 21056 bytes to 13063...
+Writing at 0x00000000... (100 %)
+Wrote 21056 bytes (13063 compressed) at 0x00000000 in 0.6 seconds (effective 272.2 kbit/s)...
+Hash of data verified.
+Compressed 948560 bytes to 580588...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001e2b0... (5 %)
+Writing at 0x00029971... (8 %)
+Writing at 0x0002e420... (11 %)
+Writing at 0x00035389... (13 %)
+Writing at 0x00041d56... (16 %)
+Writing at 0x00047fce... (19 %)
+Writing at 0x0004e19a... (22 %)
+Writing at 0x00054b04... (25 %)
+Writing at 0x0005ae34... (27 %)
+Writing at 0x00060f30... (30 %)
+Writing at 0x000669f8... (33 %)
+Writing at 0x0006c9c0... (36 %)
+Writing at 0x00072e29... (38 %)
+Writing at 0x00078c9f... (41 %)
+Writing at 0x0007e0c7... (44 %)
+Writing at 0x0008304d... (47 %)
+Writing at 0x00088172... (50 %)
+Writing at 0x0008d1a5... (52 %)
+Writing at 0x000924a4... (55 %)
+Writing at 0x000978ad... (58 %)
+Writing at 0x0009d7ae... (61 %)
+Writing at 0x000a31e4... (63 %)
+Writing at 0x000a8d24... (66 %)
+Writing at 0x000ae80f... (69 %)
+Writing at 0x000b4536... (72 %)
+Writing at 0x000b9d20... (75 %)
+Writing at 0x000bfadc... (77 %)
+Writing at 0x000c554e... (80 %)
+Writing at 0x000caf6c... (83 %)
+Writing at 0x000d4e77... (86 %)
+Writing at 0x000dcb17... (88 %)
+Writing at 0x000e2d62... (91 %)
+Writing at 0x000e8bd4... (94 %)
+Writing at 0x000ef21d... (97 %)
+Writing at 0x000f4da4... (100 %)
+Wrote 948560 bytes (580588 compressed) at 0x00010000 in 14.1 seconds (effective 539.8 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 340.2 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

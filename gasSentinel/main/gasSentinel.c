@@ -145,6 +145,29 @@ float MQCalibration()
   return val; 
 }
 
+//LORA
+void loraStart(){
+  uint32_t frequencyInHz=915000000;
+    LoRaInit();
+	  int8_t txPowerInDbm = 22;
+    float tcxoVoltage = 3.3; // use TCXO
+	  bool useRegulatorLDO = true; // use DCDC + LDO
+    if (LoRaBegin(frequencyInHz, txPowerInDbm, tcxoVoltage, useRegulatorLDO) != 0) {
+		ESP_LOGE(TAG, "Does not recognize the module");
+      while(1) {
+        vTaskDelay(1);
+      }
+    }
+    
+    uint8_t spreadingFactor = 7;
+    uint8_t bandwidth = 4;
+    uint8_t codingRate = 1;
+    uint16_t preambleLength = 8;
+    uint8_t payloadLen = 0;
+    bool crcOn = true;
+    bool invertIrq = false;
+    LoRaConfig(spreadingFactor, bandwidth, codingRate, preambleLength, payloadLen, crcOn, invertIrq);
+}
 void listening_task(void *pvParameter)
 {
   ESP_LOGI(pcTaskGetName(NULL), "Start listening");
@@ -199,10 +222,6 @@ void app_main(void)
     // Configure the buzzer
     configure_buzzer();
 
-    // Initialize ESP-NOW
-    // espnow_init();
-    // espnow_add_broadcast_peer();
-
     // Create the timer to turn off the yellow LED
     yellow_led_timer = xTimerCreate("YellowLEDTimer", pdMS_TO_TICKS(5000), pdFALSE, (void *)0, yellow_led_timer_callback);
 
@@ -216,27 +235,6 @@ void app_main(void)
 
     int counter = 0;
     int required_count = DURATION_THRESHOLD * (1000 / SAMPLE_PERIOD_MS); // Number of iterations for the threshold duration
-    //LoRa setup
-    uint32_t frequencyInHz=915000000;
-    LoRaInit();
-	  int8_t txPowerInDbm = 22;
-    float tcxoVoltage = 3.3; // use TCXO
-	  bool useRegulatorLDO = true; // use DCDC + LDO
-    	if (LoRaBegin(frequencyInHz, txPowerInDbm, tcxoVoltage, useRegulatorLDO) != 0) {
-		ESP_LOGE(TAG, "Does not recognize the module");
-      while(1) {
-        vTaskDelay(1);
-      }
-    }
-    
-    uint8_t spreadingFactor = 7;
-    uint8_t bandwidth = 4;
-    uint8_t codingRate = 1;
-    uint16_t preambleLength = 8;
-    uint8_t payloadLen = 0;
-    bool crcOn = true;
-    bool invertIrq = false;
-    LoRaConfig(spreadingFactor, bandwidth, codingRate, preambleLength, payloadLen, crcOn, invertIrq);
     // Initialize MQTT
     mqtt_app_start();
 
@@ -247,8 +245,8 @@ void app_main(void)
     int ppm;
     bool triggered = false;
     bool loraSent = false;
-  
 
+    loraStart();
     xTaskCreatePinnedToCore(&listening_task, "LISTENING", 4096, NULL, 5, &myTaskHandle,0);
     while (1) {
         // Read ADC value
@@ -277,9 +275,9 @@ void app_main(void)
                     loraSent=true;
                     ESP_LOGI(TAG,"Alert sent trough LoRa");
                     memset(txData,0,8);
+                  }else{
+                    ESP_LOGE(TAG,"ERROR SENDING THE ALERT");
                   }
-                }else{
-                  ESP_LOGE(TAG,"Error while sending alert through LoRa");
                 }
                 // Take max ppm , avg ppm and counter
             }
