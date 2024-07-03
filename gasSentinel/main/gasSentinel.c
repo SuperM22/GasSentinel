@@ -18,6 +18,7 @@
 #include "ra01s.h"
 #include "helper.h"
 #include "esp_log.h"
+#include "esp_mac.h"
 
 #include "ra01s.h"
 
@@ -38,9 +39,6 @@
 #define THRESHOLD 4000  // Set threshold value for the MQ-2 sensor (RAW VALUE)
 #define DURATION_THRESHOLD 10 // Duration in seconds
 #define SAMPLE_PERIOD_MS 1000 // Sample period in milliseconds
-
-#define WIFI_SSID "TIM-42988688"
-#define WIFI_PASS "ycrcxyEEyktfnsYaTntpayKr"
 #define MQTT_BROKER_URI "mqtt://mqtt.eclipseprojects.io:1883"
 
 #define VCC 5.0
@@ -173,7 +171,7 @@ void loraStart(){
 void listening_task(void *pvParameter)
 {
   ESP_LOGI(pcTaskGetName(NULL), "Start listening");
-	uint8_t rxData[8]; // Maximum Payload size of SX1261/62/68 is 255
+	uint8_t rxData[256]; // Maximum Payload size of SX1261/62/68 is 255
 	while(1) {
 		uint8_t rxLen = LoRaReceive(rxData, sizeof(rxData));
 		if ( rxLen > 0 ) { 
@@ -189,7 +187,11 @@ void listening_task(void *pvParameter)
         turn_on_led_yellow();
 				ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
 			}else{
-        ESP_LOGI(TAG,"Something else was received on the same band");
+        ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONECTION SENT THE AGGREGATE");
+        #if CONFIG_WIFI
+          esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
+          ESP_LOGI(TAG,"MQTT message sent: %s\n", rec);
+        #endif
 			}
 		}
 		vTaskDelay(1); // Avoid WatchDog alerts
@@ -197,7 +199,7 @@ void listening_task(void *pvParameter)
 }
 
 void app_main(void)
-{
+{ 
     uint8_t txData[8];
     int txLen;
     // Initialize NVS
@@ -209,14 +211,28 @@ void app_main(void)
     ESP_ERROR_CHECK(ret);
 
     // Initialize Wi-Fi
+    #if CONFIG_WIFI
     wifi_init_sta();
-
+    
     // Retrieve MAC address
     ESP_ERROR_CHECK(esp_wifi_get_mac(ESP_IF_WIFI_STA, mac_addr));
+<<<<<<< HEAD
 
     // Retrieve BSSID
     uint8_t* bssid = get_bssid();
     
+=======
+    // Initialize MQTT
+    mqtt_app_start();
+    #endif
+    #if CONFIG_NOWIFI
+    if(esp_efuse_mac_get_default(mac_addr)== ESP_OK){
+      ESP_LOGI(TAG,"Mac address acquired correctly");
+    }else {
+      ESP_LOGE(TAG,"MAC ADDRESS WAS NOT ACQUIRED");
+    }
+    #endif
+>>>>>>> fb45f22a1c09e39363ccd23b45226963be789948
     // Configure the LED
     configure_led();
     configure_led_yellow();
@@ -240,8 +256,7 @@ void app_main(void)
 
     int counter = 0;
     int required_count = DURATION_THRESHOLD * (1000 / SAMPLE_PERIOD_MS); // Number of iterations for the threshold duration
-    // Initialize MQTT
-    mqtt_app_start();
+
 
     printf("Starting calibration ...\n");
     R0 = MQCalibration();
@@ -301,10 +316,30 @@ void app_main(void)
             }
             if(triggered){
                 triggered = false;
+<<<<<<< HEAD
                 char mqtt_message[256];
                 snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), ppm, counter, MAC2STR(bssid));
                 esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
                 printf("MQTT message sent: %s\n", mqtt_message);
+=======
+                #if CONFIG_WIFI
+                  char mqtt_message[256];
+                  snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i'\n}", MAC2STR(mac_addr), ppm, counter);
+                  esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
+                  printf("MQTT message sent: %s\n", mqtt_message);
+                #endif
+                #if CONFIG_NOWIFI
+                  uint8_t mqtt_message[256];
+                  txLen = sprintf((char *)mqtt_message,"{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i'\n}", MAC2STR(mac_addr), ppm, counter);
+                  vTaskSuspend(myTaskHandle);
+                  if(!LoRaSend(mqtt_message,txLen,SX126x_TXMODE_SYNC)){
+                    ESP_LOGE(TAG,"Error sending aggregate data through lora");
+                  }else{
+                    vTaskResume(myTaskHandle);
+                    ESP_LOGI(TAG,"Aggregate data sent through LoRa");
+                  }
+                #endif
+>>>>>>> fb45f22a1c09e39363ccd23b45226963be789948
             }
             counter = 0; // Reset the counter if the reading falls below the threshold
             turn_off_led();

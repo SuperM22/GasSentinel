@@ -509,6 +509,15 @@ CONFIG_PARTITION_TABLE_MD5=y
 # end of Partition Table
 
 #
+# Application Configuration
+#
+CONFIG_WIFI=y
+# CONFIG_NOWIFI is not set
+CONFIG_WIFI_SSID="FRITZ!Box 7590 RC"
+CONFIG_WIFI_PASSWORD="47198653177002129409"
+# end of Application Configuration
+
+#
 # SX126X Configuration
 #
 CONFIG_GPIO_RANGE_MAX=48
