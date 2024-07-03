@@ -1,4 +1,4 @@
-/* * Data converted from /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

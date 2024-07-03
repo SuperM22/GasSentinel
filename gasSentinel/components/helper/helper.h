@@ -15,6 +15,7 @@ void configure_buzzer(void);
 void turn_on_buzzer(void);
 void turn_off_buzzer(void);
 void yellow_led_timer_callback(TimerHandle_t xTimer);
+uint8_t* get_bssid();
 
 
 //public functions

@@ -1,6 +1,6 @@
 /*
  * Automatically generated file. DO NOT EDIT.
- * Espressif IoT Development Framework (ESP-IDF) 5.2.0 Configuration Header
+ * Espressif IoT Development Framework (ESP-IDF) 5.2.1 Configuration Header
  */
 #pragma once
 #define CONFIG_SOC_MPU_MIN_REGION_SIZE 0x20000000

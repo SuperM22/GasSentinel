@@ -16,6 +16,8 @@
 #include "esp_log.h"
 #include "helper.h"
 
+#define MAC2STR(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
+#define MACSTR "%02x:%02x:%02x:%02x:%02x:%02x"
 
 
 // Define the GPIO pins
@@ -36,6 +38,8 @@
 #define WIFI_PASS "ycrcxyEEyktfnsYaTntpayKr"
 #define MQTT_BROKER_URI "mqtt://mqtt.eclipseprojects.io:1883"
 
+static uint8_t bssid[6];
+
 static const char *TAG = "Aux";
 
 void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)
@@ -50,7 +54,20 @@ void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id
         char ip_str[16];
         esp_ip4addr_ntoa(&event->ip_info.ip, ip_str, sizeof(ip_str));
         ESP_LOGI(TAG, "Got IP: %s", ip_str);
+        // Retrieve and log BSSID
+        wifi_ap_record_t ap_info;
+        if (esp_wifi_sta_get_ap_info(&ap_info) == ESP_OK) {
+            memcpy(bssid, ap_info.bssid, sizeof(ap_info.bssid));
+            ESP_LOGI(TAG, "Connected to AP BSSID: " MACSTR, MAC2STR(bssid));
+        }
+        else {
+            ESP_LOGE(TAG, "Failed to get AP info");
+        }
     }
+}
+
+uint8_t* get_bssid() {
+    return bssid;
 }
 
 void wifi_init_sta(void)
@@ -71,6 +88,10 @@ void wifi_init_sta(void)
             .ssid = WIFI_SSID,
             .password = WIFI_PASS,
             .threshold.authmode = WIFI_AUTH_WPA2_PSK,
+            .pmf_cfg = {
+                .capable = true,
+                .required = false
+            },
         },
     };
 

@@ -63,6 +63,8 @@ static const char *TAG = "WiFi_MQTT";
 
 uint8_t mac_addr[6];  // To store the MAC address
 
+
+
 // Timer handle
 TimerHandle_t yellow_led_timer;
 
@@ -212,6 +214,9 @@ void app_main(void)
     // Retrieve MAC address
     ESP_ERROR_CHECK(esp_wifi_get_mac(ESP_IF_WIFI_STA, mac_addr));
 
+    // Retrieve BSSID
+    uint8_t* bssid = get_bssid();
+    
     // Configure the LED
     configure_led();
     configure_led_yellow();
@@ -297,7 +302,7 @@ void app_main(void)
             if(triggered){
                 triggered = false;
                 char mqtt_message[256];
-                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i'\n}", MAC2STR(mac_addr), ppm, counter);
+                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), ppm, counter, MAC2STR(bssid));
                 esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
                 printf("MQTT message sent: %s\n", mqtt_message);
             }
