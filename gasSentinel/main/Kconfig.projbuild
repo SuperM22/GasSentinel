@@ -1,0 +1,30 @@
+menu "Application Configuration"
+
+	choice CONNECTION
+		prompt "Wi-Fi availability"
+		default WIFI
+		help
+			Select the AP availability.
+		config WIFI
+			bool "WI-FI ON"
+			help
+				The wi-fi is available.
+		config NOWIFI
+			bool "WI-FI OFF"
+			help
+				The wi-fi is NOT available.
+	endchoice
+
+	config WIFI_SSID
+        string "WiFi SSID"
+        default "myssid"
+        help
+            SSID (network name) for the app to connect to.
+
+    config WIFI_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+        help
+            WiFi password (WPA or WPA2) for the app to use.
+
+endmenu 

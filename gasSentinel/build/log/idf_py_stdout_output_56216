@@ -1,0 +1,75 @@
+[1/5] cd /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/esp-idf/esptool_py && /Users/mimmo/.espressif/python_env/idf5.2_py3.12_env/bin/python /Users/mimmo/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/partition_table/partition-table.bin /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/gasSentinel.bin
+gasSentinel.bin binary size 0xe7980 bytes. Smallest app partition is 0x100000 bytes. 0x18680 bytes (10%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader/esp-idf/esptool_py && /Users/mimmo/.espressif/python_env/idf5.2_py3.12_env/bin/python /Users/mimmo/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 /Users/mimmo/UniProjects/GasSentinel/gasSentinel/build/bootloader/bootloader.bin
+Bootloader binary size 0x5240 bytes. 0x2dc0 bytes (36%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] cd /Users/mimmo/esp/esp-idf/components/esptool_py && /usr/local/Cellar/cmake/3.28.3/bin/cmake -D IDF_PATH=/Users/mimmo/esp/esp-idf -D "SERIAL_TOOL=/Users/mimmo/.espressif/python_env/idf5.2_py3.12_env/bin/python;;/Users/mimmo/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32s3" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/Users/mimmo/UniProjects/GasSentinel/gasSentinel/build -P /Users/mimmo/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32s3 -p /dev/cu.usbserial-0001 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 2MB 0x0 bootloader/bootloader.bin 0x10000 gasSentinel.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.7.0
+Serial port /dev/cu.usbserial-0001
+Connecting...
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded Flash 8MB (GD)
+Crystal is 40MHz
+MAC: 48:27:e2:e2:ee:98
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x000f7fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 21056 bytes to 13063...
+Writing at 0x00000000... (100 %)
+Wrote 21056 bytes (13063 compressed) at 0x00000000 in 0.6 seconds (effective 266.4 kbit/s)...
+Hash of data verified.
+Compressed 948608 bytes to 580636...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001e294... (5 %)
+Writing at 0x00029976... (8 %)
+Writing at 0x0002e419... (11 %)
+Writing at 0x00035329... (13 %)
+Writing at 0x00041d2d... (16 %)
+Writing at 0x00047f9f... (19 %)
+Writing at 0x0004e17b... (22 %)
+Writing at 0x00054ada... (25 %)
+Writing at 0x0005ae10... (27 %)
+Writing at 0x00060ef0... (30 %)
+Writing at 0x000669c1... (33 %)
+Writing at 0x0006c964... (36 %)
+Writing at 0x00072de1... (38 %)
+Writing at 0x00078c60... (41 %)
+Writing at 0x0007e0a0... (44 %)
+Writing at 0x00083015... (47 %)
+Writing at 0x00088139... (50 %)
+Writing at 0x0008d179... (52 %)
+Writing at 0x0009246b... (55 %)
+Writing at 0x00097882... (58 %)
+Writing at 0x0009d78e... (61 %)
+Writing at 0x000a31c1... (63 %)
+Writing at 0x000a8cfb... (66 %)
+Writing at 0x000ae7d7... (69 %)
+Writing at 0x000b44f0... (72 %)
+Writing at 0x000b9cd9... (75 %)
+Writing at 0x000bfa8a... (77 %)
+Writing at 0x000c5520... (80 %)
+Writing at 0x000caf4c... (83 %)
+Writing at 0x000d4e5c... (86 %)
+Writing at 0x000dcae6... (88 %)
+Writing at 0x000e2d58... (91 %)
+Writing at 0x000e8bb0... (94 %)
+Writing at 0x000ef205... (97 %)
+Writing at 0x000f4d9c... (100 %)
+Wrote 948608 bytes (580636 compressed) at 0x00010000 in 14.2 seconds (effective 536.1 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 345.6 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

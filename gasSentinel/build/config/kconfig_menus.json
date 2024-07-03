@@ -5961,6 +5961,64 @@
     {
         "children": [
             {
+                "children": [
+                    {
+                        "children": [],
+                        "depends_on": "<choice CONNECTION>",
+                        "help": "The wi-fi is available.",
+                        "id": "WIFI",
+                        "name": "WIFI",
+                        "range": null,
+                        "title": "WI-FI ON",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "<choice CONNECTION>",
+                        "help": "The wi-fi is NOT available.",
+                        "id": "NOWIFI",
+                        "name": "NOWIFI",
+                        "range": null,
+                        "title": "WI-FI OFF",
+                        "type": "bool"
+                    }
+                ],
+                "depends_on": null,
+                "help": "Select the AP availability.",
+                "id": "application-configuration-wi-fi-availability",
+                "name": "CONNECTION",
+                "title": "Wi-Fi availability",
+                "type": "choice"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "SSID (network name) for the app to connect to.",
+                "id": "WIFI_SSID",
+                "name": "WIFI_SSID",
+                "range": null,
+                "title": "WiFi SSID",
+                "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "WiFi password (WPA or WPA2) for the app to use.",
+                "id": "WIFI_PASSWORD",
+                "name": "WIFI_PASSWORD",
+                "range": null,
+                "title": "WiFi Password",
+                "type": "string"
+            }
+        ],
+        "depends_on": null,
+        "id": "application-configuration",
+        "title": "Application Configuration",
+        "type": "menu"
+    },
+    {
+        "children": [
+            {
                 "children": [],
                 "depends_on": null,
                 "help": null,

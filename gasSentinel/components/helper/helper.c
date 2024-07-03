@@ -26,15 +26,11 @@
 #define YELLOW_LED_GPIO_PIN 21
 #define GREEN_LED_GPIO_PIN 26
 
-// ADC1 channel for the MQ-2 sensor (GPIO 36 is ADC1 channel 0)
-#define MQ2_ADC_CHANNEL ADC1_CHANNEL_0
-#define THRESHOLD 4000  // Set threshold value for the MQ-2 sensor (RAW VALUE)
-#define DURATION_THRESHOLD 10 // Duration in seconds
-#define SAMPLE_PERIOD_MS 1000 // Sample period in milliseconds
 
-#define WIFI_SSID "TIM-42988688"
-#define WIFI_PASS "ycrcxyEEyktfnsYaTntpayKr"
-#define MQTT_BROKER_URI "mqtt://mqtt.eclipseprojects.io:1883"
+#define WIFI_SSID CONFIG_WIFI_SSID
+#define WIFI_PASS CONFIG_WIFI_PASSWORD
+
+
 
 static const char *TAG = "Aux";
 
