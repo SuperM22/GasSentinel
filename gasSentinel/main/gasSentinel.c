@@ -187,9 +187,10 @@ void listening_task(void *pvParameter)
         #if CONFIG_WIFI
           int l = strlen(rec);
           rec[l-1] = '\0';
-          char toApp[15];
-          snprintf(toApp, sizeof(toApp), "'no-wifi:1',\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
-          strcat(rec, toApp);
+          char new[256];
+          uint8_t* bssid = get_bssid();
+          snprintf(new, sizeof(new), "    'wifi':0,\n    'bssid': '" MACSTR "'\n}",MAC2STR(bssid));
+          strcat(rec, new);
           printf("%s",rec); 
           esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
           ESP_LOGI(TAG,"MQTT message sent: %s\n", rec);
