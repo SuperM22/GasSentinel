@@ -20,7 +20,7 @@ TABLE_NAME = "gas_data"
 SMTP_USERNAME = "gassentinel@gmail.com"  # Update with your email address
 SMTP_PASSWORD = "xlpm speg pgfu lkwo"  # Update with your email password
 SENDER = "gassentinel@gmail.com"  # Update with your email address
-RECIPIENT = "lattari.1836766@studenti.uniroma1.it"  # Update with recipient email address
+RECIPIENT = "awesomekanha@gmail.com"  # Update with recipient email address
 EMAIL_SUBJECT = "Gas Leak Alert"
 
 # Global variable to track the last email sent time

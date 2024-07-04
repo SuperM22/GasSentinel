@@ -653,13 +653,6 @@ D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/
 D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/helper/CMakeFiles/install.dir
 D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/helper/CMakeFiles/install/local.dir
 D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/helper/CMakeFiles/install/strip.dir
-D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/cJSON/CMakeFiles/__idf_cJSON.dir
-D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/cJSON/CMakeFiles/edit_cache.dir
-D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/cJSON/CMakeFiles/rebuild_cache.dir
-D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/cJSON/CMakeFiles/list_install_components.dir
-D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/cJSON/CMakeFiles/install.dir
-D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/cJSON/CMakeFiles/install/local.dir
-D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/cJSON/CMakeFiles/install/strip.dir
 D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/ra01s/CMakeFiles/__idf_ra01s.dir
 D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/ra01s/CMakeFiles/edit_cache.dir
 D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/ra01s/CMakeFiles/rebuild_cache.dir

@@ -429,11 +429,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/cJSON/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
   include("D:/ESP/v5.2.1/esp-idf/projects/esp-filter/GasSentinel/gasSentinel/build/esp-idf/ra01s/cmake_install.cmake")
 endif()
 
