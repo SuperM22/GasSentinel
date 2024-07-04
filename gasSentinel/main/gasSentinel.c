@@ -180,14 +180,24 @@ void listening_task(void *pvParameter)
         ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONNECTION SENT THE AGGREGATE");
         #if CONFIG_WIFI
           int l = strlen(rec);
-          rec[l-1] = '\0';
-          char new[256];
+          rec[l - 103] = '\0';
+
+
+          // Ensure 'new' is large enough to hold additional information
+          char new[64];
           uint8_t* bssid = get_bssid();
-          snprintf(new, sizeof(new), "    'wifi':0,\n    'bssid': '" MACSTR "'\n}",MAC2STR(bssid));
-          strcat(rec, new);
-          printf("%s",rec); 
-          esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
-          ESP_LOGI(TAG,"MQTT message sent: %s\n", rec);
+          snprintf(new, sizeof(new), "\n    'wifi':0,\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
+          // Calculate the total required length
+          printf("%i, %i\n", strlen(rec), strlen(new));
+          size_t totalLength = strlen(rec) + strlen(new) + 1; // +1 for null terminator
+          if (totalLength <= 256) {
+              strcat(rec, new);
+              printf("%s", rec);
+              esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
+              ESP_LOGI(TAG, "MQTT message sent: %s\n", rec);
+          } else {
+              ESP_LOGE(TAG, "Combined message length exceeds buffer size");
+          }
         #endif
       }
     }
@@ -324,7 +334,7 @@ void app_main(void)
 
         #if CONFIG_NOWIFI
         uint8_t mqtt_message[256];
-        txLen = snprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    }", MAC2STR(mac_addr), avgPPM, counter);
+        txLen = snprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',}", MAC2STR(mac_addr), avgPPM, counter);
         vTaskSuspend(myTaskHandle);
         if(!LoRaSend(mqtt_message,txLen,SX126x_TXMODE_SYNC)){
           ESP_LOGE(TAG,"Error sending aggregate data through lora");
