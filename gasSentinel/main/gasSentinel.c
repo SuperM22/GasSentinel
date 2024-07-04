@@ -60,6 +60,8 @@ esp_mqtt_client_handle_t mqtt_client;
 
 TaskHandle_t myTaskHandle = NULL;
 
+bool buzz =false;
+
 void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
     esp_mqtt_event_handle_t event = event_data;
@@ -170,9 +172,11 @@ void listening_task(void *pvParameter)
       char *rec = (char *)rxData;
       if (rec[0] == 'S' ) {
         turn_off_buzzer();
+        buzz=false;
         turn_off_led_yellow();
         ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
       } else if (rec[0] == 'A' ){
+        buzz=true;
         turn_on_buzzer();
         turn_on_led_yellow();
         ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
@@ -180,13 +184,15 @@ void listening_task(void *pvParameter)
         ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONNECTION SENT THE AGGREGATE");
         #if CONFIG_WIFI
           int l = strlen(rec);
-          rec[l - 103] = '\0';
-
-
+          for (int i = 1 ;i++;i<l-1 ){
+            if(rec[ l - i  ] =='}'){
+              rec[ l - i ] = '\0';
+            }
+          }
           // Ensure 'new' is large enough to hold additional information
           char new[64];
           uint8_t* bssid = get_bssid();
-          snprintf(new, sizeof(new), "\n    'wifi':0,\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
+          snprintf(new, sizeof(new), "\n    'wifi':'0',\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
           // Calculate the total required length
           printf("%i, %i\n", strlen(rec), strlen(new));
           size_t totalLength = strlen(rec) + strlen(new) + 1; // +1 for null terminator
@@ -327,7 +333,7 @@ void app_main(void)
                 
         #if CONFIG_WIFI
         char mqtt_message[256];
-        snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, MAC2STR(bssid));
+        snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'wifi':'1',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, MAC2STR(bssid));
         esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
         printf("MQTT message sent: %s\n", mqtt_message);
         #endif
@@ -347,7 +353,9 @@ void app_main(void)
       avgPPM = 0;
       counter = 0; // Reset the counter if the reading falls below the threshold
       turn_off_led();
-      turn_off_buzzer();
+      if(!buzz){
+        turn_off_buzzer();
+      }
       printf("Below threshold. LED and Buzzer off\n");
     }
 
