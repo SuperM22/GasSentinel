@@ -7,6 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import requests
 import folium 
+from datetime import datetime, timedelta
 
 # MQTT settings
 MQTT_BROKER = "mqtt.eclipseprojects.io"
@@ -52,15 +53,37 @@ def init_db():
         print(f"Error initializing database: {e}")
 
 # Function to store data in the database
-def store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude):
+def store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude ,flag):
+    print("AHBFKJABFKJABFKJABFUJAEBFOLAEF")
     try:
         conn = sqlite3.connect(DB_NAME)
         cursor = conn.cursor()
-        insert_statement = "INSERT INTO gas_data (device_id, gas_level_agg, alarm_time, latitude, longitude) VALUES (?, ?, ?, ?, ?)"
-        cursor.execute(insert_statement, (device_id, gas_level_agg, alarm_time, latitude, longitude))
-        conn.commit()
-        conn.close()
-        print("Data stored in database.")
+        if flag == "1":
+            print("WIFI")
+            insert_statement = "INSERT INTO gas_data (device_id, gas_level_agg, alarm_time, latitude, longitude) VALUES (?, ?, ?, ?, ?)"
+            cursor.execute(insert_statement, (device_id, gas_level_agg, alarm_time, latitude, longitude))
+            conn.commit()
+            conn.close()
+            print("Data stored in database.")
+        elif flag == "0":
+            print("NOWIFI")
+            # Query to check if data exists within the last 10 minutes for the device_id
+            cursor.execute("""
+                SELECT 1 FROM gas_data 
+                WHERE device_id = ? AND 
+                    timestamp >= Datetime('now', '-10 minutes')
+            """, (device_id,))
+            print("AHFASJFJNAS FHJAVFHAVSFHBF")
+            existing_data = cursor.fetchone()
+
+            if existing_data:
+                print("Data already exists in database within the last 10 minutes.")
+            else:
+                # Insert new data into the database
+                insert_statement = "INSERT INTO gas_data (device_id, gas_level_agg, alarm_time, latitude, longitude) VALUES (?, ?, ?, ?, ?)"
+                cursor.execute(insert_statement, (device_id, gas_level_agg, alarm_time, latitude, longitude))
+                conn.commit()  # Commit the transaction
+                print("Data stored in database")
     except Exception as e:
         print(f"Error storing data in database: {e}")
 
@@ -105,14 +128,14 @@ def process_mqtt_message(client, userdata, msg):
         gas_level_agg = data.get("gas_level_agg")
         alarm_time = data.get("alarm_time")
         bssid = data.get("bssid")  # Assuming 'bssid' is sent in the MQTT message
+        flag = data.get("wifi")
+        print(flag)
 
         # Get location from Google Geolocation API based on BSSID
         location = get_location_from_api(bssid)
         if location:
             latitude = location.get("location").get("lat")
             longitude = location.get("location").get("lng")
-            print(latitude)
-            print(longitude)
             #create map
             create_gas_leak_map(latitude , longitude)
         else:
@@ -120,7 +143,7 @@ def process_mqtt_message(client, userdata, msg):
             longitude = None
 
         # Store the data in the database
-        store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude)
+        store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude, flag)
 
         # Send an email alert if gas level exceeds the threshold (if needed)
         if float(gas_level_agg) > 2000:  # Adjust threshold as needed
@@ -203,7 +226,6 @@ def create_gas_leak_map(latitude, longitude, radius = 1000):
         'longitude': longitude,
         'radius': radius
     })
-    print(map_elements)
     
     # Create map with the lat and lng as the center
     m = folium.Map(location=[latitude, longitude], zoom_start=15)
