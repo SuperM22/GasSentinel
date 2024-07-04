@@ -43,21 +43,17 @@
 
 #define VCC 5.0
 #define RL 4.7
-#define RO_CLEAN_AIR_FACTOR 9.83
-#define THRESHOLD_PPM 2000
-#define CALIBARAION_SAMPLE_TIMES 30
-
-// #define ALERT "A"
-// #define STOP_ALERT  "S"
-// #define PACKLEN 1
+#define RO_CLEAN_AIR_FACTOR 9.83 //initialization of R0 (datasheet)
+#define THRESHOLD_PPM 2000 //5% of LEL LPG
+#define CALIBARAION_SAMPLE_TIMES 30 //this should be 30 minutes (sensor warmup period)
 
 float R0 = RO_CLEAN_AIR_FACTOR; 
-float LPGCurve[3]  =  {2.3,0.21,-0.47};
+float LPGCurve[3]  =  {2.3,0.21,-0.47}; //taken from the datasheet to calibrate
 
 const char *message = "Threshold exceeded";
 
 // Implement Wi-Fi initialization and event handling
-static const char *TAG = "WiFi_MQTT";
+static const char *TAG = "Gas Sentinel ";
 
 uint8_t mac_addr[6];  // To store the MAC address
 
@@ -177,7 +173,7 @@ void listening_task(void *pvParameter)
 		if ( rxLen > 0 ) { 
 			printf("Receive rxLen:%d\n", rxLen);
 			int txLen;
-			const char *rec = (const char *)rxData;
+			char *rec = (char *)rxData;
 			if (rec[0] == 'S' ) {
 				turn_off_buzzer();
         turn_off_led_yellow();
@@ -189,6 +185,12 @@ void listening_task(void *pvParameter)
 			}else{
         ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONECTION SENT THE AGGREGATE");
         #if CONFIG_WIFI
+          int l = strlen(rec);
+          rec[l-1] = '\0';
+          char toApp[15];
+          snprintf(toApp, sizeof(toApp), "'no-wifi:1',\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
+          strcat(rec, toApp);
+          printf("%s",rec); 
           esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
           ESP_LOGI(TAG,"MQTT message sent: %s\n", rec);
         #endif
@@ -262,6 +264,7 @@ void app_main(void)
     int ppm;
     bool triggered = false;
     bool loraSent = false;
+    long long int avgPPM = 0;
 
     loraStart();
     xTaskCreatePinnedToCore(&listening_task, "LISTENING", 4096, NULL, 5, &myTaskHandle,0);
@@ -275,9 +278,8 @@ void app_main(void)
         Rs = MQResistanceCalculation(adc_reading);
         ppm = MQGetPercentage(Rs/R0,LPGCurve);
         printf("PPM calculated : %i\n",ppm);
-        //float ppm=0;
-
         // Check if the reading exceeds the threshold
+        printf("%lld",avgPPM);
         if (ppm > THRESHOLD_PPM) {
             counter++;
             turn_on_led();
@@ -296,8 +298,10 @@ void app_main(void)
                     ESP_LOGE(TAG,"ERROR SENDING THE ALERT");
                   }
                 }
+              
                 // Take max ppm , avg ppm and counter
             }
+            avgPPM += (long long)ppm;
         } else {
             if(loraSent){
               vTaskSuspend(myTaskHandle);
@@ -313,16 +317,17 @@ void app_main(void)
             }
             if(triggered){
                 triggered = false;
+                avgPPM = avgPPM / (long long)counter;
                 
                 #if CONFIG_WIFI
                 char mqtt_message[256];
-                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), ppm, counter, MAC2STR(bssid));
+                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, MAC2STR(bssid));
                 esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
                 printf("MQTT message sent: %s\n", mqtt_message);
                 #endif
                 #if CONFIG_NOWIFI
                   uint8_t mqtt_message[256];
-                  txLen = sprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%i',\n    'alarm_time' : '%i',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), ppm, counter, MAC2STR(bssid));
+                  txLen = sprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    }", MAC2STR(mac_addr), avgPPM, counter);
                   vTaskSuspend(myTaskHandle);
                   if(!LoRaSend(mqtt_message,txLen,SX126x_TXMODE_SYNC)){
                     ESP_LOGE(TAG,"Error sending aggregate data through lora");
@@ -332,6 +337,7 @@ void app_main(void)
                   }
                 #endif
             }
+            avgPPM = 0;
             counter = 0; // Reset the counter if the reading falls below the threshold
             turn_off_led();
             turn_off_buzzer();
