@@ -9,7 +9,6 @@
 #include "driver/adc.h"
 #include "esp_adc_cal.h"
 #include "esp_err.h"
-#include "esp_now.h"
 #include "esp_wifi.h"
 #include "nvs_flash.h"
 #include "mqtt_client.h"
@@ -17,10 +16,7 @@
 #include "esp_log.h"
 #include "ra01s.h"
 #include "helper.h"
-#include "esp_log.h"
 #include "esp_mac.h"
-
-#include "ra01s.h"
 
 // Just to print MAC addresses
 #define MAC2STR(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
@@ -56,8 +52,6 @@ const char *message = "Threshold exceeded";
 static const char *TAG = "Gas Sentinel ";
 
 uint8_t mac_addr[6];  // To store the MAC address
-
-
 
 // Timer handle
 TimerHandle_t yellow_led_timer;
@@ -110,14 +104,12 @@ void mqtt_app_start(void)
     esp_mqtt_client_start(mqtt_client);
 }
 
-
 // SENSOR CALIBRATION
 
 float MQResistanceCalculation(int raw_adc)
 {
   return ( ((float)RL*(4095-raw_adc)/raw_adc)); //4095 is the max value that adc reading yelds with bit width 12
 }
-
 
 int  MQGetPercentage(float rs_ro_ratio, float *pcurve)
 {
@@ -141,49 +133,51 @@ float MQCalibration()
   return val; 
 }
 
-//LORA
-void loraStart(){
+// LORA
+void loraStart()
+{
   uint32_t frequencyInHz=915000000;
-    LoRaInit();
-	  int8_t txPowerInDbm = 22;
-    float tcxoVoltage = 3.3; // use TCXO
-	  bool useRegulatorLDO = true; // use DCDC + LDO
-    if (LoRaBegin(frequencyInHz, txPowerInDbm, tcxoVoltage, useRegulatorLDO) != 0) {
-		ESP_LOGE(TAG, "Does not recognize the module");
-      while(1) {
-        vTaskDelay(1);
-      }
+  LoRaInit();
+  int8_t txPowerInDbm = 22;
+  float tcxoVoltage = 3.3; // use TCXO
+  bool useRegulatorLDO = true; // use DCDC + LDO
+  if (LoRaBegin(frequencyInHz, txPowerInDbm, tcxoVoltage, useRegulatorLDO) != 0) {
+    ESP_LOGE(TAG, "Does not recognize the module");
+    while(1) {
+      vTaskDelay(1);
     }
-    
-    uint8_t spreadingFactor = 7;
-    uint8_t bandwidth = 4;
-    uint8_t codingRate = 1;
-    uint16_t preambleLength = 8;
-    uint8_t payloadLen = 0;
-    bool crcOn = true;
-    bool invertIrq = false;
-    LoRaConfig(spreadingFactor, bandwidth, codingRate, preambleLength, payloadLen, crcOn, invertIrq);
+  }
+
+  uint8_t spreadingFactor = 7;
+  uint8_t bandwidth = 4;
+  uint8_t codingRate = 1;
+  uint16_t preambleLength = 8;
+  uint8_t payloadLen = 0;
+  bool crcOn = true;
+  bool invertIrq = false;
+  LoRaConfig(spreadingFactor, bandwidth, codingRate, preambleLength, payloadLen, crcOn, invertIrq);
 }
+
 void listening_task(void *pvParameter)
 {
   ESP_LOGI(pcTaskGetName(NULL), "Start listening");
-	uint8_t rxData[256]; // Maximum Payload size of SX1261/62/68 is 255
-	while(1) {
-		uint8_t rxLen = LoRaReceive(rxData, sizeof(rxData));
-		if ( rxLen > 0 ) { 
-			printf("Receive rxLen:%d\n", rxLen);
-			int txLen;
-			char *rec = (char *)rxData;
-			if (rec[0] == 'S' ) {
-				turn_off_buzzer();
+  uint8_t rxData[256]; // Maximum Payload size of SX1261/62/68 is 255
+  while(1) {
+    uint8_t rxLen = LoRaReceive(rxData, sizeof(rxData));
+    if ( rxLen > 0 ) { 
+      printf("Receive rxLen:%d\n", rxLen);
+      int txLen;
+      char *rec = (char *)rxData;
+      if (rec[0] == 'S' ) {
+        turn_off_buzzer();
         turn_off_led_yellow();
         ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
-			} else if (rec[0] == 'A' ){
+      } else if (rec[0] == 'A' ){
         turn_on_buzzer();
         turn_on_led_yellow();
-				ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
-			}else{
-        ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONECTION SENT THE AGGREGATE");
+        ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
+      } else {
+        ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONNECTION SENT THE AGGREGATE");
         #if CONFIG_WIFI
           int l = strlen(rec);
           rec[l-1] = '\0';
@@ -195,157 +189,159 @@ void listening_task(void *pvParameter)
           esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
           ESP_LOGI(TAG,"MQTT message sent: %s\n", rec);
         #endif
-			}
-		}
-		vTaskDelay(1); // Avoid WatchDog alerts
-	} // end while
+      }
+    }
+    vTaskDelay(1); // Avoid WatchDog alerts
+  } // end while
 }
 
 void app_main(void)
-{ 
-    uint8_t txData[8];
-    int txLen;
-    // Initialize NVS
-    esp_err_t ret = nvs_flash_init();
-    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-        ESP_ERROR_CHECK(nvs_flash_erase());
-        ret = nvs_flash_init();
-    }
-    ESP_ERROR_CHECK(ret);
+{
+  uint8_t txData[8];
+  int txLen;
+  
+  // Initialize NVS
+  esp_err_t ret = nvs_flash_init();
+  if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+    ESP_ERROR_CHECK(nvs_flash_erase());
+    ret = nvs_flash_init();
+  }
+  ESP_ERROR_CHECK(ret);
 
-    // Initialize Wi-Fi
-    #if CONFIG_WIFI
-    wifi_init_sta();
-    
-    // Retrieve MAC address
-    ESP_ERROR_CHECK(esp_wifi_get_mac(ESP_IF_WIFI_STA, mac_addr));
-    
-    // Retrieve BSSID
-    uint8_t* bssid = get_bssid();
-    
-    // Initialize MQTT
-    mqtt_app_start();
-    #endif
-    #if CONFIG_NOWIFI
-    if(esp_efuse_mac_get_default(mac_addr)== ESP_OK){
-      ESP_LOGI(TAG,"Mac address acquired correctly");
-    }else {
-      ESP_LOGE(TAG,"MAC ADDRESS WAS NOT ACQUIRED");
-    }
-    #endif
-    // Configure the LED
-    configure_led();
-    configure_led_yellow();
-    configure_led_green();
+  // Initialize Wi-Fi
+  #if CONFIG_WIFI
+  wifi_init_sta();
+  
+  // Retrieve MAC address
+  ESP_ERROR_CHECK(esp_wifi_get_mac(ESP_IF_WIFI_STA, mac_addr));
+  
+  // Retrieve BSSID
+  uint8_t* bssid = get_bssid();
+  
+  // Initialize MQTT
+  mqtt_app_start();
+  #endif
 
-    turn_on_led_green();
+  #if CONFIG_NOWIFI
+  if(esp_efuse_mac_get_default(mac_addr)== ESP_OK){
+    ESP_LOGI(TAG,"Mac address acquired correctly");
+  } else {
+    ESP_LOGE(TAG,"MAC ADDRESS WAS NOT ACQUIRED");
+  }
+  #endif
 
-    // Configure the buzzer
-    configure_buzzer();
+  // Configure the LED
+  configure_led();
+  configure_led_yellow();
+  configure_led_green();
 
-    // Create the timer to turn off the yellow LED
-    yellow_led_timer = xTimerCreate("YellowLEDTimer", pdMS_TO_TICKS(5000), pdFALSE, (void *)0, yellow_led_timer_callback);
+  turn_on_led_green();
 
-    // Configure ADC width and attenuation
-    adc1_config_width(ADC_WIDTH_BIT_12);
-    adc1_config_channel_atten(MQ2_ADC_CHANNEL, ADC_ATTEN_DB_11);
+  // Configure the buzzer
+  configure_buzzer();
 
-    // Characterize ADC
-    esp_adc_cal_characteristics_t *adc_chars = calloc(1, sizeof(esp_adc_cal_characteristics_t));
-    esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_12, ADC_WIDTH_BIT_12, 1100, adc_chars);
+  // Create the timer to turn off the yellow LED
+  yellow_led_timer = xTimerCreate("YellowLEDTimer", pdMS_TO_TICKS(5000), pdFALSE, (void *)0, yellow_led_timer_callback);
 
-    int counter = 0;
-    int required_count = DURATION_THRESHOLD * (1000 / SAMPLE_PERIOD_MS); // Number of iterations for the threshold duration
+  // Configure ADC width and attenuation
+  adc1_config_width(ADC_WIDTH_BIT_12);
+  adc1_config_channel_atten(MQ2_ADC_CHANNEL, ADC_ATTEN_DB_11);
 
+  // Characterize ADC
+  esp_adc_cal_characteristics_t *adc_chars = calloc(1, sizeof(esp_adc_cal_characteristics_t));
+  esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_12, ADC_WIDTH_BIT_12, 1100, adc_chars);
 
-    printf("Starting calibration ...\n");
-    R0 = MQCalibration();
-    printf("Sensor calibrated r0: %f\n",R0);
-    float Rs;
-    int ppm;
-    bool triggered = false;
-    bool loraSent = false;
-    long long int avgPPM = 0;
+  int counter = 0;
+  int required_count = DURATION_THRESHOLD * (1000 / SAMPLE_PERIOD_MS); // Number of iterations for the threshold duration
 
-    loraStart();
-    xTaskCreatePinnedToCore(&listening_task, "LISTENING", 4096, NULL, 5, &myTaskHandle,0);
-    while (1) {
-        // Read ADC value
-        int adc_reading = adc1_get_raw(MQ2_ADC_CHANNEL);
-        // Convert ADC value to voltage in mV
-        uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
-        printf("ADC Raw: %d\tVoltage: %ldmV\n", adc_reading, voltage);
+  printf("Starting calibration ...\n");
+  R0 = MQCalibration();
+  printf("Sensor calibrated r0: %f\n",R0);
+  float Rs;
+  int ppm;
+  bool triggered = false;
+  bool loraSent = false;
+  long long int avgPPM = 0;
 
-        Rs = MQResistanceCalculation(adc_reading);
-        ppm = MQGetPercentage(Rs/R0,LPGCurve);
-        printf("PPM calculated : %i\n",ppm);
-        // Check if the reading exceeds the threshold
-        printf("%lld",avgPPM);
-        if (ppm > THRESHOLD_PPM) {
-            counter++;
-            turn_on_led();
-            if (counter >= required_count) {
-                triggered = true;
-                turn_on_buzzer();
-                printf("Threshold exceeded for %d seconds! LED and Buzzer on\n", DURATION_THRESHOLD);
-                if(!loraSent){
-                  vTaskSuspend(myTaskHandle);
-                  txLen = sprintf((char *)txData, "A");
-                  if(LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
-                    loraSent=true;
-                    ESP_LOGI(TAG,"Alert sent trough LoRa");
-                    memset(txData,0,8);
-                  }else{
-                    ESP_LOGE(TAG,"ERROR SENDING THE ALERT");
-                  }
-                }
-              
-                // Take max ppm , avg ppm and counter
-            }
-            avgPPM += (long long)ppm;
-        } else {
-            if(loraSent){
-              vTaskSuspend(myTaskHandle);
-              txLen = sprintf((char *)txData, "S");
-              if(!LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
-                ESP_LOGE(TAG,"Error exiting alert state trhough LoRa");
-              }else{
-                loraSent=false;
-                vTaskResume(myTaskHandle);
-                memset(txData,0,8);
-                ESP_LOGI(TAG,"STOPALERT sent trough LoRa");
-              }
-            }
-            if(triggered){
-                triggered = false;
-                avgPPM = avgPPM / (long long)counter;
-                
-                #if CONFIG_WIFI
-                char mqtt_message[256];
-                snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, MAC2STR(bssid));
-                esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
-                printf("MQTT message sent: %s\n", mqtt_message);
-                #endif
-                #if CONFIG_NOWIFI
-                  uint8_t mqtt_message[256];
-                  txLen = sprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    }", MAC2STR(mac_addr), avgPPM, counter);
-                  vTaskSuspend(myTaskHandle);
-                  if(!LoRaSend(mqtt_message,txLen,SX126x_TXMODE_SYNC)){
-                    ESP_LOGE(TAG,"Error sending aggregate data through lora");
-                  }else{
-                    vTaskResume(myTaskHandle);
-                    ESP_LOGI(TAG,"Aggregate data sent through LoRa");
-                  }
-                #endif
-            }
-            avgPPM = 0;
-            counter = 0; // Reset the counter if the reading falls below the threshold
-            turn_off_led();
-            turn_off_buzzer();
-            printf("Below threshold. LED and Buzzer off\n");
+  loraStart();
+  xTaskCreatePinnedToCore(&listening_task, "LISTENING", 4096, NULL, 5, &myTaskHandle,0);
+  while (1) {
+    // Read ADC value
+    int adc_reading = adc1_get_raw(MQ2_ADC_CHANNEL);
+    // Convert ADC value to voltage in mV
+    uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
+    printf("ADC Raw: %d\tVoltage: %ldmV\n", adc_reading, voltage);
+
+    Rs = MQResistanceCalculation(adc_reading);
+    ppm = MQGetPercentage(Rs/R0,LPGCurve);
+    printf("PPM calculated : %i\n",ppm);
+    // Check if the reading exceeds the threshold
+    printf("%lld",avgPPM);
+    if (ppm > THRESHOLD_PPM) {
+      counter++;
+      turn_on_led();
+      if (counter >= required_count) {
+        triggered = true;
+        turn_on_buzzer();
+        printf("Threshold exceeded for %d seconds! LED and Buzzer on\n", DURATION_THRESHOLD);
+        if(!loraSent){
+          vTaskSuspend(myTaskHandle);
+          txLen = sprintf((char *)txData, "A");
+          if(LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
+            loraSent=true;
+            ESP_LOGI(TAG,"Alert sent through LoRa");
+            memset(txData,0,8);
+          }else{
+            ESP_LOGE(TAG,"ERROR SENDING THE ALERT");
+          }
         }
+        // Take max ppm , avg ppm and counter
+      }
+      avgPPM += (long long)ppm;
+    } else {
+      if(loraSent){
+        vTaskSuspend(myTaskHandle);
+        txLen = sprintf((char *)txData, "S");
+        if(!LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
+          ESP_LOGE(TAG,"Error exiting alert state through LoRa");
+        } else {
+          loraSent=false;
+          vTaskResume(myTaskHandle);
+          memset(txData,0,8);
+          ESP_LOGI(TAG,"STOPALERT sent through LoRa");
+        }
+      }
+      if(triggered){
+        triggered = false;
+        avgPPM = avgPPM / (long long)counter;
+                
+        #if CONFIG_WIFI
+        char mqtt_message[256];
+        snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, MAC2STR(bssid));
+        esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
+        printf("MQTT message sent: %s\n", mqtt_message);
+        #endif
 
-        // Delay before next reading
-        vTaskDelay(pdMS_TO_TICKS(SAMPLE_PERIOD_MS));
+        #if CONFIG_NOWIFI
+        uint8_t mqtt_message[256];
+        txLen = snprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    }", MAC2STR(mac_addr), avgPPM, counter);
+        vTaskSuspend(myTaskHandle);
+        if(!LoRaSend(mqtt_message,txLen,SX126x_TXMODE_SYNC)){
+          ESP_LOGE(TAG,"Error sending aggregate data through lora");
+        } else {
+          vTaskResume(myTaskHandle);
+          ESP_LOGI(TAG,"Aggregate data sent through LoRa");
+        }
+        #endif
+      }
+      avgPPM = 0;
+      counter = 0; // Reset the counter if the reading falls below the threshold
+      turn_off_led();
+      turn_off_buzzer();
+      printf("Below threshold. LED and Buzzer off\n");
     }
+
+    // Delay before next reading
+    vTaskDelay(pdMS_TO_TICKS(SAMPLE_PERIOD_MS));
+  }
 }

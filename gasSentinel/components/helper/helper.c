@@ -9,7 +9,6 @@
 #include "driver/adc.h"
 #include "esp_adc_cal.h"
 #include "esp_err.h"
-#include "esp_now.h"
 #include "esp_wifi.h"
 #include "nvs_flash.h"
 #include "esp_event.h"
