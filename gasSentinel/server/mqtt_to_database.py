@@ -111,6 +111,8 @@ def process_mqtt_message(client, userdata, msg):
         if location:
             latitude = location.get("location").get("lat")
             longitude = location.get("location").get("lng")
+            print(latitude)
+            print(longitude)
             #create map
             create_gas_leak_map(latitude , longitude)
         else:
@@ -152,31 +154,85 @@ def get_location_from_api(bssid):
         print(f"Exception in API call: {e}")
         return None
 
+map_elements = []
+# Function to load map elements from the database
+def load_map_elements():
+    global map_elements
+    try:
+        conn = sqlite3.connect(DB_NAME)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT latitude, longitude FROM {TABLE_NAME}")
+        rows = cursor.fetchall()
+        conn.close()
+        map_elements = [
+            {'latitude': row[0], 'longitude': row[1], 'radius': 1000}
+            for row in rows if row[0] is not None and row[1] is not None
+        ]
+        print("Loaded map elements from database.")
+    except Exception as e:
+        print(f"Error loading map elements from database: {e}")
+
+# Function to count the number of gas leaks in the area around a given latitude and longitude
+def count_gas_leaks(latitude, longitude, radius=1000):
+    try:
+        conn = sqlite3.connect(DB_NAME)
+        cursor = conn.cursor()
+        query = f"""
+        SELECT COUNT(*) FROM {TABLE_NAME}
+        WHERE (latitude BETWEEN ? AND ?)
+        AND (longitude BETWEEN ? AND ?)
+        """
+        lat_min = latitude - (radius / 111000.0)  # 1 degree latitude ~ 111 km
+        lat_max = latitude + (radius / 111000.0)
+        lng_min = longitude - (radius / (111000.0 * abs(latitude)))
+        lng_max = longitude + (radius / (111000.0 * abs(latitude)))
+        cursor.execute(query, (lat_min, lat_max, lng_min, lng_max))
+        count = cursor.fetchone()[0]
+        conn.close()
+        return count
+    except Exception as e:
+        print(f"Error counting gas leaks: {e}")
+        return 0
+    
 #Function to create gas-leak map
 def create_gas_leak_map(latitude, longitude, radius = 1000):
-    #create map with the lat and lng as the center
-    m = folium.Map(location=[latitude,longitude], zoom_start= 15)
 
-    #add a circle with the given radius 
-    folium.Circle(
-        location=[latitude, longitude],
-        radius=radius,
-        color='red',
-        fill=True,
-        fill_color='red',
-        fill_opacity=0.2
-    ).add_to(m)
+    # Add the circle and marker to the global list
+    map_elements.append({
+        'latitude': latitude,
+        'longitude': longitude,
+        'radius': radius
+    })
+    print(map_elements)
+    
+    # Create map with the lat and lng as the center
+    m = folium.Map(location=[latitude, longitude], zoom_start=15)
 
-    #add a marker at the center of the circle
-    folium.Marker(
-        location=[latitude, longitude],
-        popup='Gas Leak Detected',
-        icon=folium.Icon(color='red', icon='info-sign')
-    ).add_to(m)
+    # Iterate over the global list to add all circles and markers
+    for element in map_elements:
+        lat = element['latitude']
+        lng = element['longitude']
+        leak_count = count_gas_leaks(lat, lng, element['radius'])
+        popup_text = f"Gas Leak Detected\nLeaks in Area: {leak_count}"
+        folium.Circle(
+            location=[element['latitude'], element['longitude']],
+            radius=element['radius'],
+            color='red',
+            fill=True,
+            fill_color='red',
+            opacity = 0.5,
+            fill_opacity=0.2
+        ).add_to(m)
+        
+        folium.Marker(
+            location=[element['latitude'], element['longitude']],
+            popup= popup_text,
+            icon=folium.Icon(color='red', icon='info-sign')
+        ).add_to(m)
 
     map_file = 'gas_leak_map.html'
     m.save(map_file)
-    print(f"map saved to {map_file}")
+    print(f"Map saved to {map_file}")
 
 # Define MQTT callbacks
 def on_connect(client, userdata, flags, rc):
@@ -192,6 +248,8 @@ def on_message(client, userdata, msg):
 
 # Initialize the database
 init_db()
+# Load map elements
+load_map_elements()
 
 # Open a persistent connection to the database
 db_conn = sqlite3.connect(DB_NAME)
