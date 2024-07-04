@@ -184,7 +184,7 @@ void listening_task(void *pvParameter)
         ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONNECTION SENT THE AGGREGATE");
         #if CONFIG_WIFI
           int l = strlen(rec);
-          for (int i = 1 ;i++;i<l-1 ){
+          for (int i = 1 ; i<l-1 ; i++){
             if(rec[ l - i  ] =='}'){
               rec[ l - i ] = '\0';
             }
