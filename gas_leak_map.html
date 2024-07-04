@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6d2102db5c1f165a8122a13179e54459 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6d2102db5c1f165a8122a13179e54459" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6d2102db5c1f165a8122a13179e54459 = L.map(
+                "map_6d2102db5c1f165a8122a13179e54459",
+                {
+                    center: [41.86112, 12.4715008],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_25276d095eb9d6844236a5190405e12b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_25276d095eb9d6844236a5190405e12b.addTo(map_6d2102db5c1f165a8122a13179e54459);
+        
+    
+            var circle_6d676e5587222a8d339df7d021c93418 = L.circle(
+                [41.86112, 12.4715008],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1000, "stroke": true, "weight": 3}
+            ).addTo(map_6d2102db5c1f165a8122a13179e54459);
+        
+    
+            var marker_16b3d0676c394464cee33ca97eddb6ee = L.marker(
+                [41.86112, 12.4715008],
+                {}
+            ).addTo(map_6d2102db5c1f165a8122a13179e54459);
+        
+    
+            var icon_9bf2a898679f0373f0874f8b6cac393e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_16b3d0676c394464cee33ca97eddb6ee.setIcon(icon_9bf2a898679f0373f0874f8b6cac393e);
+        
+    
+        var popup_3585cd4db84584813b4961f72c3fbab4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d4926171807cc99507f9a8a63fb73f51 = $(`<div id="html_d4926171807cc99507f9a8a63fb73f51" style="width: 100.0%; height: 100.0%;">Gas Leak Detected</div>`)[0];
+                popup_3585cd4db84584813b4961f72c3fbab4.setContent(html_d4926171807cc99507f9a8a63fb73f51);
+            
+        
+
+        marker_16b3d0676c394464cee33ca97eddb6ee.bindPopup(popup_3585cd4db84584813b4961f72c3fbab4)
+        ;
+
+        
+    
+</script>
+</html>

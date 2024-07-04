@@ -6,6 +6,7 @@ import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import requests
+import folium 
 
 # MQTT settings
 MQTT_BROKER = "mqtt.eclipseprojects.io"
@@ -99,7 +100,6 @@ def process_mqtt_message(client, userdata, msg):
 
         # Parse the JSON string into a Python dictionary
         data = json.loads(corrected_payload)
-
         # Extract relevant fields from the dictionary
         device_id = data.get("device_id")
         gas_level_agg = data.get("gas_level_agg")
@@ -111,6 +111,8 @@ def process_mqtt_message(client, userdata, msg):
         if location:
             latitude = location.get("location").get("lat")
             longitude = location.get("location").get("lng")
+            #create map
+            create_gas_leak_map(latitude , longitude)
         else:
             latitude = None
             longitude = None
@@ -149,6 +151,32 @@ def get_location_from_api(bssid):
     except Exception as e:
         print(f"Exception in API call: {e}")
         return None
+
+#Function to create gas-leak map
+def create_gas_leak_map(latitude, longitude, radius = 1000):
+    #create map with the lat and lng as the center
+    m = folium.Map(location=[latitude,longitude], zoom_start= 15)
+
+    #add a circle with the given radius 
+    folium.Circle(
+        location=[latitude, longitude],
+        radius=radius,
+        color='red',
+        fill=True,
+        fill_color='red',
+        fill_opacity=0.2
+    ).add_to(m)
+
+    #add a marker at the center of the circle
+    folium.Marker(
+        location=[latitude, longitude],
+        popup='Gas Leak Detected',
+        icon=folium.Icon(color='red', icon='info-sign')
+    ).add_to(m)
+
+    map_file = 'gas_leak_map.html'
+    m.save(map_file)
+    print(f"map saved to {map_file}")
 
 # Define MQTT callbacks
 def on_connect(client, userdata, flags, rc):
