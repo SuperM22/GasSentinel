@@ -216,7 +216,7 @@ void app_main(void)
     
     // Retrieve MAC address
     ESP_ERROR_CHECK(esp_wifi_get_mac(ESP_IF_WIFI_STA, mac_addr));
-
+    
     // Retrieve BSSID
     uint8_t* bssid = get_bssid();
     
