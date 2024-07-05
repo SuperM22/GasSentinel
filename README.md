@@ -10,7 +10,7 @@ The ESP32-S3 board, with its WiFi and Bluetooth capabilities, serves as the brai
 When a gas leak is detected, the system triggers an alert. This alert will be in the form of a local alarm, such as a LED, and a remote notification, that will be sent through an email.
 The alert is going to be triggered in all the neighbours devices, throughout the usage of the ESP-NOW protocol.
 
-##Connection table
+## Connection table
 
 | Component             | Pin / Channel                  | Configuration / Purpose                  |
 |-----------------------|--------------------------------|------------------------------------------|
@@ -31,3 +31,27 @@ LoRa 1262 pins
 | MISO            | GPIO 11   | Master In Slave Out for SPI communication |
 | RST             | GPIO 12   | Reset pin for the LoRa module           |
 | BUSY            | GPIO 13   | Indicates the status of the LoRa module |
+
+## Sensor calibration process
+Data taken from the sensor datasheet.
+First warmup 24 hrs , then 30 minutes
+
+## Application configuration
+Menuconfig screenshot
+
+## LoRa over ESP-NOW
+Esp now communication graphs (failing when walls are between devices)
+LoRa graphs in crowded spaces.
+LoRa graphs for transmission time.
+
+## Remote places application
+Energy consumption graph wifi vs no wifi.
+graphs for both device consumption.
+
+## Backend
+mqtt + mail latency 
+screens od the heatmap 
+
+
+
+
