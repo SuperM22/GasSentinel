@@ -15,6 +15,21 @@ menu "Application Configuration"
 				The wi-fi is NOT available.
 	endchoice
 
+	choice NEIGHBOUR_ALERT
+		prompt "Receive near devices alert"
+		default RECEIVE
+		help
+			Select if you want to receive alerts from nearby devices.
+		config RECEIVE
+			bool "ON"
+			help
+				Your device will be alerted when near devices senses gas.
+		config NORECEIVE
+			bool "OFF"
+			help
+				The device will NOT enter the alert state when other devices trigger.
+	endchoice
+
 	config WIFI_SSID
         string "WiFi SSID"
         default "myssid"

@@ -159,57 +159,58 @@ void loraStart()
   bool invertIrq = false;
   LoRaConfig(spreadingFactor, bandwidth, codingRate, preambleLength, payloadLen, crcOn, invertIrq);
 }
-
-void listening_task(void *pvParameter)
-{
-  ESP_LOGI(pcTaskGetName(NULL), "Start listening");
-  uint8_t rxData[256]; // Maximum Payload size of SX1261/62/68 is 255
-  while(1) {
-    uint8_t rxLen = LoRaReceive(rxData, sizeof(rxData));
-    if ( rxLen > 0 ) { 
-      printf("Receive rxLen:%d\n", rxLen);
-      int txLen;
-      char *rec = (char *)rxData;
-      if (rec[0] == 'S' ) {
-        turn_off_buzzer();
-        buzz=false;
-        turn_off_led_yellow();
-        ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
-      } else if (rec[0] == 'A' ){
-        buzz=true;
-        turn_on_buzzer();
-        turn_on_led_yellow();
-        ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
-      } else {
-        ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONNECTION SENT THE AGGREGATE");
-        #if CONFIG_WIFI
-          int l = strlen(rec);
-          for (int i = 1 ; i<l-1 ; i++){
-            if(rec[ l - i  ] =='}'){
-              rec[ l - i ] = '\0';
+#if CONFIG_RECEIVE
+  void listening_task(void *pvParameter)
+  {
+    ESP_LOGI(pcTaskGetName(NULL), "Start listening");
+    uint8_t rxData[256]; // Maximum Payload size of SX1261/62/68 is 255
+    while(1) {
+      uint8_t rxLen = LoRaReceive(rxData, sizeof(rxData));
+      if ( rxLen > 0 ) { 
+        printf("Receive rxLen:%d\n", rxLen);
+        int txLen;
+        char *rec = (char *)rxData;
+        if (rec[0] == 'S' ) {
+          turn_off_buzzer();
+          buzz=false;
+          turn_off_led_yellow();
+          ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
+        } else if (rec[0] == 'A' ){
+          buzz=true;
+          turn_on_buzzer();
+          turn_on_led_yellow();
+          ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
+        } else {
+          ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONNECTION SENT THE AGGREGATE");
+          #if CONFIG_WIFI
+            int l = strlen(rec);
+            for (int i = 1 ; i<l-1 ; i++){
+              if(rec[ l - i  ] =='}'){
+                rec[ l - i ] = '\0';
+              }
             }
-          }
-          // Ensure 'new' is large enough to hold additional information
-          char new[64];
-          uint8_t* bssid = get_bssid();
-          snprintf(new, sizeof(new), "\n    'wifi':'0',\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
-          // Calculate the total required length
-          printf("%i, %i\n", strlen(rec), strlen(new));
-          size_t totalLength = strlen(rec) + strlen(new) + 1; // +1 for null terminator
-          if (totalLength <= 256) {
-              strcat(rec, new);
-              printf("%s", rec);
-              esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
-              ESP_LOGI(TAG, "MQTT message sent: %s\n", rec);
-          } else {
-              ESP_LOGE(TAG, "Combined message length exceeds buffer size");
-          }
-        #endif
+            // Ensure 'new' is large enough to hold additional information
+            char new[64];
+            uint8_t* bssid = get_bssid();
+            snprintf(new, sizeof(new), "\n    'wifi':'0',\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
+            // Calculate the total required length
+            printf("%i, %i\n", strlen(rec), strlen(new));
+            size_t totalLength = strlen(rec) + strlen(new) + 1; // +1 for null terminator
+            if (totalLength <= 256) {
+                strcat(rec, new);
+                printf("%s", rec);
+                esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
+                ESP_LOGI(TAG, "MQTT message sent: %s\n", rec);
+            } else {
+                ESP_LOGE(TAG, "Combined message length exceeds buffer size");
+            }
+          #endif
+        }
       }
-    }
-    vTaskDelay(1); // Avoid WatchDog alerts
-  } // end while
-}
+      vTaskDelay(1); // Avoid WatchDog alerts
+    } // end while
+  }
+#endif
 
 void app_main(void)
 {
@@ -278,9 +279,10 @@ void app_main(void)
   bool triggered = false;
   bool loraSent = false;
   long long int avgPPM = 0;
-
   loraStart();
-  xTaskCreatePinnedToCore(&listening_task, "LISTENING", 4096, NULL, 5, &myTaskHandle,0);
+  #if CONFIG_RECEIVE
+    xTaskCreatePinnedToCore(&listening_task, "LISTENING", 4096, NULL, 5, &myTaskHandle,0);
+  #endif
   while (1) {
     // Read ADC value
     int adc_reading = adc1_get_raw(MQ2_ADC_CHANNEL);
@@ -301,7 +303,9 @@ void app_main(void)
         turn_on_buzzer();
         printf("Threshold exceeded for %d seconds! LED and Buzzer on\n", DURATION_THRESHOLD);
         if(!loraSent){
-          vTaskSuspend(myTaskHandle);
+          #if CONFIG_RECEIVE
+            vTaskSuspend(myTaskHandle);
+          #endif
           txLen = sprintf((char *)txData, "A");
           if(LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
             loraSent=true;
@@ -316,7 +320,9 @@ void app_main(void)
       avgPPM += (long long)ppm;
     } else {
       if(loraSent){
-        vTaskSuspend(myTaskHandle);
+        #if CONFIG_RECEIVE
+          vTaskSuspend(myTaskHandle);
+        #endif  
         txLen = sprintf((char *)txData, "S");
         if(!LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
           ESP_LOGE(TAG,"Error exiting alert state through LoRa");
@@ -332,22 +338,24 @@ void app_main(void)
         avgPPM = avgPPM / (long long)counter;
                 
         #if CONFIG_WIFI
-        char mqtt_message[256];
-        snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'wifi':'1',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, MAC2STR(bssid));
-        esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
-        printf("MQTT message sent: %s\n", mqtt_message);
+          char mqtt_message[256];
+          snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'wifi':'1',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, MAC2STR(bssid));
+          esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
+          printf("MQTT message sent: %s\n", mqtt_message);
         #endif
 
         #if CONFIG_NOWIFI
-        uint8_t mqtt_message[256];
-        txLen = snprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',}", MAC2STR(mac_addr), avgPPM, counter);
-        vTaskSuspend(myTaskHandle);
-        if(!LoRaSend(mqtt_message,txLen,SX126x_TXMODE_SYNC)){
-          ESP_LOGE(TAG,"Error sending aggregate data through lora");
-        } else {
-          vTaskResume(myTaskHandle);
-          ESP_LOGI(TAG,"Aggregate data sent through LoRa");
-        }
+          uint8_t mqtt_message[256];
+          txLen = snprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',}", MAC2STR(mac_addr), avgPPM, counter);
+          #if CONFIG_RECEIVE
+            vTaskSuspend(myTaskHandle);
+          #endif
+          if(!LoRaSend(mqtt_message,txLen,SX126x_TXMODE_SYNC)){
+            ESP_LOGE(TAG,"Error sending aggregate data through lora");
+          } else {
+            vTaskResume(myTaskHandle);
+            ESP_LOGI(TAG,"Aggregate data sent through LoRa");
+          }
         #endif
       }
       avgPPM = 0;
