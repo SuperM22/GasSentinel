@@ -328,7 +328,9 @@ void app_main(void)
           ESP_LOGE(TAG,"Error exiting alert state through LoRa");
         } else {
           loraSent=false;
-          vTaskResume(myTaskHandle);
+          #if CONFIG_RECEIVE
+            vTaskResume(myTaskHandle);
+          #endif
           memset(txData,0,8);
           ESP_LOGI(TAG,"STOPALERT sent through LoRa");
         }
