@@ -34,7 +34,7 @@ float           Ro           =  10;                 //Ro is initialized to 10 ki
 
 void setup()
 {
-  Serial.begin(115200);                               //UART setup, baudrate = 9600bps
+  Serial.begin(115200);                               
   Serial.print("Calibrating...\n");                
   Ro = MQCalibration(MQ_PIN);                       //Calibrating the sensor. Please make sure the sensor is in clean air 
                                                     //when you perform the calibration                    
@@ -65,7 +65,7 @@ float MQResistanceCalculation(int raw_adc)
 {
   Serial.println("Analog read is:");
   Serial.println(raw_adc);
-  return ( ((float)RL_VALUE*(1023-raw_adc)/raw_adc));
+  return ( ((float)RL_VALUE*(1023-raw_adc)/raw_adc)); //arduino ranges from 0-1023 while the ESP32S3 ranges form 0-4095
 }
 
 /***************************** MQCalibration ****************************************
