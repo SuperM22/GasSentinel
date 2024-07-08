@@ -179,33 +179,34 @@ void loraStart()
           buzz=true;
           turn_on_buzzer();
           turn_on_led_yellow();
-          ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
-        }else if (rec[0] == 'A' && rec[0] != '\0'){
-          #if CONFIG_WIFI
-            memmove(rec, rec + 1, strlen(rec));
-            int l = strlen(rec);
-            for (int i = 1 ; i<l-1 ; i++){
-              if(rec[ l - i  ] =='}'){
-                rec[ l - i ] = '\0';
+          ESP_LOGI(TAG, "NEIGHBOUR DEVICE ENTERED THE ALARM STATE");
+          if (rec[1] != '\0'){
+            ESP_LOGI(TAG, "TRANSMITTING THE NEIGHBOUR DEVICE ALERT THROUGH MQTT");
+            #if CONFIG_WIFI
+              memmove(rec, rec + 1, strlen(rec));
+              int l = strlen(rec);
+              for (int i = 1 ; i<l-1 ; i++){
+                if(rec[ l - i  ] =='}'){
+                  rec[ l - i ] = '\0';
+                }
               }
-            }
-            char new[64];
-            uint8_t* bssid = get_bssid();
-            snprintf(new, sizeof(new), "\n    'wifi':'0',\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
-            // Calculate the total required length
-            printf("%i, %i\n", strlen(rec), strlen(new));
-            size_t totalLength = strlen(rec) + strlen(new) + 1; // +1 for null terminator
-            if (totalLength <= 256) {
-                strcat(rec, new);
-                printf("%s", rec);
-                esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
-                ESP_LOGI(TAG, "MQTT message sent: %s\n", rec);
-            } else {
-                ESP_LOGE(TAG, "Combined message length exceeds buffer size");
-            }
-          #endif
-        }
-        else {
+              char new[64];
+              uint8_t* bssid = get_bssid();
+              snprintf(new, sizeof(new), "\n    'wifi':'0',\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
+              // Calculate the total required length
+              printf("%i, %i\n", strlen(rec), strlen(new));
+              size_t totalLength = strlen(rec) + strlen(new) + 1; // +1 for null terminator
+              if (totalLength <= 256) {
+                  strcat(rec, new);
+                  printf("%s", rec);
+                  esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
+                  ESP_LOGI(TAG, "MQTT message sent: %s\n", rec);
+              } else {
+                  ESP_LOGE(TAG, "Combined message length exceeds buffer size");
+              }
+            #endif
+          }
+        }else {
           ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONNECTION SENT THE AGGREGATE");
           #if CONFIG_WIFI
             int l = strlen(rec);
