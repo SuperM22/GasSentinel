@@ -341,12 +341,12 @@ void app_main(void)
           }
           #if CONFIG_WIFI
             char mqtt_message[256];
-            snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n        'alert':'1'\n    'wifi':'1',\n    'address':'%s',\n    'email':'%s',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL, MAC2STR(bssid));
+            snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n        'a':'1',\n    'wifi':'1',\n    'address':'%s',\n    'email':'%s',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL, MAC2STR(bssid));
             esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
             printf("MQTT message sent: %s\n", mqtt_message);
           #endif
           #if CONFIG_NOWIFI
-            txLen = sprintf((char *)txData, "A{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'address':'%s',\n    'email':'%s',}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL);
+            txLen = sprintf((char *)txData, "A{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'address':'%s',\n    'a':'1',\n    'email':'%s',}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL);
             if(LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
               loraSent=true;
               ESP_LOGI(TAG,"Alert sent through LoRa");
