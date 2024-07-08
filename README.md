@@ -47,6 +47,7 @@ After configuring the project:
     
 ### 5. Start the Python Server
 To enable the functionality of the GasSentinel system:
+- Execute `pip install -r requirements.txt` to install all the requirements once you have navigated into the server directory.
 - Execute the `mqtt_to_database.py` script. This Python script handles MQTT message processing and data storage in the database.
 
 Following these steps will effectively set up and run the GasSentinel system on your ESP32 board, allowing it to detect gas leaks, send alerts, and manage data visualization.

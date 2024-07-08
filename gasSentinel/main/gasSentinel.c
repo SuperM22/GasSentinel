@@ -42,7 +42,7 @@
 #define RO_CLEAN_AIR_FACTOR 9.83 //initialization of R0 (datasheet)
 #define THRESHOLD_PPM 2000 //5% of LEL LPG
 #define CALIBARAION_SAMPLE_TIMES 30 //this should be 30 minutes (sensor warmup period)
-
+#define ADDRESS CONFIG_ADDRESS
 float R0 = RO_CLEAN_AIR_FACTOR; 
 float LPGCurve[3]  =  {2.3,0.21,-0.47}; //taken from the datasheet to calibrate
 
@@ -328,7 +328,9 @@ void app_main(void)
           ESP_LOGE(TAG,"Error exiting alert state through LoRa");
         } else {
           loraSent=false;
-          vTaskResume(myTaskHandle);
+          #if CONFIG_RECEIVE
+            vTaskResume(myTaskHandle);
+          #endif
           memset(txData,0,8);
           ESP_LOGI(TAG,"STOPALERT sent through LoRa");
         }
@@ -339,14 +341,14 @@ void app_main(void)
                 
         #if CONFIG_WIFI
           char mqtt_message[256];
-          snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'wifi':'1',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, MAC2STR(bssid));
+          snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'wifi':'1',\n    'address':'%s',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS,MAC2STR(bssid));
           esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
           printf("MQTT message sent: %s\n", mqtt_message);
         #endif
 
         #if CONFIG_NOWIFI
           uint8_t mqtt_message[256];
-          txLen = snprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',}", MAC2STR(mac_addr), avgPPM, counter);
+          txLen = snprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'address':'%s',}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS);
           #if CONFIG_RECEIVE
             vTaskSuspend(myTaskHandle);
           #endif

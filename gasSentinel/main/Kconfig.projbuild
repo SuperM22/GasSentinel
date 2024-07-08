@@ -42,4 +42,10 @@ menu "Application Configuration"
         help
             WiFi password (WPA or WPA2) for the app to use.
 
+	config ADDRESS
+		string "Device Address"
+		default "ADDRESS"
+		help
+			Address to locate the gas leaks.
+
 endmenu 
