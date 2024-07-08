@@ -239,7 +239,7 @@ void loraStart()
 
 void app_main(void)
 {
-  uint8_t txData[8];
+  uint8_t txData[128];
   int txLen;
   
   // Initialize NVS
@@ -331,26 +331,26 @@ void app_main(void)
           #if CONFIG_RECEIVE
             vTaskSuspend(myTaskHandle);
           #endif
-          txLen = sprintf((char *)txData, "A");
-          if(LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
+          #if CONFIG_WIFI
+            txLen = sprintf((char *)txData, "A");
+            if(LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
             loraSent=true;
             ESP_LOGI(TAG,"Alert sent through LoRa");
-            memset(txData,0,8);
-          }else{
+            memset(txData,0,128);
+            }else{
             ESP_LOGE(TAG,"ERROR SENDING THE ALERT");
-          }
-          #if CONFIG_WIFI
+            }
             char mqtt_message[256];
-            snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n        'a':'1',\n    'wifi':'1',\n    'address':'%s',\n    'email':'%s',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL, MAC2STR(bssid));
+            snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'a':'1',\n    'wifi':'1',\n    'address':'%s',\n    'email':'%s',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), ADDRESS, EMAIL, MAC2STR(bssid));
             esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
             printf("MQTT message sent: %s\n", mqtt_message);
           #endif
           #if CONFIG_NOWIFI
-            txLen = sprintf((char *)txData, "A{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'address':'%s',\n    'a':'1',\n    'email':'%s',}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL);
+            txLen = sprintf((char *)txData, "A{\n'address':'%s',\n'a':'1',\n'email':'%s',}", ADDRESS, EMAIL);
             if(LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
               loraSent=true;
               ESP_LOGI(TAG,"Alert sent through LoRa");
-              memset(txData,0,8);
+              memset(txData,0,128);
             }else{
               ESP_LOGE(TAG,"ERROR SENDING THE ALERT");
             }
@@ -371,7 +371,7 @@ void app_main(void)
           #if CONFIG_RECEIVE
             vTaskResume(myTaskHandle);
           #endif
-          memset(txData,0,8);
+          memset(txData,0,128);
           ESP_LOGI(TAG,"STOPALERT sent through LoRa");
         }
       }
@@ -395,8 +395,10 @@ void app_main(void)
           if(!LoRaSend(mqtt_message,txLen,SX126x_TXMODE_SYNC)){
             ESP_LOGE(TAG,"Error sending aggregate data through lora");
           } else {
-            vTaskResume(myTaskHandle);
-            ESP_LOGI(TAG,"Aggregate data sent through LoRa");
+            #if CONFIG_RECEIVE
+              vTaskResume(myTaskHandle);
+            #endif
+              ESP_LOGI(TAG,"Aggregate data sent through LoRa");
           }
         #endif
       }
