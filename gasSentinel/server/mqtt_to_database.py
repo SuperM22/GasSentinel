@@ -137,7 +137,7 @@ def process_mqtt_message(client, userdata, msg):
         bssid = data.get("bssid")  # Assuming 'bssid' is sent in the MQTT message
         flag = data.get("wifi")
         address = data.get("address")
-        alert = data.get("alert")
+        alert = data.get("a")
 
         # Send alert to user if alert
         if alert == "1":
