@@ -129,18 +129,30 @@ def process_mqtt_message(client, userdata, msg):
         alarm_time = data.get("alarm_time")
         bssid = data.get("bssid")  # Assuming 'bssid' is sent in the MQTT message
         flag = data.get("wifi")
-        print(flag)
-
+        address = data.get("address")
+        
         # Get location from Google Geolocation API based on BSSID
-        location = get_location_from_api(bssid)
-        if location:
-            latitude = location.get("location").get("lat")
-            longitude = location.get("location").get("lng")
+        if address == 'MyAddress':
+            location = get_location_from_api(bssid)
+            if location:
+                latitude = location.get("location").get("lat")
+                longitude = location.get("location").get("lng")        
+            else:
+                latitude = None
+                longitude = None
+        #Get location from Google Geocode API based on the address provided
+        else:
+            location = get_coordinates_from_address(address)
+            print(location)
+            if location:
+                latitude = location.get("lat")
+                longitude = location.get("lng")
+            else:
+                latitude = None
+                longitude = None
             #create map
             create_gas_leak_map(latitude , longitude)
-        else:
-            latitude = None
-            longitude = None
+        
 
         # Store the data in the database
         store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude, flag)
@@ -176,6 +188,19 @@ def get_location_from_api(bssid):
     except Exception as e:
         print(f"Exception in API call: {e}")
         return None
+#Function to get latitude and longitude based on the address provided
+def get_coordinates_from_address(address):
+    try:
+        url = f"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key=AIzaSyAY9EnVfuNClEa2DvbJQri8MnBojJ2zQ_Q"
+        response = requests.get(url)
+        if response.status_code == 200:
+            result = response.json()
+            if result['status'] == 'OK':
+                location = result['results'][0]['geometry']['location']
+                return location
+    except Exception as e:
+        print(f"Exception in geocoding API call: {e}")
+        return None
 
 map_elements = []
 # Function to load map elements from the database
@@ -188,7 +213,7 @@ def load_map_elements():
         rows = cursor.fetchall()
         conn.close()
         map_elements = [
-            {'latitude': row[0], 'longitude': row[1], 'radius': 1000}
+            {'latitude': row[0], 'longitude': row[1], 'radius': 100}
             for row in rows if row[0] is not None and row[1] is not None
         ]
         print("Loaded map elements from database.")
