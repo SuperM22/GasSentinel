@@ -342,14 +342,14 @@ void app_main(void)
                 
         #if CONFIG_WIFI
           char mqtt_message[256];
-          snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'wifi':'1',\n    'address':'%s',\n    'email':'%s',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS,MAC2STR(bssid));
+          snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'wifi':'1',\n    'address':'%s',\n    'email':'%s',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL, MAC2STR(bssid));
           esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
           printf("MQTT message sent: %s\n", mqtt_message);
         #endif
 
         #if CONFIG_NOWIFI
           uint8_t mqtt_message[256];
-          txLen = snprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'address':'%s',\n    'email':'%s',\n}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL);
+          txLen = snprintf((char *)mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'address':'%s',\n    'email':'%s',}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL);
           #if CONFIG_RECEIVE
             vTaskSuspend(myTaskHandle);
           #endif

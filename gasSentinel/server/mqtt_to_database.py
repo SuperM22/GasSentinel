@@ -3,10 +3,9 @@ import paho.mqtt.client as mqtt
 import json
 import smtplib
 import time
-from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import requests
-import folium 
+import folium
 from datetime import datetime, timedelta
 
 # MQTT settings
@@ -22,7 +21,6 @@ TABLE_NAME = "gas_data"
 SMTP_USERNAME = "gassentinel@gmail.com"  # Update with your email address
 SMTP_PASSWORD = "xlpm speg pgfu lkwo"  # Update with your email password
 SENDER = "gassentinel@gmail.com"  # Update with your email address
-RECIPIENT = "awesomekanha@gmail.com"  # Update with recipient email address
 EMAIL_SUBJECT = "Gas Leak Alert"
 
 # Global variable to track the last email sent time
@@ -88,7 +86,8 @@ def store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude ,flag)
         print(f"Error storing data in database: {e}")
 
 # Function to send an email alert
-def send_email_alert(device_id, gas_level_agg, alarm_time):
+def send_email_alert(device_id, gas_level_agg, alarm_time, recipient_email):
+    recipient = recipient_email
     global last_email_time
     current_time = time.time()
     if current_time - last_email_time < EMAIL_INTERVAL:
@@ -98,13 +97,13 @@ def send_email_alert(device_id, gas_level_agg, alarm_time):
     body = f"Gas leak detected!\n\nDevice ID: {device_id}\nGas Level: {gas_level_agg}\nAlarm Time: {alarm_time}"
     msg = MIMEText(body)
     msg['From'] = SENDER
-    msg['To'] = RECIPIENT
+    msg['To'] = recipient_email
     msg['Subject'] = EMAIL_SUBJECT
 
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp_server:
             smtp_server.login(SMTP_USERNAME, SMTP_PASSWORD)
-            smtp_server.sendmail(SENDER, RECIPIENT, msg.as_string())
+            smtp_server.sendmail(SENDER, recipient_email, msg.as_string())
             print("Email alert sent.")
             last_email_time = current_time
     except Exception as e:
@@ -127,6 +126,7 @@ def process_mqtt_message(client, userdata, msg):
         device_id = data.get("device_id")
         gas_level_agg = data.get("gas_level_agg")
         alarm_time = data.get("alarm_time")
+        recipient_email = data.get("recipient_email")  # Extract the recipient email
         bssid = data.get("bssid")  # Assuming 'bssid' is sent in the MQTT message
         flag = data.get("wifi")
         address = data.get("address")
@@ -159,7 +159,7 @@ def process_mqtt_message(client, userdata, msg):
 
         # Send an email alert if gas level exceeds the threshold (if needed)
         if float(gas_level_agg) > 2000:  # Adjust threshold as needed
-            send_email_alert(device_id, gas_level_agg, alarm_time)
+            send_email_alert(device_id, gas_level_agg, alarm_time, recipient_email)  # Pass recipient email
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
     except Exception as e:
