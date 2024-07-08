@@ -72,9 +72,8 @@ def store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude ,flag)
                     timestamp >= Datetime('now', '-10 minutes')
             """, (device_id,))
             print("AHFASJFJNAS FHJAVFHAVSFHBF")
-            entry_count = cursor.fetchone()[0]
-
-            if entry_count >= 2:
+            entry_count = cursor.fetchone()
+            if entry_count:
                 print("Data already exists in database within the last 10 minutes.")
             else:
                 # Insert new data into the database
@@ -142,8 +141,8 @@ def process_mqtt_message(client, userdata, msg):
         # Send alert to user if alert
         if alert == "1":
             send_first_email_alert(device_id, address, alert, recipient_email)
-        if not alert:
             # Get location from Google Geolocation API based on BSSID
+        if not alert:
             if address == 'MyAddress':
                 location = get_location_from_api(bssid)
                 if location:
@@ -152,6 +151,7 @@ def process_mqtt_message(client, userdata, msg):
                 else:
                     latitude = None
                     longitude = None
+                create_gas_leak_map(latitude , longitude)
                 #Get location from Google Geocode API based on the address provided
             else:
                 location = get_coordinates_from_address(address)
@@ -162,16 +162,16 @@ def process_mqtt_message(client, userdata, msg):
                 else:
                     latitude = None
                     longitude = None
-                    #create map
-                    create_gas_leak_map(latitude , longitude)
+                #create map
+                create_gas_leak_map(latitude , longitude)
             
+                print(device_id, gas_level_agg, alarm_time, latitude, longitude, flag)
+                # Store the data in the database
+                store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude, flag)
 
-            # Store the data in the database
-            store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude, flag)
-
-            # Send an email alert if gas level exceeds the threshold (if needed)
-            if float(gas_level_agg) > 2000:  # Adjust threshold as needed
-                send_email_alert(device_id, gas_level_agg, alarm_time, recipient_email)  # Pass recipient email
+                # Send an email alert if gas level exceeds the threshold (if needed)
+                if float(gas_level_agg) > 2000:  # Adjust threshold as needed
+                    send_email_alert(device_id, gas_level_agg, alarm_time, recipient_email)  # Pass recipient email
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
     except Exception as e:
