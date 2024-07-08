@@ -48,4 +48,9 @@ menu "Application Configuration"
 		help
 			Address to locate the gas leaks.
 
+	config EMAIL
+		string "Device Email"
+		default "MyEmail"
+		help
+			Address to locate the gas leaks.
 endmenu 
