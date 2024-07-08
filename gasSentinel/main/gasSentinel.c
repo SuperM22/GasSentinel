@@ -32,15 +32,14 @@
 
 // ADC1 channel for the MQ-2 sensor (GPIO 36 is ADC1 channel 0)
 #define MQ2_ADC_CHANNEL ADC1_CHANNEL_0
-#define THRESHOLD 4000  // Set threshold value for the MQ-2 sensor (RAW VALUE)
-#define DURATION_THRESHOLD 10 // Duration in seconds
+#define DURATION_THRESHOLD 1 // Duration in seconds (alarm asap)
 #define SAMPLE_PERIOD_MS 1000 // Sample period in milliseconds
 #define MQTT_BROKER_URI "mqtt://mqtt.eclipseprojects.io:1883"
 
 #define VCC 5.0
 #define RL 4.7
 #define RO_CLEAN_AIR_FACTOR 9.83 //initialization of R0 (datasheet)
-#define THRESHOLD_PPM 2000 //5% of LEL LPG
+#define THRESHOLD_PPM 2000 //10% of LEL LPG
 #define CALIBARAION_SAMPLE_TIMES 30 //this should be 30 minutes (sensor warmup period)
 #define ADDRESS CONFIG_ADDRESS
 #define EMAIL CONFIG_EMAIL
@@ -181,7 +180,32 @@ void loraStart()
           turn_on_buzzer();
           turn_on_led_yellow();
           ESP_LOGI(TAG, "NEIGHBOUR DEVICE EXITED THE ALARM STATE");
-        } else {
+        }else if (rec[0] == 'A' && rec[0] != '\0'){
+          #if CONFIG_WIFI
+            memmove(rec, rec + 1, strlen(rec));
+            int l = strlen(rec);
+            for (int i = 1 ; i<l-1 ; i++){
+              if(rec[ l - i  ] =='}'){
+                rec[ l - i ] = '\0';
+              }
+            }
+            char new[64];
+            uint8_t* bssid = get_bssid();
+            snprintf(new, sizeof(new), "\n    'wifi':'0',\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
+            // Calculate the total required length
+            printf("%i, %i\n", strlen(rec), strlen(new));
+            size_t totalLength = strlen(rec) + strlen(new) + 1; // +1 for null terminator
+            if (totalLength <= 256) {
+                strcat(rec, new);
+                printf("%s", rec);
+                esp_mqtt_client_publish(mqtt_client, "/topic/qos0", rec, 0, 1, 0);
+                ESP_LOGI(TAG, "MQTT message sent: %s\n", rec);
+            } else {
+                ESP_LOGE(TAG, "Combined message length exceeds buffer size");
+            }
+          #endif
+        }
+        else {
           ESP_LOGI(TAG,"NEIGHBOUR DEVICE WITH NO MQTT CONNECTION SENT THE AGGREGATE");
           #if CONFIG_WIFI
             int l = strlen(rec);
@@ -295,7 +319,7 @@ void app_main(void)
     ppm = MQGetPercentage(Rs/R0,LPGCurve);
     printf("PPM calculated : %i\n",ppm);
     // Check if the reading exceeds the threshold
-    printf("%lld",avgPPM);
+    //printf("%lld",avgPPM);
     if (ppm > THRESHOLD_PPM) {
       counter++;
       turn_on_led();
@@ -315,8 +339,23 @@ void app_main(void)
           }else{
             ESP_LOGE(TAG,"ERROR SENDING THE ALERT");
           }
+          #if CONFIG_WIFI
+            char mqtt_message[256];
+            snprintf(mqtt_message, sizeof(mqtt_message), "{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n        'alert':'1'\n    'wifi':'1',\n    'address':'%s',\n    'email':'%s',\n    'bssid': '" MACSTR "'\n}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL, MAC2STR(bssid));
+            esp_mqtt_client_publish(mqtt_client, "/topic/qos0", mqtt_message, 0, 1, 0);
+            printf("MQTT message sent: %s\n", mqtt_message);
+          #endif
+          #if CONFIG_NOWIFI
+            txLen = sprintf((char *)txData, "A{\n   'device_id': '" MACSTR "',\n    'gas_level_agg': '%lld',\n    'alarm_time' : '%i',\n    'address':'%s',\n    'email':'%s',}", MAC2STR(mac_addr), avgPPM, counter, ADDRESS, EMAIL);
+            if(LoRaSend(txData,txLen,SX126x_TXMODE_SYNC)){
+              loraSent=true;
+              ESP_LOGI(TAG,"Alert sent through LoRa");
+              memset(txData,0,8);
+            }else{
+              ESP_LOGE(TAG,"ERROR SENDING THE ALERT");
+            }
+          #endif
         }
-        // Take max ppm , avg ppm and counter
       }
       avgPPM += (long long)ppm;
     } else {
