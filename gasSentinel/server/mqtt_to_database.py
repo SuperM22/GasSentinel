@@ -72,9 +72,9 @@ def store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude ,flag)
                     timestamp >= Datetime('now', '-10 minutes')
             """, (device_id,))
             print("AHFASJFJNAS FHJAVFHAVSFHBF")
-            existing_data = cursor.fetchone()
+            entry_count = cursor.fetchone()[0]
 
-            if existing_data:
+            if entry_count >= 2:
                 print("Data already exists in database within the last 10 minutes.")
             else:
                 # Insert new data into the database
@@ -87,13 +87,6 @@ def store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude ,flag)
 
 # Function to send an email alert
 def send_email_alert(device_id, gas_level_agg, alarm_time, recipient_email):
-    recipient = recipient_email
-    global last_email_time
-    current_time = time.time()
-    if current_time - last_email_time < EMAIL_INTERVAL:
-        print("Not allowing multiple alerts within 15 minutes.")
-        return
-
     body = f"Gas leak detected!\n\nDevice ID: {device_id}\nGas Level: {gas_level_agg}\nAlarm Time: {alarm_time}"
     msg = MIMEText(body)
     msg['From'] = SENDER
@@ -105,7 +98,21 @@ def send_email_alert(device_id, gas_level_agg, alarm_time, recipient_email):
             smtp_server.login(SMTP_USERNAME, SMTP_PASSWORD)
             smtp_server.sendmail(SENDER, recipient_email, msg.as_string())
             print("Email alert sent.")
-            last_email_time = current_time
+    except Exception as e:
+        print(f"Failed to send email: {e}")
+
+def send_first_email_alert(device_id, address, alert, recipient_email):
+    body = f"There has been an alert!\n\nDevice ID: {device_id}\nAddress: {address}\nAlert: {alert}"
+    msg = MIMEText(body)
+    msg['From'] = SENDER
+    msg['To'] = recipient_email
+    msg['Subject'] = EMAIL_SUBJECT
+
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp_server:
+            smtp_server.login(SMTP_USERNAME, SMTP_PASSWORD)
+            smtp_server.sendmail(SENDER, recipient_email, msg.as_string())
+            print("Email alert sent.")
     except Exception as e:
         print(f"Failed to send email: {e}")
 
@@ -126,11 +133,15 @@ def process_mqtt_message(client, userdata, msg):
         device_id = data.get("device_id")
         gas_level_agg = data.get("gas_level_agg")
         alarm_time = data.get("alarm_time")
-        recipient_email = data.get("recipient_email")  # Extract the recipient email
+        recipient_email = data.get("email")  # Extract the recipient email
         bssid = data.get("bssid")  # Assuming 'bssid' is sent in the MQTT message
         flag = data.get("wifi")
         address = data.get("address")
-        
+        alert = data.get("alert")
+
+        # Send alert to user if alert
+        if alert == "1":
+            send_first_email_alert(device_id, address, alert, recipient_email)
         # Get location from Google Geolocation API based on BSSID
         if address == 'MyAddress':
             location = get_location_from_api(bssid)
