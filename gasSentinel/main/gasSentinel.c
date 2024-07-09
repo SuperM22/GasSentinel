@@ -53,14 +53,11 @@ static const char *TAG = "Gas Sentinel ";
 
 uint8_t mac_addr[6];  // To store the MAC address
 
-// Timer handle
-TimerHandle_t yellow_led_timer;
-
 esp_mqtt_client_handle_t mqtt_client;
 
 TaskHandle_t myTaskHandle = NULL;
 
-bool buzz =false;
+bool buzz = false;
 
 void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
@@ -150,9 +147,9 @@ void loraStart()
     }
   }
 
-  uint8_t spreadingFactor = 7;
-  uint8_t bandwidth = 4;
-  uint8_t codingRate = 1;
+  uint8_t spreadingFactor = 7; //Lower to maximise the time pf arrival
+  uint8_t bandwidth = 4; 
+  uint8_t codingRate = 1; // Lower value increases the communication speed
   uint16_t preambleLength = 8;
   uint8_t payloadLen = 0;
   bool crcOn = true;
@@ -181,15 +178,15 @@ void loraStart()
           turn_on_led_yellow();
           ESP_LOGI(TAG, "NEIGHBOUR DEVICE ENTERED THE ALARM STATE");
           if (rec[1] != '\0'){
-            ESP_LOGI(TAG, "TRANSMITTING THE NEIGHBOUR DEVICE ALERT THROUGH MQTT");
             #if CONFIG_WIFI
+              ESP_LOGI(TAG, "TRANSMITTING THE NEIGHBOUR DEVICE ALERT THROUGH MQTT");
               memmove(rec, rec + 1, strlen(rec));
               int l = strlen(rec);
               for (int i = 1 ; i<l-1 ; i++){
                 if(rec[ l - i  ] =='}'){
                   rec[ l - i ] = '\0';
+                  }
                 }
-              }
               char new[64];
               uint8_t* bssid = get_bssid();
               snprintf(new, sizeof(new), "\n    'wifi':'0',\n    'bssid': '" MACSTR "'\n}", MAC2STR(bssid));
@@ -282,9 +279,6 @@ void app_main(void)
 
   // Configure the buzzer
   configure_buzzer();
-
-  // Create the timer to turn off the yellow LED
-  yellow_led_timer = xTimerCreate("YellowLEDTimer", pdMS_TO_TICKS(5000), pdFALSE, (void *)0, yellow_led_timer_callback);
 
   // Configure ADC width and attenuation
   adc1_config_width(ADC_WIDTH_BIT_12);
