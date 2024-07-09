@@ -123,14 +123,14 @@ The idea behind the no-wifi and no-lora receive configuration was to monitor rem
   
 ![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/Power%20Usage%20everything%20on.png)  
 
-The configuration wifi on and lora receive on, gave the average of current to be 217.8411 mA and power to be 1018.8 when the system is idle.
+The configuration wifi on and lora receive on, gave the average of current to be 217.8411 mA and power to be 1018.8 mW when the system is idle.
 
   
 ![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/Current%20Usage%20Everything%20off.png)  
 
 ![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/Power%20usage%20everything%20off.png)  
   
-The configuration wifi off and lora receive off, gave the average of current to be 206.486 mA and power to be 971.3255 when the system is just sensing gas and not listening to LoRA.  
+The configuration wifi off and lora receive off, gave the average of current to be 206.486 mA and power to be 971.3255 mW when the system is just sensing gas and not listening to LoRA.  
 
 Altough powering this kind of device with a battery is not feasible as per the calculations a 10,000 mAh battery would last for approximately 46 hours. This is due to the constant need of monitoring for gas leaks. 
 
