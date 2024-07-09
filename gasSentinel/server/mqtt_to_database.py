@@ -152,6 +152,11 @@ def process_mqtt_message(client, userdata, msg):
                     latitude = None
                     longitude = None
                 create_gas_leak_map(latitude , longitude)
+                store_in_db(device_id, gas_level_agg, alarm_time, latitude, longitude, flag)
+
+                # Send an email alert if gas level exceeds the threshold (if needed)
+                if float(gas_level_agg) > 2000:  # Adjust threshold as needed
+                    send_email_alert(device_id, gas_level_agg, alarm_time, recipient_email)  # Pass recipient email
                 #Get location from Google Geocode API based on the address provided
             else:
                 location = get_coordinates_from_address(address)
@@ -249,13 +254,13 @@ def count_gas_leaks(latitude, longitude, radius=1000):
         cursor.execute(query, (lat_min, lat_max, lng_min, lng_max))
         count = cursor.fetchone()[0]
         conn.close()
-        return count
+        return count+1
     except Exception as e:
         print(f"Error counting gas leaks: {e}")
         return 0
     
 #Function to create gas-leak map
-def create_gas_leak_map(latitude, longitude, radius = 1000):
+def create_gas_leak_map(latitude, longitude, radius = 100):
 
     # Add the circle and marker to the global list
     map_elements.append({
@@ -272,7 +277,7 @@ def create_gas_leak_map(latitude, longitude, radius = 1000):
         lat = element['latitude']
         lng = element['longitude']
         leak_count = count_gas_leaks(lat, lng, element['radius'])
-        popup_text = f"Gas Leak Detected\nLeaks in Area: {leak_count}"
+        popup_text = f"Leaks in Area: {leak_count}"
         folium.Circle(
             location=[element['latitude'], element['longitude']],
             radius=element['radius'],
