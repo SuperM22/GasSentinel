@@ -1,16 +1,20 @@
 # GasSentinel
-Group project for IoT, ECS Master's degree Sapienza
+Group project for IoT Algorithm and Services, ECS Master's degree Sapienza.  
 ## Group members
 <a href="https://www.linkedin.com/in/domenico-lattari-0947b9225/">Domenico Cesare Lattari</a>  
 <a href="https://www.linkedin.com/in/shlok-bharuka-890554222/">Shlok Bharuka</a>  
 
 ## Brief description
-This project aims to develop an IoT-based gas detection and alert system using the ESP32-S3 board and the MQ2 gas sensor. The MQ2 sensor is capable of detecting a variety of gases, including but not limited to, LPG, smoke, propane, methane, alcohol, hydrogen, and carbon monoxide, making it an excellent choice for a gas leakage detector.
-The ESP32-S3 board, with its WiFi and Bluetooth capabilities, serves as the brain of the system. It reads the analog output from the MQ2 sensor, converts it to a digital value, and then processes this data to determine the presence and concentration of gas.
-When a gas leak is detected, the system triggers an alert. This alert will be in the form of a local alarm, such as a LED, and a remote notification, that will be sent through an email.
-The alert is going to be triggered in all the neighbours devices, throughout the usage of LoRA.
-
-##Running the project
+This project aims to develop an IoT-based gas detection and alert system using the ESP32-S3 board and the MQ2 gas sensor. The MQ2 sensor is capable of detecting a variety of gases, including but not limited to, LPG, smoke, propane, methane, alcohol, hydrogen, and carbon monoxide.
+Although the sensor senses many gases we are only going to calibrate it to sense LPG.  
+The ESP32-S3 board, with its WiFi and LoRA capabilities, serves as the brain of the system. It reads the analog output from the MQ2 sensor, converts it to a digital value, and then processes this data to determine the presence and concentration of gas.
+When a gas leak is detected, the system triggers an alert. A remote notification will be sent through an email.
+The alert is going to be triggered in all the neighbouring devices, throughout the usage of LoRA.  
+You can configure the application according to your needs:  
+- Wifi can be switched on or off.
+- Neighbour alerts can be switched off (LoRA recieve off).  
+  
+## Running the project
 ### 1. Clone the Repository
 First, clone the repository to your local machine using the following command:
 ```sh
@@ -18,7 +22,6 @@ git clone https://github.com/SuperM22/GasSentinel.git
 ```
 ### 2. Set Up the ESP-IDF
 To run the GasSentinel project, you first need to set up the ESP-IDF (Espressif IoT Development Framework) environment on your machine. This involves:
-- Downloading and installing the ESP-IDF toolchain and dependencies.
 - Ensuring that your development environment is properly configured as per the instructions provided in the [ESP-IDF documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/).
 
 ### 3. Configure the Project
@@ -61,7 +64,9 @@ Following these steps will effectively set up and run the GasSentinel system on 
 | **LED (Green)**       | GPIO 26                        | Indicates if the system is on and working fine |
 | **Buzzer**            | GPIO 19 (LEDC_CHANNEL_0)       | Configured for PWM using LEDC to create sound |
 | **MQ-2 Sensor**       | GPIO 36 (ADC1_CHANNEL_0)       | Configured as an ADC input to read gas concentration |
-| **Resistor (4.7 kOhm)** | Between A0 of MQ-2 and Ground | Forms a voltage divider with the MQ-2 sensor to measure the gas concentration |
+| **Resistor (4.7 kOhm)** | Between A0 of MQ-2 and Ground | Forms a voltage divider with the MQ-2 sensor to measure the gas concentration |  
+
+The resistor (4.7 kOhm) to make our circuit a voltage divider circuit (suggested by the datasheet) as the MQ2 sensor changes it's resistance based on the concentration of gasses and we need to measure this change. The circuit divides the voltage between the resistor and the sensor in proportion to their resistances.
 
 The project is based on an ESP32s3 v3 LoRa 1262. The following configuration is for the LoRa chip. It can be changed by running `idf.py menuconfig`, in the SX126X Configuration voice.
 
@@ -76,29 +81,61 @@ The project is based on an ESP32s3 v3 LoRa 1262. The following configuration is 
 
 ## Sensor calibration process
 In order to have the correct ppm of the LPG gas, the sensor has to go through a calibration process. Since calibration kits are very costly, the calibration process is done by exploiting all the available data found in the [sensor's datasheet](https://www.pololu.com/file/0J309/MQ2.pdf). Using the sensitivity characteristic we can map the digital outputs of the sensor (ranging from 0 to 4095) to the ppm value of the LPG.  
+The datasheet reports the value of Rs/R0, where Rs is the value of the sensor's resistence in presence of the gas and R0 is the value of the sensor's resistance in clean air.
+At the startup the sensor should be exposed to cleanair, so that R0 can be correctly determined.  
+The data from the datasheet lets us approximate the curve:  
+```LPGCurve[3]  =  {2.3,0.21,-0.47};   //data format:{ x, y, slope}; point1: (lg200, 0.21), point2: (lg10000, -0.59) ```  
+Then we can get the exact ppm by using the formula:  
+```(pow(10,( ((log(rs_ro_ratio)-pcurve[1])/pcurve[2]) + pcurve[0])))```  
 This approach is quick, easy and free, but be aware that your readings are calculated approximately, so they won’t be as accurate. To make the values more consistent, you should
 preheat your sensor, which means leave it on connected to the circuit for at least 24
 hours. For future usage only 30 minutes are sufficient.  
-The sensor is correctly calibrated after 30 seconds. It should be exposed to clean air during this period.
 
 ## Application configuration
-`idf.py menuconfig`  
-Menuconfig screenshot
 In order to retrieve trends of the gas leaks we invite you to configure the internet access point credentials.   
 The application is thought for differents point of installation.
 If you intend to use the application for the monitoring of a building complex, then the wifi configuration should be chosen. If the wifi connection is not available, then the nowifi configuration will do fine.  
 If you intend to use the application in order to monitor in remote places, and you do not care about receiving neighbour alerts, you should opt for no LoRa configuration.  
-REPORT BATTERY GRAPHS AND COMPARISON CONSUMPTION FOR REMOTE MONITORING.
+The configuration of the application can be accessible by running `idf.py menuconfig`.  
+  
+![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/menuconfig.png)  
+
 
 ## LoRa over ESP-NOW
 
 During the initial state of the project we opted to use ESP-NOW for communication between devices. Not much later we discovered that the wifi antenna we have on our devices does not work properly when there are thick walls between the devices.  
+When we were testing with ESP-NOW we came to the conclusion that it was only working fine when the devices were in their line of sight and as soon as there was a wall(as thick as 15-20cm) between them the devices stopped communicating.  
 So we ought for LoRa communication.
-Esp now communication graphs (failing when walls are between devices)
-LoRa graphs in crowded spaces.
-LoRa graphs for transmission time.
+  
+![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/LoRa%20Performance%20Packet%20Loss%20Rate%20vs.%20Distance%20with%20Obstacles.png)  
 
-## Backend
+We configured LoRA with the maximum possible power which is 22db and we noticed that the packet loss wasn't increasing by a significant amount anytime the devices communicated between the distances 0-120m after that the losses were significant and they stopped communicating.
+  
+![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/LoRA%20latency.png)  
+  
+We were able to achieve a latency as low as 40ms for alerting neighbouring devices for the WIFI config(1 byte).  
+While we were able to get the lowest latency as 65ms for alerting neightbouring devices for the NOWIFI config(256 bytes).  
+
+## Energy consumption  
+The idea behind the no-wifi and no-lora receive configuration was to monitor remote places, without electric or internet supply. Tests were conducted in order to see what kind of battery we would need and how expensive is to run our system.  
+
+![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/Current%20Usage%20everything%20on.png)  
+  
+![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/Power%20Usage%20everything%20on.png)  
+
+The configuration wifi on and lora receive on, gave the average of current to be 217.8411 mA and power to be 1018.8 when the system is idle.
+
+  
+![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/Current%20Usage%20Everything%20off.png)  
+
+![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/Power%20usage%20everything%20off.png)  
+  
+The configuration wifi off and lora receive off, gave the average of current to be 206.486 mA and power to be 971.3255 when the system is just sensing gas and not listening to LoRA.  
+
+Altough powering this kind of device with a battery is not feasible as per the calculations a 10,000 mAh battery would last for approximately 46 hours. This is due to the constant need of monitoring for gas leaks. 
+
+
+## Server side
 ### MQTT and Database Integration
 The backend of our IoT-based gas detection and alert system leverages the MQTT protocol for efficient, lightweight messaging between the ESP32-S3 devices and the server. MQTT (Message Queuing Telemetry Transport) is chosen due to its suitability for low-bandwidth, high-latency networks, making it ideal for IoT applications.
 
@@ -107,40 +144,23 @@ The backend of our IoT-based gas detection and alert system leverages the MQTT p
 - The devices publish gas concentration data to a specific topic, which the server subscribes to.
 
 **SQLite Database:**
-- The backend employs SQLite for storing gas concentration data, device information, and timestamps.
-- This database is lightweight, easy to manage, and suitable for handling the data requirements of this project.
-
-**Database Schema:**
 - The database contains a table named `gas_data` with fields for device ID, gas level aggregate, alarm time, latitude, longitude, and timestamp.
-- This structure ensures we can log detailed records of each gas detection event, including location data.
 
 ### Email Alerts and Notifications
 **Email Notifications:**
-- To provide timely alerts for gas leaks, the system sends email notifications when the gas concentration exceeds a predefined threshold.
-- The email includes essential details such as the device ID, gas level, and time of detection.
-- A 15-minute interval between alerts prevents spam and ensures only significant alerts are sent.
+- To provide alerts for gas leaks, the system sends email notifications when the gas concentration reaches the alarm threshold.
+- The email is sent in an average of 1 second after the gas leak is detected and transmitted through MQTT.
 
 ### Heatmap Visualization
 **Heatmap Implementation:**
 - A heatmap visualization is generated to provide a geographic overview of gas leak incidents.
-- This map displays the locations of all detected gas leaks, with markers and circles indicating the severity and frequency of incidents.
+- This map displays the locations of all detected gas leaks, with markers and circles indicating the frequency of incidents.
 
 **Data Processing:**
 - The backend processes incoming MQTT messages, extracts location data using Google Geolocation API, and stores this data in the SQLite database.
 - A function counts the number of leaks within a specified radius to provide context to the heatmap markers.
 
-**Heatmap Benefits:**
-- The heatmap offers a visual representation of gas leak trends, helping to identify high-risk areas.
-- This visualization aids in proactive measures and strategic planning for gas leak prevention and management.
-
-### Advantages of Our Approach (Support by data!!!!!!!)
-- **Scalability:** Using MQTT allows the system to scale efficiently, handling multiple devices without significant performance degradation.
-- **Efficiency:** MQTT's lightweight nature ensures low power consumption, making it ideal for battery-operated IoT devices.
-- **Reliability:** The SQLite database provides a robust mechanism for data storage, ensuring data integrity and easy retrieval.
-- **Proactive Alerts:** The email alert system ensures that users are immediately notified of potential dangers, enhancing safety.
-- **Insightful Visualization:** The heatmap offers valuable insights into gas leak patterns, enabling better decision-making and resource allocation.
-
-This backend structure, combining MQTT, SQLite, and geolocation services, creates a reliable, efficient, and scalable solution for gas leak detection and alerting.
+![alt text](https://github.com/SuperM22/GasSentinel/blob/main/gasSentinel/Photos/map.png)
 
 
 
