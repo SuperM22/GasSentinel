@@ -177,7 +177,7 @@ void loraStart()
           turn_on_buzzer();
           turn_on_led_yellow();
           ESP_LOGI(TAG, "NEIGHBOUR DEVICE ENTERED THE ALARM STATE");
-          if (rec[1] != '\0'){
+          if (rec[1] == '{'){
             #if CONFIG_WIFI
               ESP_LOGI(TAG, "TRANSMITTING THE NEIGHBOUR DEVICE ALERT THROUGH MQTT");
               memmove(rec, rec + 1, strlen(rec));
